@@ -1,0 +1,6 @@
+{
+  "name": "gadgethemat - Student Tech & Audio Hub",
+  "description": "Portal kurasi dan rekomendasi audio & gadget mahasiswa bergaya luxury minimalis silver, white, dan black dengan logo resmi GH, katalog gear kampus, review jujur, dan budget calculator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
