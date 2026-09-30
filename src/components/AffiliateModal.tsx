@@ -1,126 +1,141 @@
-import React, { useState } from 'react';
-import { X, ExternalLink, Copy, Check, ShieldCheck, Truck, Zap, ShoppingBag } from 'lucide-react';
+import React from 'react';
+import { useApp } from '../context/AppContext';
+import { X, ExternalLink, Sparkles, Copy, Check, ShoppingBag, ShieldCheck } from 'lucide-react';
 
-interface AffiliateModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  targetUrl?: string;
-}
+export const AffiliateModal: React.FC = () => {
+  const { isAffiliateModalOpen, closeAffiliateModal, selectedAffiliateProduct, trackClick } = useApp();
+  const [copiedCode, setCopiedCode] = React.useState<string | null>(null);
 
-export const AffiliateModal: React.FC<AffiliateModalProps> = ({ 
-  isOpen, 
-  onClose,
-  targetUrl = 'https://vt.tokopedia.com/t/ZS9AfThNusdPL-onCes/' 
-}) => {
-  const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  if (!isAffiliateModalOpen) return null;
 
-  if (!isOpen) return null;
+  const product = selectedAffiliateProduct;
 
-  const copyVoucher = (code: string) => {
+  const vouchers = [
+    {
+      code: 'HEMATSHOPEE',
+      platform: 'Shopee Mall',
+      discount: 'Diskon 50% / Extra Cashback 20K',
+      bg: 'bg-orange-50 border-orange-200 text-orange-800'
+    },
+    {
+      code: 'HEMATTOKOPEDIA',
+      platform: 'Tokopedia Official',
+      discount: 'Bebas Ongkir + Flash Coupon',
+      bg: 'bg-emerald-50 border-emerald-200 text-emerald-800'
+    },
+    {
+      code: 'HEMATLAZADA',
+      platform: 'Lazada LazMall',
+      discount: 'Bonus Voucher Rp25.000',
+      bg: 'bg-blue-50 border-blue-200 text-blue-800'
+    }
+  ];
+
+  const handleCopy = (code: string) => {
     navigator.clipboard.writeText(code);
     setCopiedCode(code);
     setTimeout(() => setCopiedCode(null), 2500);
   };
 
+  const handleGoMarketplace = (marketplace: 'shopee' | 'tokopedia' | 'lazada') => {
+    if (!product) return;
+    let url = product.tokopediaUrl;
+    if (marketplace === 'shopee') url = product.shopeeUrl;
+    if (marketplace === 'lazada') url = product.lazadaUrl || product.tokopediaUrl;
+
+    trackClick(product.id, product.name, marketplace);
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-md">
-      {/* Backdrop overlay dismiss */}
-      <div className="absolute inset-0" onClick={onClose} />
-
-      {/* Modal Container - Strict Silver, White, and Black Aesthetic */}
-      <div 
-        id="affiliate-modal"
-        className="relative w-full max-w-lg bg-white border border-neutral-300 rounded-3xl p-6 sm:p-8 shadow-2xl z-10 overflow-hidden text-neutral-900"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Top Black Stripe */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-black" />
-
-        {/* Close Button */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
+      <div className="relative w-full max-w-lg bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#E4E8E5] overflow-hidden">
+        
+        {/* CLOSE BUTTON */}
         <button
-          id="close-affiliate-modal"
-          onClick={onClose}
-          className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-600 hover:text-black transition-colors"
-          aria-label="Tutup"
+          onClick={closeAffiliateModal}
+          className="absolute top-4 right-4 p-2 rounded-full bg-[#F7F8F6] text-neutral-600 hover:text-black hover:bg-neutral-200 transition-colors"
         >
-          <X className="w-4 h-4" />
+          <X className="w-5 h-5" />
         </button>
 
-        {/* Header */}
-        <div className="mb-6">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 text-xs font-black tracking-wide uppercase mb-2 border border-neutral-300">
-            <Zap className="w-3.5 h-3.5 text-black" />
-            Toko Resmi Terverifikasi
-          </div>
-          <h3 className="text-2xl sm:text-3xl font-black text-black tracking-tight font-display">
-            Beli di Tokopedia Official
-          </h3>
-          <p className="text-xs sm:text-sm text-neutral-600 mt-1">
-            Dapatkan harga terendah resmi flash sale dengan garansi 100% authentic & bebas ongkir.
-          </p>
+        {/* HEADER */}
+        <div className="flex items-center gap-2 mb-2">
+          <span className="p-1.5 rounded-lg bg-[#B9F43A] text-black">
+            <Sparkles className="w-4 h-4" />
+          </span>
+          <span className="text-xs font-black tracking-widest text-[#68736D] uppercase font-display">
+            VERIFIED AFFILIATE DEALS
+          </span>
         </div>
 
-        {/* Primary Tokopedia Deal Card */}
-        <div className="space-y-4">
-          <div className="border border-neutral-300 hover:border-black rounded-2xl p-5 transition-all duration-200 bg-neutral-50 shadow-sm">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <span className="w-7 h-7 rounded-lg bg-black text-white font-black text-xs flex items-center justify-center">
-                  T
-                </span>
-                <div>
-                  <span className="font-extrabold text-sm text-black block leading-none">Tokopedia Mall</span>
-                  <span className="text-[10px] text-neutral-500 font-semibold">Toko Resmi Terdaftar</span>
-                </div>
+        <h3 className="text-2xl font-black text-[#080808] font-display tracking-tight leading-snug mb-1">
+          {product ? product.name : 'Voucher & Link Resmi Toko'}
+        </h3>
+        
+        <p className="text-xs text-[#68736D] mb-6">
+          Dapatkan jaminan produk 100% Original, garansi resmi, dan potongan harga khusus rujukan GADGET HEMATT.
+        </p>
+
+        {/* VOUCHER CODES */}
+        <div className="space-y-3 mb-6">
+          <div className="text-[11px] font-extrabold tracking-wider uppercase text-[#080808]">
+            KODE VOUCHER HEMAT TERSEDIA
+          </div>
+          {vouchers.map(v => (
+            <div key={v.code} className={`p-3 rounded-2xl border flex items-center justify-between gap-3 ${v.bg}`}>
+              <div>
+                <div className="text-xs font-black uppercase tracking-wider">{v.platform}</div>
+                <div className="text-xs font-semibold mt-0.5">{v.discount}</div>
               </div>
               <button
-                onClick={() => copyVoucher('HEMATTOKOPEDIA')}
-                className="text-xs font-bold text-neutral-800 hover:text-black flex items-center gap-1 bg-white hover:bg-neutral-100 px-3 py-1.5 rounded-lg border border-neutral-300 shadow-sm"
+                onClick={() => handleCopy(v.code)}
+                className="px-3 py-1.5 rounded-xl bg-black text-white text-xs font-bold flex items-center gap-1.5 hover:bg-neutral-800 transition-colors shrink-0"
               >
-                {copiedCode === 'HEMATTOKOPEDIA' ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-black" />
-                    Tersalin!
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5 text-neutral-600" />
-                    Klaim Promo
-                  </>
-                )}
+                {copiedCode === v.code ? <Check className="w-3.5 h-3.5 text-[#B9F43A]" /> : <Copy className="w-3.5 h-3.5" />}
+                <span>{copiedCode === v.code ? 'Tersalin' : v.code}</span>
               </button>
             </div>
-
-            <div className="text-xs text-neutral-600 mb-4 flex items-center gap-3">
-              <span className="flex items-center gap-1 font-semibold text-black">
-                <Truck className="w-3.5 h-3.5 text-black" /> Bebas Ongkir XTRA
-              </span>
-              <span>•</span>
-              <span>100% Authentic Beli Lokal</span>
-            </div>
-
-            {/* Direct Tokopedia CTA */}
-            <a
-              id="cta-tokopedia-affiliate"
-              href={targetUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 py-3.5 px-4 bg-black hover:bg-neutral-800 text-white font-bold rounded-xl text-xs sm:text-sm transition-all shadow-md active:scale-[0.99]"
-            >
-              <ShoppingBag className="w-4 h-4 text-white" />
-              <span>Buka Sekarang di Tokopedia</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          </div>
+          ))}
         </div>
 
-        {/* Footer info */}
-        <div className="mt-6 pt-4 border-t border-neutral-200 flex items-center justify-between text-[11px] text-neutral-500">
+        {/* MARKETPLACE CTA BUTTONS */}
+        {product && (
+          <div className="space-y-2.5">
+            <div className="text-[11px] font-extrabold tracking-wider uppercase text-[#080808]">
+              PILIH MARKETPLACE
+            </div>
+            
+            <button
+              onClick={() => handleGoMarketplace('shopee')}
+              className="w-full py-3.5 px-5 rounded-2xl bg-[#EE4D2D] hover:bg-[#d83f1f] text-white font-black text-sm tracking-wide flex items-center justify-between shadow-md transition-transform hover:scale-[1.01]"
+            >
+              <div className="flex items-center gap-2">
+                <ShoppingBag className="w-4 h-4" />
+                <span>CEK HARGA TERBAIK DI SHOPEE</span>
+              </div>
+              <ExternalLink className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={() => handleGoMarketplace('tokopedia')}
+              className="w-full py-3.5 px-5 rounded-2xl bg-[#03AC0E] hover:bg-[#02930c] text-white font-black text-sm tracking-wide flex items-center justify-between shadow-md transition-transform hover:scale-[1.01]"
+            >
+              <div className="flex items-center gap-2">
+                <ShoppingBag className="w-4 h-4" />
+                <span>CEK HARGA TERBAIK DI TOKOPEDIA</span>
+              </div>
+              <ExternalLink className="w-4 h-4" />
+            </button>
+          </div>
+        )}
+
+        <div className="mt-6 pt-4 border-t border-[#E4E8E5] flex items-center justify-between text-[10px] text-[#68736D]">
           <span className="flex items-center gap-1">
-            <ShieldCheck className="w-3.5 h-3.5 text-black" />
-            100% Produk Original Terverifikasi
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+            Garansi Resmi & Beli Lokal
           </span>
-          <span className="font-semibold text-neutral-800">Garansi Pengembalian</span>
+          <span>Official Affiliate Partner</span>
         </div>
       </div>
     </div>

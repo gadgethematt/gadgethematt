@@ -1,95 +1,183 @@
-import React from 'react';
-import { NavTab } from '../types';
-import { GadgetHematLogo } from './GadgetHematLogo';
-import { Gamepad2, BookOpen, Calculator, Headphones, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { useApp } from '../context/AppContext';
+import { 
+  Search, 
+  Sparkles, 
+  Menu, 
+  X, 
+  Disc, 
+  ShieldCheck, 
+  UserCheck,
+  ChevronRight
+} from 'lucide-react';
 
-interface NavbarProps {
-  activeTab: NavTab;
-  setActiveTab: (tab: NavTab) => void;
-  onOpenDeals: () => void;
-}
+export const Navbar: React.FC = () => {
+  const { currentPath, navigate, openAffiliateModal, isAdminLoggedIn } = useApp();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenDeals }) => {
-  const navItems: { id: NavTab; label: string; icon: React.ReactNode }[] = [
-    { id: 'hero', label: 'SPACE S1', icon: <Headphones className="w-3.5 h-3.5" /> },
-    { id: 'gear', label: 'GEAR ARENA', icon: <Gamepad2 className="w-3.5 h-3.5" /> },
-    { id: 'reviews', label: 'REVIEW KAMPUS', icon: <BookOpen className="w-3.5 h-3.5" /> },
-    { id: 'calculator', label: 'BUDGET SMART', icon: <Calculator className="w-3.5 h-3.5" /> },
+  const navLinks = [
+    { label: 'HOME', path: '/' },
+    { label: 'KATALOG', path: '/katalog' },
+    { label: 'REVIEWS', path: '/reviews' },
+    { label: 'COMPARISONS', path: '/comparisons' },
+    { label: 'BEST TWS', path: '/best-tws' },
+    { label: 'BUYING GUIDES', path: '/buying-guides' },
+    { label: 'CATEGORIES', path: '/categories' },
   ];
+
+  const handleNav = (path: string) => {
+    navigate(path);
+    setMobileMenuOpen(false);
+  };
+
+  const isCurrentActive = (path: string) => {
+    if (path === '/') return currentPath === '/';
+    return currentPath.startsWith(path);
+  };
 
   return (
     <>
-      {/* Top Header - Dark Matte Graphite (Matching download (6).jpg) */}
-      <header className="fixed top-0 inset-x-0 z-40 px-4 sm:px-10 py-3.5 bg-[#222428]/85 backdrop-blur-xl border-b border-[#2d3036] transition-all">
-        <div className="max-w-[1550px] mx-auto flex items-center justify-between gap-4">
+      {/* Top Header - Dark Charcoal (#25282A) background */}
+      <header className="fixed top-0 inset-x-0 z-50 bg-[#25282A] text-white shadow-md border-b border-[#373A3D] transition-all">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           
-          {/* Logo & Student Tech Brand */}
+          {/* LEFT: BRAND LOGO & SUBTITLE */}
           <div 
-            onClick={() => setActiveTab('hero')}
-            className="cursor-pointer group select-none flex items-center gap-2"
+            onClick={() => handleNav('/')}
+            className="cursor-pointer flex items-center gap-3 group select-none shrink-0"
           >
-            <GadgetHematLogo size="sm" showText={true} variant="white" />
+            <div className="w-9 h-9 rounded-xl bg-[#B9F43A] flex items-center justify-center text-black font-black text-lg shadow-sm group-hover:scale-105 transition-transform">
+              GH
+            </div>
+            <div className="flex flex-col">
+              <span className="font-display font-black text-lg sm:text-xl tracking-tight leading-none text-white group-hover:text-[#B9F43A] transition-colors uppercase">
+                GADGET HEMATT
+              </span>
+              <span className="text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] text-[#A0A5A8] uppercase leading-tight mt-0.5">
+                STUDENT TECH & AUDIO
+              </span>
+            </div>
           </div>
 
-          {/* Desktop Navigation Links (Clean Uppercase Spaced Links like download (6).jpg) */}
-          <nav className="hidden md:flex items-center gap-1 sm:gap-2">
-            {navItems.map((item) => {
-              const isActive = activeTab === item.id;
+          {/* CENTER: DESKTOP NAVIGATION LINKS */}
+          <nav className="hidden xl:flex items-center gap-1">
+            {navLinks.map((item) => {
+              const active = isCurrentActive(item.path);
               return (
                 <button
-                  key={item.id}
-                  id={`nav-tab-${item.id}`}
-                  onClick={() => setActiveTab(item.id)}
-                  className={`relative flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase transition-all duration-200 ${
-                    isActive
-                      ? 'text-white bg-[#2f333a] border border-[#40454f] shadow-sm'
-                      : 'text-[#9ca0a8] hover:text-white hover:bg-[#2a2d33]'
+                  key={item.label}
+                  onClick={() => handleNav(item.path)}
+                  className={`px-3 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all ${
+                    active
+                      ? 'bg-[#B9F43A] text-black font-black shadow-sm'
+                      : 'text-[#D0D4D7] hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  <span className={isActive ? 'text-white' : 'text-[#7d828c]'}>
-                    {item.icon}
-                  </span>
-                  <span>{item.label}</span>
+                  {item.label}
                 </button>
               );
             })}
           </nav>
 
-          {/* Right Action: Quick Affiliate Modal Trigger */}
+          {/* RIGHT: SEARCH, AFFILIASI & ADMIN TRIGGER */}
           <div className="flex items-center gap-2.5">
+            {/* Search Button */}
             <button
-              id="header-voucher-btn"
-              onClick={onOpenDeals}
-              className="relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2e3239] hover:bg-[#383c45] text-[#e3e5ea] hover:text-white font-bold text-xs tracking-wider uppercase shadow-sm transition-all hover:scale-105 active:scale-95 border border-[#3f434c]"
+              onClick={() => handleNav('/search')}
+              className={`p-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${
+                currentPath === '/search'
+                  ? 'bg-white/20 text-[#B9F43A]'
+                  : 'text-[#D0D4D7] hover:text-white hover:bg-white/10'
+              }`}
+              title="Cari TWS & Artikel"
             >
-              <Sparkles className="w-3.5 h-3.5 text-neutral-300" />
-              <span>AFILIASI</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+              <Search className="w-4 h-4 text-[#B9F43A]" />
+              <span className="hidden sm:inline text-xs font-bold uppercase tracking-wider">SEARCH</span>
+            </button>
+
+            {/* Affiliasi Button with Status Indicator */}
+            <button
+              onClick={() => openAffiliateModal()}
+              className="relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B9F43A] hover:bg-[#a3e028] text-black font-extrabold text-xs tracking-wider uppercase shadow-sm transition-all hover:scale-105 active:scale-95 border border-[#B9F43A]"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-black" />
+              <span>AFFILIASI</span>
+              {/* Green status indicator dot */}
+              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse border border-black/20" />
+            </button>
+
+            {/* Admin CMS Access Trigger */}
+            <button
+              onClick={() => handleNav(isAdminLoggedIn ? '/admin' : '/admin/login')}
+              className={`p-2 rounded-full transition-all text-xs font-bold ${
+                currentPath.startsWith('/admin')
+                  ? 'bg-[#B9F43A] text-black'
+                  : 'text-[#A0A5A8] hover:text-white hover:bg-white/10'
+              }`}
+              title={isAdminLoggedIn ? 'Dashboard Admin CMS' : 'Login Admin CMS'}
+            >
+              {isAdminLoggedIn ? <ShieldCheck className="w-4 h-4 text-emerald-400" /> : <UserCheck className="w-4 h-4" />}
+            </button>
+
+            {/* Mobile Hamburger Toggle */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="xl:hidden p-2 rounded-lg text-white hover:bg-white/10"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Bottom Fixed Navigation Dock */}
-      <nav className="md:hidden fixed bottom-3 inset-x-3 z-40 bg-[#222428]/95 backdrop-blur-xl border border-[#2f3238] rounded-2xl p-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.4)] flex items-center justify-around">
-        {navItems.map((item) => {
-          const isActive = activeTab === item.id;
-          return (
+      {/* MOBILE NAV DRAWER */}
+      {mobileMenuOpen && (
+        <div className="xl:hidden fixed inset-0 z-40 bg-[#25282A]/95 backdrop-blur-md pt-20 px-6 pb-8 flex flex-col justify-between animate-fadeIn">
+          <div className="flex flex-col gap-2">
+            <div className="text-[10px] font-black tracking-[0.2em] text-[#B9F43A] uppercase mb-2">
+              PUBLIC NAVIGATION
+            </div>
+            {navLinks.map((item) => {
+              const active = isCurrentActive(item.path);
+              return (
+                <button
+                  key={item.label}
+                  onClick={() => handleNav(item.path)}
+                  className={`w-full text-left px-4 py-3 rounded-xl font-bold text-sm tracking-wider uppercase transition-all flex items-center justify-between ${
+                    active
+                      ? 'bg-[#B9F43A] text-black font-extrabold'
+                      : 'text-[#D0D4D7] hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="mt-6 pt-6 border-t border-[#373A3D] flex flex-col gap-3">
             <button
-              key={item.id}
-              onClick={() => setActiveTab(item.id)}
-              className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-xl transition-all ${
-                isActive
-                  ? 'text-white bg-[#2e3238] font-bold border border-[#3e424a] scale-105'
-                  : 'text-[#8e929a] hover:text-white'
-              }`}
+              onClick={() => handleNav('/search')}
+              className="w-full py-3 rounded-xl bg-white/10 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2"
             >
-              <div className="text-base mb-0.5">{item.icon}</div>
-              <span className="text-[9px] tracking-tight">{item.label}</span>
+              <Search className="w-4 h-4 text-[#B9F43A]" />
+              <span>Cari TWS & Review</span>
             </button>
-          );
-        })}
-      </nav>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openAffiliateModal();
+              }}
+              className="w-full py-3 rounded-xl bg-[#B9F43A] text-black font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md"
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>Akses Kode Voucher Affiliasi</span>
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };

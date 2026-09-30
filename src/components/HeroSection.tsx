@@ -1,218 +1,213 @@
 import React, { useState } from 'react';
-import { TransparentTwsEarbuds } from './TransparentTwsEarbuds';
-import { ProductColor, NavTab } from '../types';
-import { audioService } from '../utils/audio';
-import { ShoppingBag, ChevronRight, Volume2, ArrowDown } from 'lucide-react';
-import { GadgetHematLogo } from './GadgetHematLogo';
+import { useApp } from '../context/AppContext';
+import { ShoppingBag, ArrowDown, Volume2, Sparkles, ChevronRight, Disc } from 'lucide-react';
+import twsHeroImg from '../assets/images/tws_earpods_hero_1790731073099.jpg';
+import silkWaveImg from '../assets/images/space_s1_silk_wave_1790728512734.jpg';
 
-interface HeroSectionProps {
-  onOpenAffiliate: () => void;
-  onNavigate: (tab: NavTab) => void;
-}
-
-export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenAffiliate, onNavigate }) => {
-  const [productColor, setProductColor] = useState<ProductColor>('pearl');
+export const HeroSection: React.FC = () => {
+  const { navigate, openAffiliateModal, products } = useApp();
+  const [productColor, setProductColor] = useState<'pearl' | 'titanium' | 'onyx'>('pearl');
   const [isBassPlaying, setIsBassPlaying] = useState(false);
 
+  const heroProduct = products.find(p => p.slug === 'soundcore-liberty-5') || products[0];
+
   const handleBassDemo = () => {
-    audioService.playBassSample(() => {
-      setIsBassPlaying(false);
-    });
     setIsBassPlaying(true);
+    // Play 40Hz Pure Bass Audio sample
+    try {
+      const audioCtx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(40, audioCtx.currentTime); // 40Hz deep sub bass
+      gain.gain.setValueAtTime(0.35, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2.5);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 2.5);
+    } catch {
+      // ignore audio context failures
+    }
+
+    setTimeout(() => {
+      setIsBassPlaying(false);
+    }, 2800);
   };
 
   return (
-    <section className="relative w-full h-screen min-h-[660px] max-h-screen overflow-hidden bg-gradient-to-b from-white via-[#f6f7f9] to-[#e8eaee] text-neutral-900 flex flex-col justify-between pt-16 pb-16 sm:pb-6 select-none">
+    <section className="relative w-full min-h-[88vh] bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9] to-[#e8eee9] text-[#080808] flex flex-col justify-between pt-24 pb-12 overflow-hidden select-none border-b border-[#E4E8E5]">
       
-      {/* 1. BACKGROUND STUDIO AMBIENCE & SILK FLOWING RIBBON (Sesuai Referensi HAVIT Space S1) */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden -z-20">
-        
-        {/* Giant Watermark Typography behind product: "SPACE S1" (ATMOS / HAVIT aesthetic) */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none opacity-[0.038] tracking-widest font-black font-display text-[16vw] sm:text-[18vw] leading-none text-black">
-          SPACE S1
-        </div>
+      {/* BACKGROUND STUDIO LIGHTING & LIME ACCENT AMBIENCE */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
+        {/* Soft Radial Center Lime/Studio Keylight Bloom */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85vw] max-w-[1200px] h-[70vh] bg-gradient-to-tr from-[#B9F43A]/25 via-white/40 to-transparent rounded-full blur-3xl opacity-90" />
 
-        {/* Soft Pearlescent Studio Light Bloom in Center */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-b from-white/90 via-slate-100/50 to-transparent rounded-full blur-[100px]" />
-
-        {/* Flowing White/Silver Silk Wave Ribbon along bottom (Identik dengan foto referensi HAVIT Space S1) */}
-        <div className="absolute inset-x-0 bottom-0 h-52 sm:h-72 pointer-events-none overflow-hidden opacity-85">
-          <svg
-            className="w-full h-full"
-            viewBox="0 0 1440 320"
-            fill="none"
-            preserveAspectRatio="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <linearGradient id="silkWaveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.95" />
-                <stop offset="35%" stopColor="#f1f5f9" stopOpacity="0.8" />
-                <stop offset="65%" stopColor="#e2e8f0" stopOpacity="0.7" />
-                <stop offset="100%" stopColor="#cbd5e1" stopOpacity="0.5" />
-              </linearGradient>
-              <linearGradient id="silkWaveGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.7" />
-                <stop offset="50%" stopColor="#f8fafc" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="#e2e8f0" stopOpacity="0.4" />
-              </linearGradient>
-            </defs>
-
-            {/* Back silk layer */}
-            <path
-              d="M0,192 C280,120 480,260 840,160 C1140,80 1320,220 1440,180 L1440,320 L0,320 Z"
-              fill="url(#silkWaveGrad2)"
-            />
-
-            {/* Front glossy silk ribbon */}
-            <path
-              d="M0,140 C320,240 560,90 920,210 C1200,300 1360,150 1440,190 L1440,320 L0,320 Z"
-              fill="url(#silkWaveGrad1)"
-            />
-            {/* Subtle silver edge highlight on silk */}
-            <path
-              d="M0,140 C320,240 560,90 920,210 C1200,300 1360,150 1440,190"
-              stroke="#ffffff"
-              strokeWidth="2"
-              strokeOpacity="0.9"
-            />
-          </svg>
+        {/* Photorealistic Silk Wave Layer */}
+        <div className="absolute inset-x-0 bottom-0 h-[45vh] sm:h-[50vh] opacity-75 mix-blend-multiply overflow-hidden pointer-events-none">
+          <img
+            src={silkWaveImg}
+            alt="Studio Silk Texture"
+            className="w-full h-full object-cover object-bottom filter contrast-[1.02] brightness-[1.03]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-transparent via-[#f1f5f9]/40 to-[#f8fafc]" />
         </div>
       </div>
 
-      {/* 2. HERO MAIN CONTENT STAGE */}
-      <div className="relative z-20 w-full flex-1 flex items-center justify-center px-4 sm:px-8 max-w-7xl mx-auto">
+      {/* HERO MAIN STAGE CONTENT */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col lg:flex-row items-center justify-between gap-8 my-auto">
         
-        {/* Left & Right Layout:
-            Kiri: Nama Web "gadgethematt" dan Logo
-            Kanan: "Mute the Noise, Own the Show"
-        */}
-        <div className="absolute inset-0 flex items-center justify-between pointer-events-none px-4 sm:px-8 md:px-12">
+        {/* LEFT SIDE: BRAND TITLE & SUBTITLE */}
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left z-10 lg:w-[35%]">
           
-          {/* SEBELAH KIRI: NAMA WEB GADGETHEMATT & LOGO */}
-          <div className="flex flex-col items-start z-10 max-w-[48%] sm:max-w-md pointer-events-auto">
-            
-            {/* Logo GH Emblem */}
-            <div className="mb-4">
-              <GadgetHematLogo size="lg" showText={false} variant="dark" />
-            </div>
-
-            {/* Nama Web: gadgethematt */}
-            <h1 
-              id="hero-brand-name"
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-black tracking-tight leading-[0.95] font-display uppercase"
-            >
-              gadget<br />hematt
-            </h1>
-
-            {/* Sub-label Student Tech & Audio */}
-            <div className="mt-3 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
-              <span className="text-[11px] sm:text-xs font-black tracking-[0.2em] text-neutral-600 uppercase">
-                STUDENT TECH & AUDIO
-              </span>
-            </div>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#25282A] text-white text-[10px] font-black tracking-[0.2em] uppercase mb-4 shadow-sm border border-neutral-700">
+            <span className="w-2 h-2 rounded-full bg-[#B9F43A] animate-pulse" />
+            <span>TWS REVIEW & AFFILIATE HUB</span>
           </div>
 
-          {/* SEBELAH KANAN: MUTE THE NOISE, OWN THE SHOW */}
-          <div className="flex flex-col items-end text-right z-10 max-w-[48%] sm:max-w-md pointer-events-auto">
-            
-            {/* Tagline Headline: Mute the Noise. */}
-            <h2 
-              id="hero-poster-tagline"
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-black tracking-tighter leading-[0.9] font-display"
-            >
-              Mute the<br />Noise.
-            </h2>
-            
-            {/* Sub-tagline: Own the Show. */}
-            <p className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-neutral-800 tracking-tight mt-2 sm:mt-3 font-display">
-              Own the Show.
-            </p>
+          {/* Left Title: GADGET HEMATT */}
+          <h1 className="font-display font-black text-5xl sm:text-7xl lg:text-7xl xl:text-8xl text-[#080808] tracking-tighter leading-[0.88] uppercase">
+            GADGET<br />
+            <span className="text-[#080808]">HEMATT</span>
+          </h1>
 
-            <div className="mt-3 flex items-center justify-end gap-2">
-              <span className="text-[10px] sm:text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-white/90 border border-neutral-300 text-neutral-700 shadow-sm backdrop-blur-md">
-                SPACE S1 • WIRELESS
-              </span>
-            </div>
+          {/* Subtitle Left: • STUDENT TECH & AUDIO */}
+          <div className="mt-4 flex items-center gap-2">
+            <span className="text-xs sm:text-sm font-black tracking-[0.22em] text-[#68736D] uppercase">
+              • STUDENT TECH & AUDIO
+            </span>
           </div>
+
+          <p className="mt-3 text-xs sm:text-sm text-[#68736D] max-w-sm leading-relaxed font-medium">
+            Portal ulasan jujur TWS earphone, rekomendasi terbaik mahasiswa, komparasi spesifikasi, dan diskon resmi Shopee & Tokopedia.
+          </p>
         </div>
 
-        {/* Center Floating TWS (White, Silver & Black Studio Finish) */}
-        <TransparentTwsEarbuds 
-          color={productColor}
-          isBassActive={isBassPlaying}
-          onAudioTest={handleBassDemo}
-        />
-      </div>
-
-      {/* 3. BOTTOM CONTROL BAR: COLORWAY SWITCHER & CRISP BLACK CTA */}
-      <div className="relative z-30 w-full px-6 sm:px-10 lg:px-14 flex flex-col sm:flex-row items-center justify-between gap-4">
-        
-        {/* Left Bottom: Colorway & 40Hz Audio Test */}
-        <div className="flex items-center gap-3">
+        {/* CENTER: HIGH QUALITY FLOATING TWS EARPODS PRODUCT IMAGE */}
+        <div className="relative z-20 flex-1 flex flex-col items-center justify-center my-2 sm:my-0">
           
-          {/* Color Selector (White, Titanium Silver, Jet Black) */}
-          <div className="flex items-center gap-2 p-1.5 rounded-full bg-white/95 border border-neutral-300 shadow-sm backdrop-blur-md">
-            <button
-              onClick={() => setProductColor('pearl')}
-              title="Pearl White Matte"
-              className={`w-6 h-6 rounded-full bg-white border border-neutral-300 shadow-inner transition-transform ${
-                productColor === 'pearl' ? 'ring-2 ring-black scale-110' : 'hover:scale-105'
-              }`}
-            />
-            <button
-              onClick={() => setProductColor('titanium')}
-              title="Brushed Silver / Titanium"
-              className={`w-6 h-6 rounded-full bg-neutral-400 border border-neutral-500 shadow-inner transition-transform ${
-                productColor === 'titanium' ? 'ring-2 ring-black scale-110' : 'hover:scale-105'
-              }`}
-            />
-            <button
-              onClick={() => setProductColor('onyx')}
-              title="Jet Black Onyx"
-              className={`w-6 h-6 rounded-full bg-black border border-neutral-800 shadow-inner transition-transform ${
-                productColor === 'onyx' ? 'ring-2 ring-black scale-110' : 'hover:scale-105'
-              }`}
-            />
-          </div>
+          {/* Audio Wave Ping Rings on Bass Play */}
+          {isBassPlaying && (
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-[320px] h-[320px] sm:w-[480px] sm:h-[480px] rounded-full border-2 border-[#B9F43A] animate-ping duration-1000" />
+              <div className="w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] rounded-full border border-black/10 animate-ping duration-1000 delay-150" />
+            </div>
+          )}
 
-          {/* Bass Test Button */}
-          <button
-            id="hero-bass-test-btn"
+          {/* Floating TWS Earpods Container */}
+          <div 
+            className="animate-float-smooth relative w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] md:w-[460px] md:h-[460px] flex items-center justify-center group cursor-pointer"
             onClick={handleBassDemo}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all ${
-              isBassPlaying
-                ? 'bg-black text-white shadow-lg animate-pulse'
-                : 'bg-white hover:bg-neutral-100 text-neutral-900 border border-neutral-300 shadow-sm'
-            }`}
+            title="Klik untuk uji audio Pure Bass"
           >
-            <Volume2 className={`w-3.5 h-3.5 ${isBassPlaying ? 'text-white' : 'text-neutral-700'}`} />
-            <span>{isBassPlaying ? 'Audio 40Hz Berbunyi...' : 'Uji Audio Pure Bass'}</span>
+            {/* Ambient Product Halo */}
+            <div className="absolute inset-6 rounded-full bg-[#B9F43A]/30 blur-2xl -z-10 group-hover:scale-110 transition-transform" />
+
+            <img
+              src={twsHeroImg}
+              alt="TWS Earpods True Wireless Stereo"
+              className="w-full h-full object-contain filter drop-shadow-[0_25px_40px_rgba(8,8,8,0.22)] transition-all duration-500 group-hover:scale-[1.03] rounded-3xl"
+              style={{
+                filter: productColor === 'onyx'
+                  ? 'brightness(0.65) contrast(1.2) drop-shadow(0 25px 40px rgba(0,0,0,0.35))'
+                  : productColor === 'titanium'
+                  ? 'brightness(0.90) contrast(1.1) drop-shadow(0 25px 40px rgba(0,0,0,0.25))'
+                  : 'brightness(1.02) contrast(1.04) drop-shadow(0 25px 40px rgba(8,8,8,0.20))'
+              }}
+            />
+
+            {/* Micro Badge Floating Tag */}
+            <div className="absolute bottom-4 px-3.5 py-1.5 rounded-full bg-[#25282A] text-white text-[10px] font-extrabold tracking-widest uppercase shadow-md flex items-center gap-1.5 opacity-90 group-hover:opacity-100 border border-neutral-700">
+              <Disc className="w-3.5 h-3.5 text-[#B9F43A] animate-spin" style={{ animationDuration: '4s' }} />
+              <span>PURE BASS AUDIO 40Hz</span>
+            </div>
+          </div>
+
+          {/* Soft Ground Contact Shadow */}
+          <div className="w-[180px] sm:w-[260px] h-4 -mt-2 rounded-[100%] bg-radial from-black/25 via-black/5 to-transparent blur-md" />
+        </div>
+
+        {/* RIGHT SIDE: EDITORIAL HEADLINE "Mute the Noise" & SUBTITLE "Own the Show." */}
+        <div className="flex flex-col items-center lg:items-end text-center lg:text-right z-10 lg:w-[35%]">
+          
+          <h2 className="font-display font-black text-4xl sm:text-6xl lg:text-6xl xl:text-7xl text-[#080808] tracking-tighter leading-[0.90] uppercase">
+            Mute the<br />
+            Noise.
+          </h2>
+
+          <p className="font-display font-black text-2xl sm:text-4xl text-[#080808] tracking-tight mt-2.5">
+            Own the Show.
+          </p>
+
+          <p className="mt-3 text-xs text-[#68736D] font-medium max-w-xs">
+            True Wireless Stereo terbaik untuk kelas, gaming, & nongkrong santai.
+          </p>
+
+          {/* COLOR SELECTORS */}
+          <div className="mt-6 flex items-center gap-3">
+            <span className="text-[10px] font-bold text-[#68736D] uppercase tracking-wider">Pilih Warna TWS:</span>
+            <div className="flex items-center gap-2 p-1.5 rounded-full bg-white/80 border border-[#E4E8E5] shadow-xs">
+              <button
+                onClick={() => setProductColor('pearl')}
+                className={`w-5 h-5 rounded-full bg-white border border-neutral-300 shadow-inner transition-transform ${
+                  productColor === 'pearl' ? 'ring-2 ring-[#B9F43A] scale-110' : 'hover:scale-105'
+                }`}
+                title="Pearl White"
+              />
+              <button
+                onClick={() => setProductColor('titanium')}
+                className={`w-5 h-5 rounded-full bg-neutral-400 border border-neutral-500 shadow-inner transition-transform ${
+                  productColor === 'titanium' ? 'ring-2 ring-[#B9F43A] scale-110' : 'hover:scale-105'
+                }`}
+                title="Titanium Silver"
+              />
+              <button
+                onClick={() => setProductColor('onyx')}
+                className={`w-5 h-5 rounded-full bg-black border border-neutral-800 shadow-inner transition-transform ${
+                  productColor === 'onyx' ? 'ring-2 ring-[#B9F43A] scale-110' : 'hover:scale-105'
+                }`}
+                title="Jet Black Onyx"
+              />
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* BOTTOM ACTION BAR / CTAS */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-8 pt-6 border-t border-[#E4E8E5] flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        {/* AUDIO TEST BUTTON */}
+        <button
+          onClick={handleBassDemo}
+          className={`px-4 py-2.5 rounded-full text-xs font-black tracking-wider uppercase transition-all flex items-center gap-2 ${
+            isBassPlaying
+              ? 'bg-[#B9F43A] text-black shadow-md animate-pulse'
+              : 'bg-white hover:bg-[#F7F8F6] text-[#080808] border border-[#E4E8E5] shadow-xs'
+          }`}
+        >
+          <Volume2 className={`w-4 h-4 ${isBassPlaying ? 'text-black' : 'text-[#68736D]'}`} />
+          <span>{isBassPlaying ? 'Audio 40Hz Berbunyi...' : '[ 🔊 Uji Audio Pure Bass ]'}</span>
+        </button>
+
+        {/* MAIN & SECONDARY CTAS */}
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <button
+            onClick={() => openAffiliateModal(heroProduct)}
+            className="px-6 py-3.5 rounded-full bg-[#25282A] hover:bg-black text-white font-black text-xs sm:text-sm tracking-wider uppercase transition-all shadow-md hover:scale-105 flex items-center gap-2 border border-[#25282A]"
+          >
+            <ShoppingBag className="w-4 h-4 text-[#B9F43A]" />
+            <span>CEK HARGA TERBAIK DI SHOPEE / TOKOPEDIA →</span>
+          </button>
+
+          <button
+            onClick={() => navigate('/katalog')}
+            className="px-5 py-3.5 rounded-full bg-white hover:bg-[#F7F8F6] text-[#080808] border border-[#E4E8E5] font-black text-xs sm:text-sm tracking-wider uppercase transition-all flex items-center gap-1.5 shadow-xs"
+          >
+            <span>Katalog Lengkap ↓</span>
           </button>
         </div>
 
-        {/* Center / Right: Stark Black Luxury Pill CTA Button */}
-        <div className="flex flex-col sm:flex-row items-center gap-3">
-          <button
-            id="hero-affiliate-cta"
-            onClick={onOpenAffiliate}
-            className="group relative inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:px-9 sm:py-4 rounded-full bg-black hover:bg-neutral-800 text-white font-extrabold text-sm sm:text-base tracking-wide transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 shadow-2xl border border-neutral-800"
-          >
-            <ShoppingBag className="w-5 h-5 text-white group-hover:rotate-12 transition-transform" />
-            <span className="font-display">Cek Harga Terbaik di Shopee / Tokopedia</span>
-            <ChevronRight className="w-4 h-4 text-neutral-300 group-hover:translate-x-1.5 transition-transform" />
-          </button>
-
-          {/* Quick jump to Gear Arena */}
-          <button
-            onClick={() => onNavigate('gear')}
-            className="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-neutral-600 hover:text-black transition-colors"
-          >
-            <span>Katalog Lengkap</span>
-            <ArrowDown className="w-3.5 h-3.5 animate-bounce text-neutral-900" />
-          </button>
-        </div>
       </div>
     </section>
   );

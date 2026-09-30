@@ -1,82 +1,158 @@
-export type NavTab = 'hero' | 'gear' | 'reviews' | 'calculator';
+export type NavTab = 
+  | 'home'
+  | 'katalog'
+  | 'reviews'
+  | 'comparisons'
+  | 'best-tws'
+  | 'buying-guides'
+  | 'categories'
+  | 'search'
+  | 'affiliate'
+  | 'about'
+  | 'contact';
 
-export type ProductColor = 'pearl' | 'titanium' | 'onyx';
-
-export type SoundMode = 'anc' | 'transparency' | 'bass_boost';
+export type AdminRoute = 
+  | 'dashboard'
+  | 'articles'
+  | 'article-new'
+  | 'article-edit'
+  | 'products'
+  | 'product-new'
+  | 'product-edit'
+  | 'categories'
+  | 'affiliate-links'
+  | 'media'
+  | 'comments'
+  | 'analytics'
+  | 'settings';
 
 export interface ProductItem {
   id: string;
+  slug: string;
   name: string;
-  category: 'audio' | 'power' | 'setup' | 'budget';
-  tag: string;
+  brand: string;
+  category: string; // e.g. 'budget', 'premium', 'anc', 'gaming', 'sports'
   price: number;
-  originalPrice: number;
+  oldPrice?: number;
   rating: number;
   reviewCount: number;
   badge?: string;
+  tagline?: string;
   description: string;
+  imageUrl: string;
+  gallery?: string[];
   specs: {
+    anc: string;
     battery: string;
-    latency: string;
+    codec: string;
+    microphone: string;
+    waterResistance: string;
     weight: string;
     connectivity: string;
-    warranty: string;
+    driverSize?: string;
+    multipoint?: string;
+    spatialAudio?: string;
   };
-  studentVerdict: string;
+  pros: string[];
+  cons: string[];
+  verdict: string;
   shopeeUrl: string;
   tokopediaUrl: string;
-  voucherCode?: string;
-  imageIcon: string;
-  imageUrl?: string;
-  customButtonText?: string;
+  lazadaUrl?: string;
+  otherUrl?: string;
+  isFeatured?: boolean;
+  isBestValue?: boolean;
+  isPopular?: boolean;
+  rank?: number;
+  createdAt: string;
 }
 
 export interface ReviewArticle {
   id: string;
+  slug: string;
   title: string;
   subtitle: string;
-  category: string;
+  excerpt: string;
+  content: string;
+  category: string; // e.g. 'reviews', 'buying-guides', 'comparisons'
+  type: 'review' | 'buying_guide' | 'comparison' | 'news';
   author: string;
-  readTime: string;
+  authorRole?: string;
+  authorAvatar?: string;
   date: string;
-  imageSeed: string;
-  scenario: string;
-  verdictScore: number;
-  highlightSummary: string;
-  testedEnvironment: string[];
-  pros: string[];
-  cons: string[];
-  studentTip: string;
-  relatedProductId: string;
+  readTime: string;
+  featuredImage: string;
+  status: 'published' | 'draft';
+  rating?: number;
+  verdictScore?: number;
+  highlightSummary?: string;
+  pros?: string[];
+  cons?: string[];
+  relatedProductId?: string;
+  tags: string[];
+  views: number;
+  affiliateClicks: number;
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
-export interface VoucherItem {
+export interface CategoryItem {
   id: string;
-  platform: 'shopee' | 'tokopedia' | 'blibli';
-  platformName: string;
-  code: string;
-  discount: string;
-  minSpend: string;
-  expiresIn: string;
-  type: 'Flash Sale' | 'Cashback' | 'Gratis Ongkir' | 'Official Mall';
+  slug: string;
+  name: string;
   description: string;
-  isPopular?: boolean;
+  iconName: string;
+  articleCount: number;
+  productCount: number;
+  imageUrl?: string;
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
-export interface BudgetPreset {
+export interface AffiliateLinkItem {
   id: string;
-  label: string;
-  amount: number;
-  icon: string;
+  productId: string;
+  productName: string;
+  marketplace: 'shopee' | 'tokopedia' | 'lazada' | 'other';
+  affiliateUrl: string;
+  clicks: number;
+  status: 'active' | 'paused';
+  createdAt: string;
 }
 
-export interface BundleResult {
-  title: string;
-  subtitle: string;
-  persona: string;
-  totalPrice: number;
-  remainingBudget: number;
-  savings: number;
-  items: ProductItem[];
-  vibeDescription: string;
+export interface AffiliateClickLog {
+  id: string;
+  productId: string;
+  productName: string;
+  marketplace: 'shopee' | 'tokopedia' | 'lazada' | 'other';
+  timestamp: string;
+  referrer?: string;
+  device?: string;
+}
+
+export interface MediaItem {
+  id: string;
+  fileName: string;
+  url: string;
+  size: string;
+  uploadDate: string;
+  type: 'image' | 'document';
+}
+
+export interface ArticleComment {
+  id: string;
+  articleId: string;
+  articleTitle: string;
+  userName: string;
+  userEmail: string;
+  userAvatar?: string;
+  comment: string;
+  date: string;
+  status: 'approved' | 'pending' | 'hidden';
+}
+
+export interface SearchResult {
+  products: ProductItem[];
+  articles: ReviewArticle[];
+  categories: CategoryItem[];
 }
