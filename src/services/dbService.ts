@@ -17,14 +17,14 @@ import {
 } from '../data/mockData';
 
 const STORAGE_KEYS = {
-  PRODUCTS: 'gadgethematt_db_products_v2',
-  ARTICLES: 'gadgethematt_db_articles_v2',
-  CATEGORIES: 'gadgethematt_db_categories_v2',
-  AFFILIATES: 'gadgethematt_db_affiliates_v2',
-  CLICK_LOGS: 'gadgethematt_db_clicks_v2',
-  MEDIA: 'gadgethematt_db_media_v2',
-  COMMENTS: 'gadgethematt_db_comments_v2',
-  ADMIN_SESSION: 'gadgethematt_admin_auth_v2'
+  PRODUCTS: 'gadgethematt_db_products_v5',
+  ARTICLES: 'gadgethematt_db_articles_v5',
+  CATEGORIES: 'gadgethematt_db_categories_v5',
+  AFFILIATES: 'gadgethematt_db_affiliates_v5',
+  CLICK_LOGS: 'gadgethematt_db_clicks_v5',
+  MEDIA: 'gadgethematt_db_media_v5',
+  COMMENTS: 'gadgethematt_db_comments_v5',
+  ADMIN_SESSION: 'gadgethematt_admin_auth_v5'
 };
 
 type Listener = () => void;
@@ -67,7 +67,12 @@ export const dbService = {
     if (product.id) {
       const index = products.findIndex(p => p.id === product.id);
       if (index !== -1) {
-        products[index] = { ...products[index], ...product, slug } as ProductItem;
+        products[index] = { 
+          ...products[index], 
+          ...product, 
+          slug,
+          status: product.status || products[index].status || 'published'
+        } as ProductItem;
       }
     } else {
       const newProd: ProductItem = {
@@ -76,9 +81,9 @@ export const dbService = {
         name: product.name,
         brand: product.brand || 'GADGET HEMATT',
         category: product.category || 'ANC TWS',
-        price: product.price || 0,
-        oldPrice: product.oldPrice,
-        rating: product.rating || 4.8,
+        price: Number(product.price) || 0,
+        oldPrice: product.oldPrice ? Number(product.oldPrice) : undefined,
+        rating: Number(product.rating) || 4.8,
         reviewCount: product.reviewCount || 1,
         badge: product.badge,
         tagline: product.tagline,
@@ -97,10 +102,9 @@ export const dbService = {
         pros: product.pros || ['Desain ergonomis', 'Suara jernih'],
         cons: product.cons || ['Tersedia stok terbatas'],
         verdict: product.verdict || 'TWS berkualitas pilihan.',
-        shopeeUrl: product.shopeeUrl || 'https://shopee.co.id',
-        tokopediaUrl: product.tokopediaUrl || 'https://tokopedia.com',
-        lazadaUrl: product.lazadaUrl,
+        tokopediaUrl: product.tokopediaUrl || '',
         otherUrl: product.otherUrl,
+        status: product.status || 'published',
         isFeatured: product.isFeatured || false,
         isBestValue: product.isBestValue || false,
         isPopular: product.isPopular || false,
@@ -159,7 +163,7 @@ export const dbService = {
         category: article.category || 'Reviews',
         type: article.type || 'review',
         author: article.author || 'Dika Ramadhan',
-        authorRole: article.authorRole || 'Head Audio Reviewer',
+        authorRole: article.authorRole || 'Chief Audio Reviewer',
         authorAvatar: article.authorAvatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
         date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
         readTime: article.readTime || '5 menit baca',
@@ -170,9 +174,9 @@ export const dbService = {
         highlightSummary: article.highlightSummary || article.excerpt,
         pros: article.pros || ['Respons frekuensi seimbang', 'ANC efektif'],
         cons: article.cons || ['Fitur app opsional'],
-        relatedProductId: article.relatedProductId || 'prod-1',
+        relatedProductId: article.relatedProductId,
         tags: article.tags || ['Reviews', 'TWS'],
-        views: article.views || 10,
+        views: article.views || 0,
         affiliateClicks: article.affiliateClicks || 0,
         seoTitle: article.seoTitle || `${article.title} - GADGET HEMATT`,
         seoDescription: article.seoDescription || article.excerpt
@@ -224,7 +228,7 @@ export const dbService = {
         slug,
         name: cat.name,
         description: cat.description || '',
-        iconName: cat.iconName || 'Headphones',
+        iconName: cat.iconName || 'Wallet',
         articleCount: cat.articleCount || 0,
         productCount: cat.productCount || 0,
         imageUrl: cat.imageUrl,
@@ -259,7 +263,7 @@ export const dbService = {
     }
   },
 
-  trackAffiliateClick(productId: string, productName: string, marketplace: 'shopee' | 'tokopedia' | 'lazada' | 'other'): void {
+  trackAffiliateClick(productId: string, productName: string, marketplace: 'tokopedia' | 'other' = 'tokopedia'): void {
     const links = this.getAffiliateLinks();
     const linkObj = links.find(l => l.productId === productId && l.marketplace === marketplace);
     

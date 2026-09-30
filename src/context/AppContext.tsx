@@ -6,7 +6,6 @@ import {
   AffiliateLinkItem, 
   MediaItem, 
   ArticleComment,
-  NavTab,
   AdminRoute
 } from '../types';
 import { dbService } from '../services/dbService';
@@ -47,7 +46,7 @@ interface AppContextType {
   setEditingId: (id: string | null) => void;
 
   // Actions
-  trackClick: (productId: string, productName: string, marketplace: 'shopee' | 'tokopedia' | 'lazada' | 'other') => void;
+  trackClick: (productId: string, productName: string, marketplace?: 'tokopedia' | 'other') => void;
   refreshData: () => void;
 }
 
@@ -119,7 +118,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const openAffiliateModal = (prod?: ProductItem) => {
-    setSelectedAffiliateProduct(prod || products[0] || null);
+    const pubProducts = dbService.getProducts().filter(p => p.status === 'published');
+    setSelectedAffiliateProduct(prod || pubProducts[0] || null);
     setIsAffiliateModalOpen(true);
   };
 
@@ -131,7 +131,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setIsAudioTestOpen(prev => !prev);
   };
 
-  const trackClick = (productId: string, productName: string, marketplace: 'shopee' | 'tokopedia' | 'lazada' | 'other') => {
+  const trackClick = (productId: string, productName: string, marketplace: 'tokopedia' | 'other' = 'tokopedia') => {
     dbService.trackAffiliateClick(productId, productName, marketplace);
   };
 

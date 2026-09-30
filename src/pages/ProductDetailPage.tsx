@@ -8,14 +8,12 @@ import {
   CheckCircle2, 
   XCircle, 
   ShieldCheck, 
-  Share2, 
-  Copy,
-  Info,
-  List
+  Share2,
+  AlertCircle
 } from 'lucide-react';
 
 export const ProductDetailPage: React.FC = () => {
-  const { selectedSlug, products, navigate, openAffiliateModal, trackClick } = useApp();
+  const { selectedSlug, products, navigate, trackClick } = useApp();
   const [activeTab, setActiveTab] = useState<'overview' | 'specs' | 'proscons'>('overview');
   const [copied, setCopied] = useState(false);
 
@@ -42,9 +40,10 @@ export const ProductDetailPage: React.FC = () => {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleGoUrl = (url: string, marketplace: 'shopee' | 'tokopedia' | 'lazada') => {
-    trackClick(product.id, product.name, marketplace);
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const handleGoTokopedia = () => {
+    if (!product.tokopediaUrl) return;
+    trackClick(product.id, product.name, 'tokopedia');
+    window.open(product.tokopediaUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -67,8 +66,8 @@ export const ProductDetailPage: React.FC = () => {
           
           {/* LEFT: GALLERY */}
           <div className="lg:col-span-6 flex flex-col items-center select-none">
-            <div className="relative w-full h-80 sm:h-96 rounded-3xl bg-[#F7F8F6] border border-[#E4E8E5] p-8 flex items-center justify-center shadow-inner overflow-hidden">
-              <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#B9F43A] text-black font-black text-xs uppercase tracking-wider shadow-sm">
+            <div className="relative w-full h-80 sm:h-96 rounded-3xl bg-[#F7F8F6] border border-[#E4E8E5] p-8 flex items-center justify-center shadow-xs overflow-hidden">
+              <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#B9F43A] text-black font-black text-xs uppercase tracking-wider shadow-xs">
                 {product.category}
               </span>
 
@@ -88,7 +87,7 @@ export const ProductDetailPage: React.FC = () => {
             </div>
           </div>
 
-          {/* RIGHT: DETAILS & AFFILIATE ACTIONS */}
+          {/* RIGHT: DETAILS & TOKOPEDIA AFFILIATE ACTION */}
           <div className="lg:col-span-6 space-y-6">
             <div>
               <div className="flex items-center justify-between gap-2 mb-2">
@@ -114,7 +113,7 @@ export const ProductDetailPage: React.FC = () => {
             {/* PRICING */}
             <div className="p-4 rounded-2xl bg-[#F7F8F6] border border-[#E4E8E5] flex items-baseline justify-between">
               <div>
-                <span className="text-[10px] font-black uppercase tracking-wider text-[#68736D] block">ESTIMASI HARGA MARKETPLACE</span>
+                <span className="text-[10px] font-black uppercase tracking-wider text-[#68736D] block">HARGA RESMI TOKOPEDIA</span>
                 <span className="font-display font-black text-3xl text-[#080808]">
                   {formatRupiah(product.price)}
                 </span>
@@ -131,34 +130,33 @@ export const ProductDetailPage: React.FC = () => {
               </button>
             </div>
 
-            {/* DIRECT MARKETPLACE AFFILIATE BUTTONS */}
+            {/* DIRECT TOKOPEDIA AFFILIATE BUTTON */}
             <div className="space-y-3 pt-2">
               <div className="text-xs font-black uppercase tracking-wider text-[#080808] flex items-center gap-1.5">
                 <ShoppingBag className="w-4 h-4 text-black" />
-                <span>CEK PROMO MAHASISWA & HARGA DI STORE RESMI</span>
+                <span>CEK PROMO & BELI DI TOKOPEDIA OFFICIAL</span>
               </div>
 
-              <button
-                onClick={() => handleGoUrl(product.shopeeUrl, 'shopee')}
-                className="w-full py-4 px-6 rounded-2xl bg-[#EE4D2D] hover:bg-[#d83f1f] text-white font-black text-sm tracking-wide uppercase flex items-center justify-between shadow-lg transition-transform hover:scale-[1.01]"
-              >
-                <span>CEK HARGA DI SHOPEE MALL →</span>
-                <ExternalLink className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={() => handleGoUrl(product.tokopediaUrl, 'tokopedia')}
-                className="w-full py-4 px-6 rounded-2xl bg-[#03AC0E] hover:bg-[#02930c] text-white font-black text-sm tracking-wide uppercase flex items-center justify-between shadow-lg transition-transform hover:scale-[1.01]"
-              >
-                <span>CEK HARGA DI TOKOPEDIA OFFICIAL →</span>
-                <ExternalLink className="w-4 h-4" />
-              </button>
+              {product.tokopediaUrl ? (
+                <button
+                  onClick={handleGoTokopedia}
+                  className="w-full py-4 px-6 rounded-2xl bg-[#03AC0E] hover:bg-[#02930c] text-white font-black text-sm tracking-wide uppercase flex items-center justify-between shadow-lg transition-transform hover:scale-[1.01]"
+                >
+                  <span>Beli di Tokopedia →</span>
+                  <ExternalLink className="w-4 h-4" />
+                </button>
+              ) : (
+                <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 font-bold text-xs flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 text-amber-700 shrink-0" />
+                  <span>Affiliate link belum tersedia untuk produk ini.</span>
+                </div>
+              )}
             </div>
 
             <div className="flex items-center justify-between text-xs text-[#68736D] pt-2">
               <span className="flex items-center gap-1 font-semibold">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                100% Produk Original Bergaransi
+                100% Produk Original Tokopedia Official Store
               </span>
               <span>Terverifikasi GADGET HEMATT</span>
             </div>

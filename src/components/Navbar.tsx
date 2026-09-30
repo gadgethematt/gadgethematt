@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { 
-  Search, 
-  Sparkles, 
+  ShoppingCart, 
+  User, 
   Menu, 
   X, 
-  Disc, 
-  ShieldCheck, 
-  UserCheck,
-  ChevronRight
+  ChevronRight, 
+  Search,
+  Sparkles,
+  ShieldCheck
 } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
@@ -16,13 +16,10 @@ export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'HOME', path: '/' },
-    { label: 'KATALOG', path: '/katalog' },
-    { label: 'REVIEWS', path: '/reviews' },
-    { label: 'COMPARISONS', path: '/comparisons' },
-    { label: 'BEST TWS', path: '/best-tws' },
-    { label: 'BUYING GUIDES', path: '/buying-guides' },
-    { label: 'CATEGORIES', path: '/categories' },
+    { label: 'Home', path: '/' },
+    { label: 'Reviews', path: '/reviews' },
+    { label: 'Budget Gear', path: '/katalog' },
+    { label: 'Affiliate', path: '/affiliate' }
   ];
 
   const handleNav = (path: string) => {
@@ -37,40 +34,32 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      {/* Top Header - Dark Charcoal (#25282A) background */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-[#25282A] text-white shadow-md border-b border-[#373A3D] transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      {/* Top Header - Ultra Clean Minimalist matching the uploaded reference image */}
+      <header className="fixed top-0 inset-x-0 z-50 bg-[#DFE7EA]/85 backdrop-blur-md border-b border-[#CBD7DB]/50 transition-all">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 h-16 flex items-center justify-between gap-4">
           
-          {/* LEFT: BRAND LOGO & SUBTITLE */}
+          {/* LEFT: BRAND "gadgethematt" (clean lowercase sans-serif matching screenshot) */}
           <div 
             onClick={() => handleNav('/')}
-            className="cursor-pointer flex items-center gap-3 group select-none shrink-0"
+            className="cursor-pointer flex items-center select-none shrink-0"
           >
-            <div className="w-9 h-9 rounded-xl bg-[#B9F43A] flex items-center justify-center text-black font-black text-lg shadow-sm group-hover:scale-105 transition-transform">
-              GH
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-black text-lg sm:text-xl tracking-tight leading-none text-white group-hover:text-[#B9F43A] transition-colors uppercase">
-                GADGET HEMATT
-              </span>
-              <span className="text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] text-[#A0A5A8] uppercase leading-tight mt-0.5">
-                STUDENT TECH & AUDIO
-              </span>
-            </div>
+            <span className="font-display font-medium text-xl sm:text-2xl text-[#1E2528] tracking-tight hover:text-[#2563EB] transition-colors">
+              gadgethematt
+            </span>
           </div>
 
-          {/* CENTER: DESKTOP NAVIGATION LINKS */}
-          <nav className="hidden xl:flex items-center gap-1">
+          {/* CENTER: DESKTOP NAVIGATION (Home, Reviews, Budget Gear, Affiliate) */}
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((item) => {
               const active = isCurrentActive(item.path);
               return (
                 <button
                   key={item.label}
                   onClick={() => handleNav(item.path)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all ${
+                  className={`text-sm font-medium transition-all ${
                     active
-                      ? 'bg-[#B9F43A] text-black font-black shadow-sm'
-                      : 'text-[#D0D4D7] hover:text-white hover:bg-white/10'
+                      ? 'text-[#2563EB] font-bold'
+                      : 'text-[#3E4C52] hover:text-[#1E2528]'
                   }`}
                 >
                   {item.label}
@@ -79,64 +68,59 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* RIGHT: SEARCH, AFFILIASI & ADMIN TRIGGER */}
-          <div className="flex items-center gap-2.5">
-            {/* Search Button */}
+          {/* RIGHT: CART & USER ACTION ICONS (matching screenshot) */}
+          <div className="flex items-center gap-5">
+            {/* Search Trigger */}
             <button
               onClick={() => handleNav('/search')}
-              className={`p-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${
-                currentPath === '/search'
-                  ? 'bg-white/20 text-[#B9F43A]'
-                  : 'text-[#D0D4D7] hover:text-white hover:bg-white/10'
-              }`}
-              title="Cari TWS & Artikel"
+              className="p-2 text-[#3E4C52] hover:text-[#1E2528] hover:bg-black/5 rounded-full transition-colors hidden sm:flex"
+              title="Cari TWS & Review"
             >
-              <Search className="w-4 h-4 text-[#B9F43A]" />
-              <span className="hidden sm:inline text-xs font-bold uppercase tracking-wider">SEARCH</span>
+              <Search className="w-4 h-4" />
             </button>
 
-            {/* Affiliasi Button with Status Indicator */}
+            {/* Shopping Cart Icon (Triggers Tokopedia Voucher / Deals Popup) */}
             <button
               onClick={() => openAffiliateModal()}
-              className="relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B9F43A] hover:bg-[#a3e028] text-black font-extrabold text-xs tracking-wider uppercase shadow-sm transition-all hover:scale-105 active:scale-95 border border-[#B9F43A]"
+              className="relative p-2 text-[#1E2528] hover:text-[#2563EB] hover:bg-black/5 rounded-full transition-colors"
+              title="Kode Voucher & Promo Tokopedia"
             >
-              <Sparkles className="w-3.5 h-3.5 text-black" />
-              <span>AFFILIASI</span>
-              {/* Green status indicator dot */}
-              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse border border-black/20" />
+              <ShoppingCart className="w-5 h-5" />
+              <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
             </button>
 
-            {/* Admin CMS Access Trigger */}
+            {/* User Icon (Triggers Admin CMS Login / Dashboard) */}
             <button
               onClick={() => handleNav(isAdminLoggedIn ? '/admin' : '/admin/login')}
-              className={`p-2 rounded-full transition-all text-xs font-bold ${
-                currentPath.startsWith('/admin')
-                  ? 'bg-[#B9F43A] text-black'
-                  : 'text-[#A0A5A8] hover:text-white hover:bg-white/10'
+              className={`p-2 rounded-full transition-colors ${
+                isAdminLoggedIn 
+                  ? 'bg-[#2563EB] text-white shadow-xs' 
+                  : 'text-[#1E2528] hover:text-[#2563EB] hover:bg-black/5'
               }`}
               title={isAdminLoggedIn ? 'Dashboard Admin CMS' : 'Login Admin CMS'}
             >
-              {isAdminLoggedIn ? <ShieldCheck className="w-4 h-4 text-emerald-400" /> : <UserCheck className="w-4 h-4" />}
+              <User className="w-5 h-5" />
             </button>
 
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2 rounded-lg text-white hover:bg-white/10"
+              className="md:hidden p-2 text-[#1E2528] hover:bg-black/5 rounded-xl"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
+
         </div>
       </header>
 
-      {/* MOBILE NAV DRAWER */}
+      {/* MOBILE DRAWER */}
       {mobileMenuOpen && (
-        <div className="xl:hidden fixed inset-0 z-40 bg-[#25282A]/95 backdrop-blur-md pt-20 px-6 pb-8 flex flex-col justify-between animate-fadeIn">
-          <div className="flex flex-col gap-2">
-            <div className="text-[10px] font-black tracking-[0.2em] text-[#B9F43A] uppercase mb-2">
-              PUBLIC NAVIGATION
+        <div className="md:hidden fixed inset-0 z-40 bg-[#DFE7EA]/95 backdrop-blur-lg pt-20 px-6 pb-8 flex flex-col justify-between animate-fadeIn">
+          <div className="flex flex-col gap-3">
+            <div className="text-[10px] font-black tracking-widest text-[#2563EB] uppercase mb-1">
+              NAVIGASI GADGET HEMATT
             </div>
             {navLinks.map((item) => {
               const active = isCurrentActive(item.path);
@@ -144,36 +128,53 @@ export const Navbar: React.FC = () => {
                 <button
                   key={item.label}
                   onClick={() => handleNav(item.path)}
-                  className={`w-full text-left px-4 py-3 rounded-xl font-bold text-sm tracking-wider uppercase transition-all flex items-center justify-between ${
+                  className={`w-full text-left px-4 py-3 rounded-2xl font-bold text-base transition-all flex items-center justify-between ${
                     active
-                      ? 'bg-[#B9F43A] text-black font-extrabold'
-                      : 'text-[#D0D4D7] hover:bg-white/10 hover:text-white'
+                      ? 'bg-white text-[#2563EB] shadow-xs'
+                      : 'text-[#1E2528] hover:bg-white/50'
                   }`}
                 >
                   <span>{item.label}</span>
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-4 h-4 text-[#68736D]" />
                 </button>
               );
             })}
+            
+            {/* Quick Extra Navigation */}
+            <button
+              onClick={() => handleNav('/katalog')}
+              className="w-full text-left px-4 py-3 rounded-2xl font-medium text-sm text-[#4F5D63] hover:bg-white/50 flex items-center justify-between"
+            >
+              <span>Katalog Semua TWS</span>
+              <ChevronRight className="w-4 h-4 text-[#68736D]" />
+            </button>
+            <button
+              onClick={() => handleNav('/comparisons')}
+              className="w-full text-left px-4 py-3 rounded-2xl font-medium text-sm text-[#4F5D63] hover:bg-white/50 flex items-center justify-between"
+            >
+              <span>Fitur Komparasi TWS</span>
+              <ChevronRight className="w-4 h-4 text-[#68736D]" />
+            </button>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-[#373A3D] flex flex-col gap-3">
-            <button
-              onClick={() => handleNav('/search')}
-              className="w-full py-3 rounded-xl bg-white/10 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2"
-            >
-              <Search className="w-4 h-4 text-[#B9F43A]" />
-              <span>Cari TWS & Review</span>
-            </button>
+          <div className="pt-6 border-t border-[#CBD7DB] flex flex-col gap-3">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 openAffiliateModal();
               }}
-              className="w-full py-3 rounded-xl bg-[#B9F43A] text-black font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md"
+              className="w-full py-3.5 rounded-full bg-[#2563EB] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md"
             >
-              <Sparkles className="w-4 h-4" />
-              <span>Akses Kode Voucher Affiliasi</span>
+              <Sparkles className="w-4 h-4 text-[#B9F43A]" />
+              <span>Klaim Voucher Tokopedia</span>
+            </button>
+
+            <button
+              onClick={() => handleNav(isAdminLoggedIn ? '/admin' : '/admin/login')}
+              className="w-full py-3 rounded-full bg-white text-[#1E2528] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 border border-[#CBD7DB]"
+            >
+              <ShieldCheck className="w-4 h-4 text-[#2563EB]" />
+              <span>{isAdminLoggedIn ? 'Buka Admin CMS' : 'Portal Login Admin'}</span>
             </button>
           </div>
         </div>

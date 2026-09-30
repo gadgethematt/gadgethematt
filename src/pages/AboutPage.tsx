@@ -41,7 +41,7 @@ export const AboutPage: React.FC = () => {
           <div className="p-6 rounded-3xl bg-[#F7F8F6] border border-[#E4E8E5]">
             <Award className="w-8 h-8 text-black mb-3" />
             <h4 className="font-display font-black text-base text-[#080808] uppercase mb-1">Jaminan Mall Resmi</h4>
-            <p className="text-xs text-[#68736D]">Seluruh tautan mengarahkan pembaca langsung ke toko resmi terverifikasi di Shopee & Tokopedia.</p>
+            <p className="text-xs text-[#68736D]">Seluruh tautan mengarahkan pembaca langsung ke toko resmi terverifikasi di Tokopedia Official Store.</p>
           </div>
 
           <div className="p-6 rounded-3xl bg-[#F7F8F6] border border-[#E4E8E5]">

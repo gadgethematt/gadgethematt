@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Save, Check, ShieldCheck } from 'lucide-react';
+import { Save, Check } from 'lucide-react';
 
 export const AdminSettingsPage: React.FC = () => {
   const [brandName, setBrandName] = useState('GADGET HEMATT');
   const [subtitle, setSubtitle] = useState('STUDENT TECH & AUDIO');
-  const [shopeeTag, setShopeeTag] = useState('gadgethematt_official');
   const [tokopediaTag, setTokopediaTag] = useState('gadgethematt_tokopedia');
   const [disclosureText, setAffiliateDisclosure] = useState('Disclosure: Some links on GADGET HEMATT are affiliate links. We may earn a commission if you purchase through our links, at no additional cost to you.');
   const [saved, setSaved] = useState(false);
@@ -21,18 +20,18 @@ export const AdminSettingsPage: React.FC = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="font-display font-black text-2xl text-[#080808] uppercase">PENGATURAN PLATFORM CMS</h2>
-          <p className="text-xs text-[#68736D] mt-0.5">Pengaturan identitas brand, tag tracking affiliasi marketplace, dan teks legal disclosure.</p>
+          <p className="text-xs text-[#68736D] mt-0.5">Pengaturan identitas brand, tag tracking Tokopedia affiliate, dan teks legal disclosure.</p>
         </div>
 
         {saved && (
-          <div className="px-4 py-2 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black flex items-center gap-1.5">
+          <div className="px-4 py-2 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black flex items-center gap-1.5 shadow-xs">
             <Check className="w-4 h-4 text-emerald-700" />
             <span>Pengaturan Berhasil Disimpan!</span>
           </div>
         )}
       </div>
 
-      <form onSubmit={handleSave} className="p-8 rounded-3xl bg-white border border-[#E4E8E5] shadow-sm space-y-6">
+      <form onSubmit={handleSave} className="p-8 rounded-3xl bg-white border border-[#E4E8E5] shadow-xs space-y-6">
         
         <div className="space-y-4">
           <h3 className="font-display font-black text-base text-[#080808] uppercase border-b border-[#E4E8E5] pb-2">
@@ -64,29 +63,17 @@ export const AdminSettingsPage: React.FC = () => {
 
         <div className="space-y-4">
           <h3 className="font-display font-black text-base text-[#080808] uppercase border-b border-[#E4E8E5] pb-2">
-            Marketplace Tracking IDs
+            Tokopedia Tracking ID
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="text-xs font-black text-[#080808] uppercase block mb-1">Shopee Affiliate Sub-ID</label>
-              <input
-                type="text"
-                value={shopeeTag}
-                onChange={e => setShopeeTag(e.target.value)}
-                className="w-full p-3 rounded-xl bg-[#F7F8F6] border border-[#E4E8E5] text-xs font-mono"
-              />
-            </div>
-
-            <div>
-              <label className="text-xs font-black text-[#080808] uppercase block mb-1">Tokopedia Affiliate Sub-ID</label>
-              <input
-                type="text"
-                value={tokopediaTag}
-                onChange={e => setTokopediaTag(e.target.value)}
-                className="w-full p-3 rounded-xl bg-[#F7F8F6] border border-[#E4E8E5] text-xs font-mono"
-              />
-            </div>
+          <div>
+            <label className="text-xs font-black text-[#080808] uppercase block mb-1">Tokopedia Affiliate Sub-ID</label>
+            <input
+              type="text"
+              value={tokopediaTag}
+              onChange={e => setTokopediaTag(e.target.value)}
+              className="w-full p-3 rounded-xl bg-[#F7F8F6] border border-[#E4E8E5] text-xs font-mono"
+            />
           </div>
         </div>
 

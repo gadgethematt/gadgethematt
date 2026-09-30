@@ -56,10 +56,9 @@ export interface ProductItem {
   pros: string[];
   cons: string[];
   verdict: string;
-  shopeeUrl: string;
   tokopediaUrl: string;
-  lazadaUrl?: string;
   otherUrl?: string;
+  status: 'published' | 'draft';
   isFeatured?: boolean;
   isBestValue?: boolean;
   isPopular?: boolean;
@@ -74,7 +73,7 @@ export interface ReviewArticle {
   subtitle: string;
   excerpt: string;
   content: string;
-  category: string; // e.g. 'reviews', 'buying-guides', 'comparisons'
+  category: string;
   type: 'review' | 'buying_guide' | 'comparison' | 'news';
   author: string;
   authorRole?: string;
@@ -113,7 +112,7 @@ export interface AffiliateLinkItem {
   id: string;
   productId: string;
   productName: string;
-  marketplace: 'shopee' | 'tokopedia' | 'lazada' | 'other';
+  marketplace: 'tokopedia' | 'other';
   affiliateUrl: string;
   clicks: number;
   status: 'active' | 'paused';
@@ -124,7 +123,7 @@ export interface AffiliateClickLog {
   id: string;
   productId: string;
   productName: string;
-  marketplace: 'shopee' | 'tokopedia' | 'lazada' | 'other';
+  marketplace: 'tokopedia' | 'other';
   timestamp: string;
   referrer?: string;
   device?: string;

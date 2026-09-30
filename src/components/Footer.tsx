@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
               100% Verified Review
             </span>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 text-white font-bold text-[10px]">
-              Shopee & Tokopedia Official Partner
+              Tokopedia Official Store Partner
             </span>
           </div>
         </div>

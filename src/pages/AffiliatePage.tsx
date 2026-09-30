@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
-import { ShieldCheck, ExternalLink, Sparkles } from 'lucide-react';
+import { ShieldCheck, Sparkles } from 'lucide-react';
 
 export const AffiliatePage: React.FC = () => {
   const { openAffiliateModal } = useApp();
@@ -17,7 +17,7 @@ export const AffiliatePage: React.FC = () => {
             AFFILIATE POLICY & PROGRAM
           </h1>
           <p className="text-xs sm:text-sm text-[#68736D] font-medium mt-1 max-w-2xl">
-            Informasi keterbukaan mengenai sistem rujukan dan kemitraan affiliasi GADGET HEMATT dengan platform e-commerce Shopee, Tokopedia, dan Lazada.
+            Informasi keterbukaan mengenai sistem rujukan dan kemitraan affiliasi GADGET HEMATT dengan Tokopedia Official Store.
           </p>
         </div>
       </div>
@@ -35,14 +35,14 @@ export const AffiliatePage: React.FC = () => {
           </p>
 
           <p className="text-xs sm:text-sm text-[#68736D] leading-relaxed font-normal">
-            Beberapa tautan pada situs ini merupakan <strong>affiliate links</strong>. Apabila Anda mengeklik tautan tersebut dan melakukan pembelian di platform e-commerce mitra (seperti Shopee, Tokopedia, atau Lazada), kami mungkin menerima komisi rujukan tanpa ada biaya tambahan sedikit pun bagi Anda.
+            Beberapa tautan pada situs ini merupakan <strong>affiliate links</strong>. Apabila Anda mengeklik tautan tersebut dan melakukan pembelian di platform Tokopedia Official Store, kami mungkin menerima komisi rujukan tanpa ada biaya tambahan sedikit pun bagi Anda.
           </p>
         </div>
 
         <div className="p-8 rounded-3xl bg-[#25282A] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div>
             <span className="text-[10px] font-black tracking-widest uppercase text-[#B9F43A]">AMBIL VOUCHER HEMAT</span>
-            <h3 className="font-display font-black text-2xl text-white">Lihat Kode Promo Marketplace Hari Ini</h3>
+            <h3 className="font-display font-black text-2xl text-white">Lihat Kode Promo Tokopedia Hari Ini</h3>
           </div>
 
           <button
