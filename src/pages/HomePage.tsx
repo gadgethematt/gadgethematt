@@ -2,7 +2,7 @@ import React from 'react';
 import { HeroSection } from '../components/HeroSection';
 import { StudentTwsGuideSection } from '../components/StudentTwsGuideSection';
 import { FeaturedTws } from '../components/FeaturedTws';
-import { LatestArticles } from '../components/LatestArticles';
+import { BlogSection } from '../components/BlogSection';
 import { BrowseCategories } from '../components/BrowseCategories';
 import { FindYourPerfectTws } from '../components/FindYourPerfectTws';
 
@@ -18,8 +18,8 @@ export const HomePage: React.FC = () => {
       {/* 3. FEATURED TWS KATALOG */}
       <FeaturedTws />
 
-      {/* 4. LATEST REVIEWS & ARTICLES */}
-      <LatestArticles />
+      {/* 4. BAGIAN BLOG & ARTIKEL RESMI (Dinamis dari input Admin CMS) */}
+      <BlogSection />
 
       {/* 5. BROWSE BY CATEGORY */}
       <BrowseCategories />

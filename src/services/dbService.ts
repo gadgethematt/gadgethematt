@@ -50,7 +50,23 @@ export const dbService = {
         localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(INITIAL_PRODUCTS));
         return INITIAL_PRODUCTS;
       }
-      return JSON.parse(data);
+      const list: ProductItem[] = JSON.parse(data);
+      let changed = false;
+      INITIAL_PRODUCTS.forEach(initP => {
+        const existingIdx = list.findIndex(p => p.id === initP.id || p.slug === initP.slug);
+        if (existingIdx === -1) {
+          list.push(initP);
+          changed = true;
+        } else if (list[existingIdx].imageUrl !== initP.imageUrl) {
+          list[existingIdx].imageUrl = initP.imageUrl;
+          list[existingIdx].gallery = initP.gallery;
+          changed = true;
+        }
+      });
+      if (changed) {
+        localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(list));
+      }
+      return list;
     } catch {
       return INITIAL_PRODUCTS;
     }
@@ -133,7 +149,23 @@ export const dbService = {
         localStorage.setItem(STORAGE_KEYS.ARTICLES, JSON.stringify(INITIAL_ARTICLES));
         return INITIAL_ARTICLES;
       }
-      return JSON.parse(data);
+      const list: ReviewArticle[] = JSON.parse(data);
+      let changed = false;
+      INITIAL_ARTICLES.forEach(initA => {
+        const existingIdx = list.findIndex(a => a.id === initA.id || a.slug === initA.slug);
+        if (existingIdx === -1) {
+          list.push(initA);
+          changed = true;
+        } else if (list[existingIdx].featuredImage !== initA.featuredImage || list[existingIdx].content !== initA.content) {
+          list[existingIdx].featuredImage = initA.featuredImage;
+          list[existingIdx].content = initA.content;
+          changed = true;
+        }
+      });
+      if (changed) {
+        localStorage.setItem(STORAGE_KEYS.ARTICLES, JSON.stringify(list));
+      }
+      return list;
     } catch {
       return INITIAL_ARTICLES;
     }

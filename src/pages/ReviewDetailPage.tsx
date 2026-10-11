@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { dbService } from '../services/dbService';
 import { 
@@ -27,6 +27,21 @@ export const ReviewDetailPage: React.FC = () => {
 
   const article = articles.find(a => a.slug === selectedSlug || a.id === selectedSlug) || articles[0];
   const relatedProduct = products.find(p => p.id === article?.relatedProductId) || products[0];
+
+  useEffect(() => {
+    if (article) {
+      document.title = article.seoTitle || `${article.title} - Gadget Hemat`;
+      let metaDesc = document.querySelector('meta[name="description"]');
+      if (!metaDesc) {
+        metaDesc = document.createElement('meta');
+        metaDesc.setAttribute('name', 'description');
+        document.head.appendChild(metaDesc);
+      }
+      if (article.seoDescription) {
+        metaDesc.setAttribute('content', article.seoDescription);
+      }
+    }
+  }, [article]);
 
   const approvedComments = comments.filter(c => c.articleId === article?.id && c.status === 'approved');
 

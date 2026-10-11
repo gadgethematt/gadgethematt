@@ -19,6 +19,7 @@ import { ProductDetailPage } from './pages/ProductDetailPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { AffiliatePage } from './pages/AffiliatePage';
+import { BlogPage } from './pages/BlogPage';
 
 // Admin Pages
 import { AdminLoginPage } from './admin/AdminLoginPage';
@@ -64,6 +65,8 @@ export const AppContent: React.FC = () => {
   // Handle Public Routes
   const renderPublicPage = () => {
     if (currentPath === '/' || currentPath === '') return <HomePage />;
+    if (currentPath === '/blog' || currentPath === '/artikel') return <BlogPage />;
+    if (currentPath.startsWith('/blog/') || currentPath.startsWith('/artikel/')) return <ReviewDetailPage />;
     if (currentPath === '/katalog') return <KatalogPage />;
     if (currentPath === '/reviews') return <ReviewsPage />;
     if (currentPath.startsWith('/reviews/')) return <ReviewDetailPage />;

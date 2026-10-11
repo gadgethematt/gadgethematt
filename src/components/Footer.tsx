@@ -51,6 +51,10 @@ export const Footer: React.FC = () => {
           <button onClick={() => navigate('/')} className="text-left hover:text-[#B9F43A] transition-colors py-1">
             Home
           </button>
+          <button onClick={() => navigate('/blog')} className="text-left hover:text-[#B9F43A] transition-colors py-1 flex items-center gap-2">
+            <span>Blog & Artikel</span>
+            <span className="px-1.5 py-0.2 rounded text-[9px] font-black bg-[#B9F43A] text-black">BARU</span>
+          </button>
           <button onClick={() => navigate('/katalog')} className="text-left hover:text-[#B9F43A] transition-colors py-1">
             Katalog TWS
           </button>
