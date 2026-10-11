@@ -44,8 +44,8 @@ export const AdminArticlesPage: React.FC = () => {
       {/* HEADER & ACTIONS */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h2 className="font-display font-black text-2xl text-[#080808] uppercase">MANAJEMEN ARTIKEL & REVIEWS</h2>
-          <p className="text-xs text-[#68736D] mt-0.5">Kelola publikasi review, panduan belanja, dan komparasi TWS.</p>
+          <h2 className="font-display font-black text-2xl text-[#080808] uppercase">MANAJEMEN ARTIKEL</h2>
+          <p className="text-xs text-[#68736D] mt-0.5">Kelola publikasi artikel, review, panduan belanja, dan komparasi gadget.</p>
         </div>
 
         <button

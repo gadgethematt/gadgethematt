@@ -29,13 +29,13 @@ export const ReviewsPage: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E4E8E5] text-[10px] font-black tracking-widest text-[#68736D] uppercase mb-3">
             <BookOpen className="w-3.5 h-3.5 text-black" />
-            MEDIA LAB & REVIEWS
+            MEDIA LAB & ARTIKEL
           </div>
           <h1 className="font-display font-black text-4xl sm:text-5xl text-[#080808] uppercase tracking-tight">
-            REVIEWS & ULASAN TWS
+            ARTIKEL & ULASAN GADGET
           </h1>
           <p className="text-xs sm:text-sm text-[#68736D] font-medium mt-1 max-w-2xl">
-            Ulasan jujur independen dari tim audio GADGET HEMATT. Tanpa intervensi sponsor, fokus pada kenyamanan, kualitas microphone, ANC, dan value for money.
+            Koleksi artikel ulasan mendalam, uji perbandingan, dan panduan belanja hemat dari tim redaksi GADGET HEMATT.
           </p>
 
           {/* Search bar */}
@@ -45,7 +45,7 @@ export const ReviewsPage: React.FC = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Cari ulasan TWS, keyword, atau merk..."
+              placeholder="Cari artikel, ulasan gadget, keyword, atau merk..."
               className="w-full pl-12 pr-4 py-3.5 rounded-full bg-white border border-[#E4E8E5] text-sm text-[#080808] focus:outline-none shadow-sm"
             />
           </div>
@@ -67,7 +67,7 @@ export const ReviewsPage: React.FC = () => {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#25282A] text-[#B9F43A] font-black text-xs uppercase tracking-wider shadow-md">
-                FEATURED REVIEW
+                ARTIKEL PILIHAN
               </span>
             </div>
 
@@ -107,9 +107,9 @@ export const ReviewsPage: React.FC = () => {
         <div className="flex flex-wrap items-center gap-2 pb-4 border-b border-[#E4E8E5]">
           {[
             { id: 'all', label: 'Semua Artikel' },
-            { id: 'reviews', label: 'Ulasan Produk (Reviews)' },
+            { id: 'reviews', label: 'Ulasan Produk' },
             { id: 'buying guides', label: 'Panduan Belanja' },
-            { id: 'comparisons', label: 'Komparasi TWS' },
+            { id: 'comparisons', label: 'Komparasi Gadget' },
           ].map(tab => (
             <button
               key={tab.id}
@@ -163,7 +163,7 @@ export const ReviewsPage: React.FC = () => {
               <div className="pt-4 border-t border-[#E4E8E5] flex items-center justify-between">
                 <span className="text-[11px] font-bold text-[#68736D]">{art.date}</span>
                 <span className="text-xs font-black text-[#080808] flex items-center gap-1 uppercase">
-                  <span>Read →</span>
+                  <span>Baca Artikel →</span>
                 </span>
               </div>
             </article>

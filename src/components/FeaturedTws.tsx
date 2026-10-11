@@ -124,7 +124,7 @@ export const FeaturedTws: React.FC = () => {
                     onClick={() => navigate(`/reviews/${item.slug}`)}
                     className="py-2.5 px-3 rounded-xl bg-[#F7F8F6] hover:bg-[#E4E8E5] text-[#080808] font-extrabold text-[11px] tracking-wide uppercase transition-colors text-center"
                   >
-                    Read Review →
+                    Lihat Detail →
                   </button>
 
                   <button

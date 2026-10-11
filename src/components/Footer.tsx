@@ -56,10 +56,7 @@ export const Footer: React.FC = () => {
             <span className="px-1.5 py-0.2 rounded text-[9px] font-black bg-[#B9F43A] text-black">BARU</span>
           </button>
           <button onClick={() => navigate('/katalog')} className="text-left hover:text-[#B9F43A] transition-colors py-1">
-            Katalog TWS
-          </button>
-          <button onClick={() => navigate('/reviews')} className="text-left hover:text-[#B9F43A] transition-colors py-1">
-            Reviews & Ulasan
+            Katalog Gadget
           </button>
           <button onClick={() => navigate('/comparisons')} className="text-left hover:text-[#B9F43A] transition-colors py-1">
             Comparisons (Komparasi)

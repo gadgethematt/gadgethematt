@@ -131,7 +131,7 @@ export const SearchPage: React.FC = () => {
                 {[
                   { id: 'all', label: `ALL RESULTS (${totalResults})` },
                   { id: 'products', label: `PRODUCTS (${searchResults.products.length})` },
-                  { id: 'reviews', label: `REVIEWS (${searchResults.articles.length})` },
+                  { id: 'reviews', label: `ARTIKEL (${searchResults.articles.length})` },
                   { id: 'categories', label: `CATEGORIES (${searchResults.categories.length})` },
                 ].map(tab => (
                   <button

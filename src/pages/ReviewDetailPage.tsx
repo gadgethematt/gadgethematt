@@ -1,28 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
-import { dbService } from '../services/dbService';
 import { 
   Star, 
   Clock, 
-  User, 
   ChevronRight, 
   CheckCircle2, 
   XCircle, 
   ShoppingBag, 
-  ExternalLink,
-  MessageSquare,
-  Send,
-  ShieldCheck,
-  Share2,
-  Copy
+  Share2
 } from 'lucide-react';
 
 export const ReviewDetailPage: React.FC = () => {
-  const { selectedSlug, articles, products, navigate, openAffiliateModal, trackClick, comments } = useApp();
-  const [commentName, setCommentName] = useState('');
-  const [commentEmail, setCommentEmail] = useState('');
-  const [commentText, setCommentText] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const { selectedSlug, articles, products, navigate, openAffiliateModal } = useApp();
   const [copiedLink, setCopiedLink] = useState(false);
 
   const article = articles.find(a => a.slug === selectedSlug || a.id === selectedSlug) || articles[0];
@@ -43,35 +32,16 @@ export const ReviewDetailPage: React.FC = () => {
     }
   }, [article]);
 
-  const approvedComments = comments.filter(c => c.articleId === article?.id && c.status === 'approved');
-
   if (!article) {
     return (
       <div className="pt-32 pb-20 text-center max-w-xl mx-auto px-4">
         <h2 className="text-2xl font-black font-display">Artikel Tidak Ditemukan</h2>
-        <button onClick={() => navigate('/reviews')} className="mt-4 px-6 py-2 rounded-full bg-[#25282A] text-white text-xs font-bold">
-          Kembali ke Ulasan
+        <button onClick={() => navigate('/blog')} className="mt-4 px-6 py-2 rounded-full bg-[#25282A] text-white text-xs font-bold">
+          Kembali ke Blog
         </button>
       </div>
     );
   }
-
-  const handleCommentSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!commentName.trim() || !commentText.trim()) return;
-
-    dbService.addComment({
-      articleId: article.id,
-      articleTitle: article.title,
-      userName: commentName,
-      userEmail: commentEmail,
-      comment: commentText
-    });
-
-    setCommentText('');
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-  };
 
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -87,7 +57,7 @@ export const ReviewDetailPage: React.FC = () => {
         <div className="max-w-4xl mx-auto flex items-center gap-2 flex-wrap">
           <button onClick={() => navigate('/')} className="hover:text-black">Home</button>
           <ChevronRight className="w-3.5 h-3.5" />
-          <button onClick={() => navigate('/reviews')} className="hover:text-black">Reviews</button>
+          <button onClick={() => navigate('/blog')} className="hover:text-black">Blog</button>
           <ChevronRight className="w-3.5 h-3.5" />
           <span className="text-[#080808] font-black truncate max-w-xs sm:max-w-md">{article.title}</span>
         </div>
@@ -251,79 +221,6 @@ export const ReviewDetailPage: React.FC = () => {
               </button>
             </div>
           )}
-        </div>
-
-        {/* COMMENTS SECTION */}
-        <div className="my-12 pt-8 border-t border-[#E4E8E5]">
-          <h3 className="font-display font-black text-xl text-[#080808] uppercase mb-6 flex items-center gap-2">
-            <MessageSquare className="w-5 h-5 text-black" />
-            <span>Diskusi & Komentar ({approvedComments.length})</span>
-          </h3>
-
-          {/* Comment list */}
-          <div className="space-y-4 mb-8">
-            {approvedComments.length === 0 ? (
-              <p className="text-xs text-[#68736D] italic">Belum ada komentar publik. Jadilah yang pertama memberikan tanggapan!</p>
-            ) : (
-              approvedComments.map(c => (
-                <div key={c.id} className="p-4 rounded-2xl bg-[#F7F8F6] border border-[#E4E8E5]">
-                  <div className="flex items-center justify-between text-xs font-bold text-[#080808] mb-1">
-                    <span>{c.userName}</span>
-                    <span className="text-[10px] text-[#68736D]">{c.date}</span>
-                  </div>
-                  <p className="text-xs text-[#68736D] leading-relaxed">{c.comment}</p>
-                </div>
-              ))
-            )}
-          </div>
-
-          {/* Add comment form */}
-          <form onSubmit={handleCommentSubmit} className="p-6 rounded-3xl bg-[#F7F8F6] border border-[#E4E8E5] space-y-4">
-            <h4 className="font-display font-black text-sm text-[#080808] uppercase">Tulis Tanggapan Anda</h4>
-            
-            {submitted && (
-              <div className="p-3 rounded-xl bg-emerald-100 text-emerald-800 text-xs font-bold flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-700" />
-                <span>Komentar berhasil dikirim dan menunggu moderasi admin.</span>
-              </div>
-            )}
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input
-                type="text"
-                required
-                value={commentName}
-                onChange={(e) => setCommentName(e.target.value)}
-                placeholder="Nama Lengkap Anda"
-                className="p-3 rounded-xl bg-white border border-[#E4E8E5] text-xs font-medium text-[#080808] focus:outline-none"
-              />
-              <input
-                type="email"
-                required
-                value={commentEmail}
-                onChange={(e) => setCommentEmail(e.target.value)}
-                placeholder="Email Anda"
-                className="p-3 rounded-xl bg-white border border-[#E4E8E5] text-xs font-medium text-[#080808] focus:outline-none"
-              />
-            </div>
-
-            <textarea
-              required
-              rows={3}
-              value={commentText}
-              onChange={(e) => setCommentText(e.target.value)}
-              placeholder="Bagikan pendapat atau pertanyaan Anda tentang TWS ini..."
-              className="w-full p-3 rounded-xl bg-white border border-[#E4E8E5] text-xs font-medium text-[#080808] focus:outline-none resize-none"
-            />
-
-            <button
-              type="submit"
-              className="px-6 py-2.5 rounded-full bg-[#25282A] text-white text-xs font-extrabold uppercase tracking-wider flex items-center gap-2 hover:bg-black transition-colors"
-            >
-              <Send className="w-3.5 h-3.5 text-[#B9F43A]" />
-              <span>Kirim Komentar</span>
-            </button>
-          </form>
         </div>
 
       </div>

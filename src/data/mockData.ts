@@ -10,11 +10,15 @@ import twsCaseImg from '../assets/images/tws_product_case_1790083633867.jpg';
 import goojodoqImg from '../assets/images/regenerated_image_1791692191318.png';
 import articleTwsImg from '../assets/images/regenerated_image_1791692187565.png';
 import vivanChargerImg from '../assets/images/vivan_gan_charger_1790088293316.jpg';
+import ugreenPowerbankImg from '../assets/images/ugreen_powerbank_user.jpg';
+import pxHubImg from '../assets/images/px_uch6_hub_user.jpg';
 
 export const OFFICIAL_AFFILIATE_LINKS = {
   LINK_1: 'https://vt.tokopedia.com/t/ZS9AfThNusdPL-onCes/',
   LINK_2: 'https://vt.tokopedia.com/t/ZS9AfTqfVYULk-KOYES/',
-  LINK_3: 'https://vt.tokopedia.com/t/ZS9AfTqfVYULk-KOYES/'
+  LINK_3: 'https://vt.tokopedia.com/t/ZS9AfTqfVYULk-KOYES/',
+  LINK_4: 'https://vt.tokopedia.com/t/ZS9AfTPgHB4BE-8l5Fi/',
+  LINK_5: 'https://vt.tokopedia.com/t/ZS9DwuuU465cK-HDHK8/'
 };
 
 export const INITIAL_PRODUCTS: ProductItem[] = [
@@ -376,6 +380,97 @@ export const INITIAL_PRODUCTS: ProductItem[] = [
     isPopular: true,
     rank: 8,
     createdAt: '2026-03-10'
+  },
+  {
+    id: 'prod-ugreen-powerbank-10000',
+    slug: 'ugreen-power-bank-10000mah-20w-digital-display',
+    name: 'UGREEN Power Bank 10000mAh 20W Two-Way Fast Charging Digital Display',
+    brand: 'UGREEN',
+    category: 'Power Bank',
+    price: 189000,
+    oldPrice: 349000,
+    rating: 4.9,
+    reviewCount: 18400,
+    badge: 'Pilihan Utama Mahasiswa',
+    tagline: '10.000mAh, PD 20W Two-Way Fast Charging, LED Digital Display & Multi-Protection',
+    description: 'Power bank compact andalan mahasiswa dan pelajar dengan kapasitas 10.000mAh, layar display baterai LED digital presisi 0-100%, port USB-C Two-Way Fast Charging 20W PD, output USB-A hingga 22.5W, serta 9 lapisan sistem perlindungan sirkuit cerdas yang aman dibawa masuk kabin pesawat (flight-friendly).',
+    imageUrl: ugreenPowerbankImg,
+    gallery: [ugreenPowerbankImg],
+    specs: {
+      anc: 'LED Digital Battery Display (0-100%) Presisi',
+      battery: '10.000mAh 37Wh (Rated ~6.250mAh)',
+      codec: 'Port USB-C (Input/Output) + USB-A (Output)',
+      microphone: '9 Lapisan Proteksi Sirkuit Cerdas (Overvoltage, Short Circuit, dll)',
+      waterResistance: 'Material PC + ABS Flame-Retardant Tahan Panas Api',
+      weight: 'Sekitar 190g - 210g, Dimensi Ramping 16.4mm',
+      connectivity: 'Two-Way Fast Charging PD 3.0, QC 3.0, FCP, AFC, SCP',
+      driverSize: 'Input USB-C 20W Max (Penuh dalam ±3 Jam)',
+      multipoint: 'Garansi Resmi 12 Bulan UGREEN Indonesia',
+      spatialAudio: 'Flight-Friendly Sesuai Standar Internasional IATA (<100Wh)'
+    },
+    pros: [
+      'Layar display LED numerik digital memantau sisa daya 0-100% sangat akurat',
+      'Two-Way Fast Charging USB-C 20W PD mengisi daya HP maupun power bank dengan cepat',
+      'Bodi ramping dan bobot ringan nyaman diselipkan di saku atau tas kuliah',
+      '9 sistem proteksi keamanan sirkuit terverifikasi dan aman masuk pesawat'
+    ],
+    cons: [
+      'Daya output terbagi saat mengecas dua gawai secara bersamaan'
+    ],
+    verdict: 'Power bank paling ideal dan bernilai tinggi bagi pelajar serta mahasiswa yang membutuhkan daya tahan seharian, indikator baterai akurat, dan perlindungan teruji di harga ramah kantong.',
+    tokopediaUrl: OFFICIAL_AFFILIATE_LINKS.LINK_4,
+    status: 'published',
+    isFeatured: true,
+    isBestValue: true,
+    isPopular: true,
+    rank: 9,
+    createdAt: '2026-03-11'
+  },
+  {
+    id: 'prod-px-uch6-hub',
+    slug: 'px-uch6-usb-c-hub-converter-6-in-1',
+    name: 'PX UCH6 USB-C Hub Converter 6-in-1 HDMI 4K & SD/TF Reader',
+    brand: 'PX',
+    category: 'USB Hub',
+    price: 159000,
+    oldPrice: 299000,
+    rating: 4.8,
+    reviewCount: 9600,
+    badge: 'Pilihan Praktis Mahasiswa',
+    tagline: 'HDMI 4K, 3x USB 3.0 5Gbps, Dual SD & MicroSD Card Reader, Aluminium Alloy',
+    description: 'Konverter USB Type-C 6-in-1 andalan mahasiswa dan pengguna laptop tipis. Dilengkapi 1 port HDMI 4K@30Hz untuk presentasi proyektor/monitor, 3 port USB 3.0 5Gbps untuk mouse/keyboard/flashdisk, serta slot SD dan MicroSD card reader dengan pembacaan simultan dalam bodi aluminium alloy Space Grey yang kokoh bergaransi resmi 18 bulan.',
+    imageUrl: pxHubImg,
+    gallery: [pxHubImg],
+    specs: {
+      anc: 'HDMI 4K@30Hz Ultra HD Video Output',
+      battery: '3x Port USB 3.0 (Kecepatan Transfer hingga 5 Gbps)',
+      codec: 'Dual Card Reader: 1x SD Slot + 1x MicroSD (TF) Slot',
+      microphone: 'Konektor Input USB Type-C 3.1 / Thunderbolt 3',
+      waterResistance: 'Bodi Aluminium Alloy Space Grey Efisiensi Termal',
+      weight: 'Dimensi 120 x 10 x 32 mm, Bobot Ringan ±55 gram',
+      connectivity: 'Plug and Play MacOS, Windows, iPadOS, Android',
+      driverSize: 'Mendukung Pembacaan Dua Kartu Memori Sekaligus',
+      multipoint: 'Garansi Resmi 18 Bulan PX Indonesia (Desain Taiwan)',
+      spatialAudio: 'Kabel USB-C 15cm Terintegrasi Anti Kusut'
+    },
+    pros: [
+      'Menyediakan 3 port USB 3.0 berkecepatan 5Gbps untuk berbagai aksesori sekaligus',
+      'Port HDMI 4K siap pakai untuk proyektor kelas atau monitor eksternal',
+      'Slot SD dan MicroSD dapat membaca data secara bersamaan hingga 1TB',
+      'Material aluminium kokoh dan garansi resmi panjang 18 bulan PX Indonesia'
+    ],
+    cons: [
+      'Model UCH6 tidak dilengkapi port USB-C Power Delivery (PD) pass-through charging',
+      'Output HDMI 4K berada pada refresh rate 30Hz (1080p pada 60Hz)'
+    ],
+    verdict: 'Solusi ekspansi port paling ekonomis dan fungsional untuk mahasiswa yang sering presentasi materi tugas dan butuh slot USB tambahan tanpa menguras dompet.',
+    tokopediaUrl: OFFICIAL_AFFILIATE_LINKS.LINK_5,
+    status: 'published',
+    isFeatured: true,
+    isBestValue: true,
+    isPopular: true,
+    rank: 10,
+    createdAt: '2026-03-11'
   }
 ];
 
@@ -926,6 +1021,499 @@ export const INITIAL_ARTICLES: ReviewArticle[] = [
     affiliateClicks: 420,
     seoTitle: '3 Charger Murah Fast Charging: Review VIVAN GaN-Q30C',
     seoDescription: 'Cari charger murah fast charging? Simak 3 pilihan charger ringkas dan kenali VIVAN GaN-Q30C 30W, fitur, kompatibilitas, serta tips sebelum membeli.'
+  },
+  {
+    id: 'art-power-bank-pelajar-mahasiswa',
+    slug: 'power-bank-untuk-pelajar-dan-mahasiswa-rekomendasi-dan-tips-memilih',
+    title: 'Power Bank untuk Pelajar dan Mahasiswa: Rekomendasi dan Tips Memilih',
+    subtitle: 'Panduan lengkap memilih power bank tahan banting untuk kuliah dan sekolah. Ulasan mendalam UGREEN 10000mAh 20W Digital Display dan komparasi Xiaomi, Anker, serta Baseus.',
+    excerpt: 'Mencari power bank terbaik untuk pelajar dan mahasiswa? Simak review mendalam UGREEN 10000mAh 20W dengan layar digital LED presisi, fitur proteksi sirkuit, 3 alternatif pembanding dari Xiaomi, Anker, dan Baseus, serta tips belanja hemat.',
+    content: `
+      <h2>1. Pendahuluan: Pentingnya Power Bank untuk Aktivitas Sekolah dan Kampus</h2>
+      <p>Bagi pelajar dan mahasiswa di era digital saat ini, smartphone telah menjadi pusat dari hampir seluruh kegiatan akademik. Mulai dari mengecek jadwal kuliah di portal kampus, membaca materi modul PDF, berdiskusi di grup tugas, mengakses navigasi peta saat menuju tempat magang, hingga melakukan presensi digital dan presentasi kelompok, gawai dituntut untuk terus menyala aktif dari pagi hingga petang.</p>
+      
+      <p>Sayangnya, rutinitas yang padat sering kali terbentur oleh kendala klasik: daya tahan baterai ponsel yang terkuras sebelum kegiatan selesai. Masalah ini diperparah oleh keterbatasan stopkontak di ruang kuliah, perpustakaan kampus, laboratorium, maupun kantin. Sering kali colokan listrik yang tersedia sudah penuh terisi oleh laptop rekan lain, atau posisinya terlalu jauh dari meja belajar.</p>
+      
+      <p>Dalam kondisi inilah keberadaan sebuah <strong>power bank untuk pelajar dan mahasiswa</strong> menjadi penyelamat yang sangat esensial. Namun, memilih power bank yang tepat bukan sekadar mencari kapasitas raksasa atau harga paling murah. Mahasiswa membutuhkan perangkat yang ringkas dibawa dalam ransel, memiliki kecepatan pengisian cepat (fast charging), dilengkapi indikator baterai yang akurat, serta memiliki sistem perlindungan sirkuit yang teruji agar baterai smartphone kesayangan tidak cepat aus atau drop.</p>
+
+      <h2>2. Hal yang Perlu Diperhatikan Saat Memilih Power Bank</h2>
+      <p>Sebelum memutuskan membeli power bank, penting bagi pelajar dan mahasiswa untuk memahami beberapa parameter teknis mendasar agar tidak kecewa setelah membeli:</p>
+      
+      <ul>
+        <li><strong>Kapasitas Nominal vs. Kapasitas Riil (Rated Capacity):</strong> Kapasitas 10.000mAh pada kemasan mengacu pada kapasitas sel baterai lithium pada voltase internal 3.7V. Ketika disalurkan ke smartphone pada standar voltase 5V, terjadi konversi daya alami yang menghasilkan <em>rated capacity</em> sekitar 6.000mAh hingga 6.500mAh. Kapasitas ini ideal karena mampu mengisi daya smartphone modern berkapasitas 4.000–5.000mAh sebanyak 1.5 hingga 2 kali pengisian penuh.</li>
+        <li><strong>Kecepatan Pengisian Daya (Fast Charging Protocol):</strong> Hindari power bank dengan kecepatan kuno 5V/1A (5 Watt) atau 5V/2A (10 Watt) yang membutuhkan waktu berjam-jam. Pilihlah power bank yang mendukung protokol USB Power Delivery (PD) minimal 18W–20W atau Quick Charge 3.0, sehingga Anda dapat mengisi baterai ponsel hingga 50% hanya dalam waktu sekitar 30 menit di sela jeda kelas.</li>
+        <li><strong>Tipe dan Kelengkapan Port:</strong> Pastikan power bank memiliki port USB-C modern yang mendukung <em>Two-Way Fast Charging</em> (bisa mengisi daya ke ponsel sekaligus mengisi ulang daya power bank secara cepat), serta port USB-A untuk kompatibilitas perangkat aksesori lainnya.</li>
+        <li><strong>Indikator Daya Numerik vs. Lampu Titik LED:</strong> Power bank dengan <strong>layar digital LED (angka persentase 0-100%)</strong> jauh lebih unggul dan praktis dibanding 4 titik lampu LED konvensional. Anda dapat mengetahui sisa cadangan daya secara presisi tanpa harus menebak-nebak apakah baterai tersisa 25% atau 5%.</li>
+        <li><strong>Sistem Proteksi Keamanan Sirkuit:</strong> Pastikan produk dilengkapi perlindungan terhadap kelebihan arus (over-current), lonjakan tegangan (over-voltage), korsleting (short-circuit), dan kontrol temperatur agar aman saat disimpan di dalam ransel tertutup.</li>
+        <li><strong>Standar Keselamatan Penerbangan (Flight-Friendly):</strong> Menurut regulasi penerbangan internasional (IATA), batas kapasitas maksimal power bank yang boleh dibawa ke kabin pesawat adalah 100 Watt-hour (Wh). Power bank 10.000mAh berenergi sekitar 37Wh, sehingga 100% aman dan legal dibawa saat bepergian atau liburan semester.</li>
+      </ul>
+
+      <h2>3. Rekomendasi Utama: UGREEN Power Bank 10000mAh 20W Two-Way Fast Charging Digital Display</h2>
+      <p>Dari berbagai pilihan yang beredar di pasaran, <strong>UGREEN Power Bank 10000mAh 20W Digital Display</strong> tampil sebagai rekomendasi utama redaksi Gadget Hemat untuk kalangan pelajar, mahasiswa, dan Gen Z. Produk dari UGREEN ini berhasil memadukan kualitas rancang bangun premium, efisiensi termal tinggi, dan harga yang sangat masuk akal bagi kantong pelajar.</p>
+      
+      <p><strong>Desain Elegan, Slim, dan Sangat Portabel:</strong><br/>
+      UGREEN merancang power bank ini dengan pendekatan ergonomi modern. Bodinya memiliki ketebalan ramping hanya sekitar 16.4 mm dengan bobot ringan berkisar antara 190 hingga 210 gram. Permukaan luarnya dilapisi tekstur matte doff anti-slip yang tidak mudah meninggalkan bekas sidik jari dan tidak licin saat digenggam bersamaan dengan smartphone. Dimensi kompak ini membuatnya sangat mudah diselipkan ke saku jaket, kantong samping ransel, atau pouch aksesori laptop tanpa terasa membebani.</p>
+
+      <p><strong>Layar LED Digital Display yang Sangat Informatif:</strong><br/>
+      Nilai jual utama yang paling membedakan power bank UGREEN ini dari para pesaing di kelas harganya adalah hadirnya <strong>layar digital numerik LED terintegrasi</strong>. Layar ini menampilkan persentase daya baterai riil dari 0% hingga 100%. Anda tidak perlu lagi cemas atau mengira-ngira apakah lampu indikator yang tersisa 1 titik masih sanggup mengisi ponsel saat ujian praktikum atau perjalanan pulang kampus.</p>
+
+      <p><strong>Performa Fast Charging 20W PD Dua Arah (Two-Way):</strong><br/>
+      Port USB Type-C pada power bank UGREEN ini berfungsi ganda dengan dukungan USB Power Delivery (PD 3.0) 20W. Port ini sanggup mengisi daya baterai iPhone 12/13/14/15/16 dari 0% ke 50% dalam waktu sekitar 30 menit. Selain itu, port USB-A bawaannya juga mendukung pengisian cepat hingga 22.5W Huawei SCP serta Qualcomm Quick Charge 3.0 18W untuk smartphone Android. Yang tak kalah penting, fitur <em>Two-Way Fast Charging</em> memungkinkan power bank itu sendiri diisi ulang dayanya dari kosong hingga 100% hanya dalam tempo sekitar 3 jam menggunakan adaptor charger 20W.</p>
+
+      <p><strong>Kecocokan untuk Pelajar & Mahasiswa:</strong><br/>
+      Bagi mahasiswa yang kerap berpindah ruang kuliah atau nongkrong di kafe untuk mengerjakan skripsi, kapasitas 10.000mAh memberikan cadangan daya hingga 2 kali pengisian penuh tanpa harus membawa bobot berlebih. Bentuknya yang tipis juga memungkinkan Anda mengecas sambil menggenggam ponsel dengan satu tangan saat berjalan di koridor kampus.</p>
+
+      <p><strong>Kisaran Harga Terverifikasi di Indonesia:</strong><br/>
+      Berdasarkan pantauan harga terverifikasi di Tokopedia Official Store resmi UGREEN Indonesia, produk ini dipasarkan pada rentang harga promo <strong>Rp 179.000 – Rp 239.000</strong> (dengan harga retail normal sekitar Rp 349.000). Untuk brand global dengan reputasi kualitas dan garansi resmi 12 bulan penggantian baru, rentang harga ini memberikan <em>value for money</em> yang luar biasa tinggi.</p>
+
+      <div style="background-color: #F7F8F6; border: 1px solid #E4E8E5; padding: 22px; border-radius: 20px; margin: 28px 0;">
+        <p style="margin: 0 0 10px 0; font-weight: 800; font-size: 15px; color: #080808;">Tertarik memiliki UGREEN Power Bank untuk kuliah dan sekolah?</p>
+        <p style="margin: 0 0 16px 0; font-size: 13px; color: #68736D; line-height: 1.6;">Periksa harga diskon resmi, voucher cashback toko, promo gratis ongkir, dan ketersediaan stok langsung di Tokopedia Official Store:</p>
+        <a 
+          href="https://vt.tokopedia.com/t/ZS9AfTPgHB4BE-8l5Fi/" 
+          target="_blank" 
+          rel="noopener noreferrer nofollow" 
+          style="display: inline-flex; align-items: center; gap: 10px; background-color: #03AC0E; color: #FFFFFF; font-weight: 800; font-size: 13px; padding: 14px 24px; border-radius: 14px; text-decoration: none; box-shadow: 0 4px 14px rgba(3, 172, 14, 0.25);"
+        >
+          <span>🛒 Cek Harga & Promo UGREEN Power Bank di Tokopedia</span>
+        </a>
+      </div>
+
+      <h2>4. Penjelasan Fitur dan Sistem Perlindungan Sirkuit UGREEN</h2>
+      <p>Aspek keamanan adalah pembeda paling kritis antara power bank berkualitas dari merek terpercaya dengan power bank murah tanpa merek yang berbahaya. UGREEN membekali seri power bank ini dengan <strong>9 lapisan sistem proteksi keamanan sirkuit cerdas</strong>:</p>
+      
+      <ul>
+        <li><strong>Over-Voltage Protection:</strong> Mencegah lonjakan tegangan listrik yang dapat merusak sirkuit IC smartphone.</li>
+        <li><strong>Over-Current Protection:</strong> Membatasi aliran arus listrik agar tidak melebihi kapasitas toleransi komponen baterai ponsel.</li>
+        <li><strong>Over-Charge & Over-Discharge Protection:</strong> Secara otomatis menghentikan aliran listrik saat baterai gawai telah penuh, serta melindungi sel baterai internal power bank agar tidak terkuras habis hingga merusak umur sel.</li>
+        <li><strong>High-Temperature Protection:</strong> Sensor termal internal yang memantau suhu secara kontinu dan menurunkan arus jika terjadi kenaikan panas berlebih saat proses fast charging berlangsung.</li>
+        <li><strong>Short-Circuit Protection:</strong> Sirkuit pengaman instan yang memutus arus seketika apabila terdeteksi korsleting pada kabel atau port konektor.</li>
+        <li><strong>Anti-Reversal & Reset Protection:</strong> Menjaga stabilitas sirkuit saat terjadi gangguan daya listrik eksternal dan memungkinkan sistem reset mandiri yang aman.</li>
+        <li><strong>PTC Cell Protection:</strong> Pelindung sel baterai berstandar industri kimia untuk meredam ekspansi panas sel baterai lithium-polymer.</li>
+      </ul>
+
+      <p>Selain proteksi kelistrikan, cangkang bodi luar UGREEN dibuat dari kombinasi material <strong>PC + ABS Flame-Retardant (V-0 Fire Rating)</strong> yang tahan terhadap panas dan tidak mudah memicu api. UGREEN juga menyematkan fitur <em>Trickle Charging Mode</em> (mode pengisian arus rendah), yang dapat diaktifkan untuk mengecas perangkat berdaya kecil seperti TWS earphone, smartband, atau smartwatch tanpa risiko merusak baterai mungil perangkat tersebut.</p>
+
+      <div style="background-color: #F7F8F6; border: 1px solid #E4E8E5; padding: 22px; border-radius: 20px; margin: 28px 0;">
+        <p style="margin: 0 0 10px 0; font-weight: 800; font-size: 15px; color: #080808;">Perlindungan Maksimal untuk Smartphone Kesayangan Anda</p>
+        <p style="margin: 0 0 16px 0; font-size: 13px; color: #68736D; line-height: 1.6;">Dapatkan produk original bergaransi resmi 12 bulan penggantian baru dari UGREEN Indonesia melalui tautan resmi Tokopedia berikut:</p>
+        <a 
+          href="https://vt.tokopedia.com/t/ZS9AfTPgHB4BE-8l5Fi/" 
+          target="_blank" 
+          rel="noopener noreferrer nofollow" 
+          style="display: inline-flex; align-items: center; gap: 10px; background-color: #03AC0E; color: #FFFFFF; font-weight: 800; font-size: 13px; padding: 14px 24px; border-radius: 14px; text-decoration: none; box-shadow: 0 4px 14px rgba(3, 172, 14, 0.25);"
+        >
+          <span>Lihat Promo Terbaru di Tokopedia</span>
+        </a>
+      </div>
+
+      <h2>5. Tiga Alternatif Power Bank dari Xiaomi, Anker, dan Baseus</h2>
+      <p>Untuk membantu pembaca membandingkan karakteristik produk secara komprehensif, berikut adalah tiga contoh model power bank nyata dari brand lain yang juga beredar resmi di Indonesia:</p>
+
+      <h3>1. Xiaomi Power Bank 10000mAh 22.5W (PB100DZM / Pocket Edition)</h3>
+      <p><strong>Kisaran Harga Terverifikasi:</strong> Rp 149.000 – Rp 189.000</p>
+      <p><strong>Spesifikasi Utama:</strong> Kapasitas 10.000mAh (37Wh), daya maksimal 22.5W, port 1x USB-C (in/out) + 2x USB-A (out), bodi paduan aluminium atau polikarbonat kokoh.</p>
+      <p><strong>Kelebihan:</strong> Menawarkan harga yang sangat ekonomis bagi kantong pelajar, memiliki tiga port output sehingga dapat mengecas hingga tiga perangkat sekaligus, dan dibangun dengan material bodi yang kokoh khas produk Xiaomi.</p>
+      <p><strong>Hal yang Perlu Dipertimbangkan:</strong> Hanya mengandalkan 4 titik lampu LED kecil sebagai indikator baterai (tidak memiliki layar digital numerik presisi), dan varian berbahan aluminium terasa agak licin saat digenggam bersamaan dengan ponsel tanpa case.</p>
+
+      <h3>2. Anker 533 Power Bank 10000mAh 30W (PowerCore 30W A1256)</h3>
+      <p><strong>Kisaran Harga Terverifikasi:</strong> Rp 329.000 – Rp 429.000</p>
+      <p><strong>Spesifikasi Utama:</strong> Kapasitas 10.000mAh, output maksimum 30W Power Delivery (PowerIQ 3.0), layar display digital kecil, sistem pemantauan suhu ActiveShield 2.0, port 2x USB-C + 1x USB-A.</p>
+      <p><strong>Kelebihan:</strong> Output daya 30W yang tinggi memungkinkan pengisian cepat tidak hanya untuk smartphone, tetapi juga iPad atau pengisian darurat untuk laptop tipis seperti MacBook Air. Sistem manajemen suhu dan garansi 18 bulan Anker memberikan reputasi kelas atas.</p>
+      <p><strong>Hal yang Perlu Dipertimbangkan:</strong> Harganya berada di kisaran Rp300 ribuan ke atas, yang menjadikannya opsi premium dan relatif lebih menguras anggaran uang saku bagi pelajar dan mahasiswa.</p>
+
+      <h3>3. Baseus Bipow Digital Display Power Bank 10000mAh 20W</h3>
+      <p><strong>Kisaran Harga Terverifikasi:</strong> Rp 169.000 – Rp 209.000</p>
+      <p><strong>Spesifikasi Utama:</strong> Kapasitas 10.000mAh, output 20W USB-C PD & QC 3.0, layar LED digital display berukuran besar, dual input (Micro-USB + Type-C), triple output port.</p>
+      <p><strong>Kelebihan:</strong> Memiliki layar digital dengan bidang tampilan yang lebar, fleksibilitas input yang masih mendukung kabel Micro-USB lawas di samping port USB-C, serta harga yang kompetitif di bawah Rp200 ribuan.</p>
+      <p><strong>Hal yang Perlu Dipertimbangkan:</strong> Dimensi fisik bodi sedikit lebih panjang dan tebal jika dibandingkan dengan bodi UGREEN yang lebih ramping, serta bobotnya terasa sedikit lebih padat saat dibawa bepergian.</p>
+
+      <h2>6. Tabel Perbandingan 4 Power Bank untuk Pelajar & Mahasiswa</h2>
+      <p>Berikut rangkuman komparasi spesifikasi teknis, fitur tampilan, portabilitas, dan rentang harga pasar terverifikasi dari keempat produk yang dibahas:</p>
+
+      <div style="overflow-x: auto; margin: 24px 0;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid #E4E8E5;">
+          <thead>
+            <tr style="background-color: #25282A; color: #FFFFFF;">
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Model Produk</th>
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Kapasitas & Bobot</th>
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Output Maksimal</th>
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Indikator Baterai</th>
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Konfigurasi Port</th>
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Kisaran Harga</th>
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Kesesuaian untuk Mahasiswa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #F0F2F0; background-color: #FAFCFA;">
+              <td style="padding: 12px 16px; font-weight: 800; color: #080808;">UGREEN 10000mAh 20W (Rekomendasi Utama)</td>
+              <td style="padding: 12px 16px; font-weight: 700; color: #03AC0E;">10.000mAh (±190g, 16.4mm)</td>
+              <td style="padding: 12px 16px; font-weight: 700;">20W PD / 22.5W SCP</td>
+              <td style="padding: 12px 16px; font-weight: 700; color: #03AC0E;">LED Digital Numerik (0-100%)</td>
+              <td style="padding: 12px 16px;">1x USB-C (in/out) + 1x USB-A</td>
+              <td style="padding: 12px 16px; font-weight: 700;">Rp 179K – Rp 239K</td>
+              <td style="padding: 12px 16px; color: #166534; font-weight: 600;">Keseimbangan terbaik: slim, layar presisi, fast charging 2 arah, 9 proteksi sirkuit.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F0F2F0;">
+              <td style="padding: 12px 16px; font-weight: 700; color: #080808;">Xiaomi PB 10000mAh 22.5W</td>
+              <td style="padding: 12px 16px;">10.000mAh (±225g)</td>
+              <td style="padding: 12px 16px; font-weight: 700;">22.5W Max</td>
+              <td style="padding: 12px 16px; color: #68736D;">4 Titik Lampu LED</td>
+              <td style="padding: 12px 16px;">1x USB-C (in/out) + 2x USB-A</td>
+              <td style="padding: 12px 16px; font-weight: 700;">Rp 149K – Rp 189K</td>
+              <td style="padding: 12px 16px; color: #68736D;">Budget hemat dengan triple port, namun tanpa tampilan angka persentase baterai.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F0F2F0; background-color: #FAFCFA;">
+              <td style="padding: 12px 16px; font-weight: 700; color: #080808;">Anker 533 Power Bank 30W</td>
+              <td style="padding: 12px 16px;">10.000mAh (±216g)</td>
+              <td style="padding: 12px 16px; font-weight: 700;">30W Power Delivery</td>
+              <td style="padding: 12px 16px; font-weight: 700;">Digital Display Mini</td>
+              <td style="padding: 12px 16px;">2x USB-C + 1x USB-A</td>
+              <td style="padding: 12px 16px; font-weight: 700;">Rp 329K – Rp 429K</td>
+              <td style="padding: 12px 16px; color: #68736D;">Sangat bertenaga hingga 30W untuk tablet/ultrabook, namun harga relatif mahal bagi kantong pelajar.</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px 16px; font-weight: 700; color: #080808;">Baseus Bipow Digital 20W</td>
+              <td style="padding: 12px 16px;">10.000mAh (±252g)</td>
+              <td style="padding: 12px 16px; font-weight: 700;">20W PD / QC</td>
+              <td style="padding: 12px 16px; font-weight: 700;">LED Digital Display Lebar</td>
+              <td style="padding: 12px 16px;">Micro-USB + Type-C (in) + 2x USB-A</td>
+              <td style="padding: 12px 16px; font-weight: 700;">Rp 169K – Rp 209K</td>
+              <td style="padding: 12px 16px; color: #68736D;">Pilihan alternatif berlayar besar dengan port Micro-USB, namun bodi terasa agak tebal dan berat.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>7. Tips Memilih Power Bank Sesuai Anggaran dan Kebutuhan</h2>
+      <p>Agar dana saku bulanan Anda teralokasikan secara bijak dan tidak salah membeli aksesori daya, terapkan panduan praktis berikut sebelum memilih power bank:</p>
+      
+      <ol>
+        <li><strong>Pilih Kapasitas 10.000mAh untuk Mobilitas Harian Kampus:</strong> Meskipun power bank 20.000mAh menawarkan daya lebih besar, bobotnya yang mencapai 400–450 gram akan terasa membebani pundak jika dibawa setiap hari ke kampus. Kapasitas 10.000mAh adalah titik temu paling ideal antara bobot ringan dan pasokan daya yang cukup untuk 1 hingga 2 hari kuliah.</li>
+        <li><strong>Waspadai Power Bank "Kapasitas Fiktif":</strong> Jangan pernah tergiur oleh power bank murah tanpa merek di marketplace yang mengklaim kapasitas fantasi seperti 50.000mAh atau 100.000mAh dengan harga puluhan ribu rupiah. Produk semacam ini kerap menggunakan sel daur ulang atau pasir pemberat, serta tidak memiliki regulator sirkuit pengaman yang berisiko merusak smartphone bahkan memicu kebakaran.</li>
+        <li><strong>Pastikan Ada Layar Persentase Digital:</strong> Mengetahui secara pasti apakah daya tersisa 18% atau 74% sangat penting saat Anda sedang menunggu giliran presentasi atau berada di perjalanan pulang malam hari. Layar digital menghindarkan Anda dari kekecewaan akibat lampu LED 1 titik yang tiba-tiba padam.</li>
+        <li><strong>Gunakan Kabel Data Berkualitas yang Kompatibel:</strong> Fitur fast charging 20W pada power bank tidak akan bekerja jika Anda memasangkannya dengan kabel data abal-abal yang resistansinya tinggi. Selalu gunakan kabel original atau kabel braided berkualitas yang mendukung arus minimal 3 Ampere (60W).</li>
+        <li><strong>Beli di Official Store Terpercaya:</strong> Pastikan Anda membeli melalui toko resmi seperti Tokopedia Official Store untuk mendapatkan jaminan garansi tukar baru dan keaslian unit secara penuh.</li>
+      </ol>
+
+      <h2>8. Kesimpulan: Mengapa UGREEN Layak Jadi Pilihan Utama</h2>
+      <p>Secara objektif dan realistis, tidak ada satu power bank yang sempurna untuk setiap orang. Pengguna yang membutuhkan daya 30W untuk iPad dan laptop tipis mungkin akan melirik Anker, sementara mereka yang memprioritaskan anggaran paling ketat di bawah Rp160 ribuan dapat mempertimbangkan Xiaomi.</p>
+      
+      <p>Namun, bagi mayoritas pelajar dan mahasiswa yang mencari keseimbangan sempurna antara <strong>layar indikator digital LED yang presisi, bodi slim dan ringan, kecepatan fast charging 20W dua arah, serta jaminan 9 lapis keamanan sirkuit</strong>, maka <strong>UGREEN Power Bank 10000mAh 20W Digital Display</strong> adalah pilihan paling rasional dan bernilai investasi tinggi (*sweet spot*) di kelasnya.</p>
+
+      <div style="background-color: #25282A; color: #FFFFFF; padding: 24px; border-radius: 20px; margin: 32px 0; text-align: center;">
+        <h3 style="color: #B9F43A; margin: 0 0 10px 0; font-size: 18px; font-weight: 800;">Kesimpulan Akhir Redaksi Gadget Hemat</h3>
+        <p style="font-size: 13px; color: #E4E8E5; margin: 0 0 18px 0; line-height: 1.6; max-width: 650px; display: inline-block;">
+          Jangan biarkan baterai ponsel drop mengganggu konsentrasi belajar, presentasi tugas, atau komunikasi penting Anda di kampus. UGREEN Power Bank 10000mAh 20W siap menjadi teman setia di ransel kuliah Anda setiap hari dengan keandalan maksimal.
+        </p>
+        <div>
+          <a 
+            href="https://vt.tokopedia.com/t/ZS9AfTPgHB4BE-8l5Fi/" 
+            target="_blank" 
+            rel="noopener noreferrer nofollow" 
+            style="display: inline-flex; align-items: center; gap: 8px; background-color: #03AC0E; color: #FFFFFF; font-weight: 800; font-size: 13px; padding: 14px 24px; border-radius: 12px; text-decoration: none;"
+          >
+            <span>Beli Sekarang di Tokopedia →</span>
+          </a>
+        </div>
+      </div>
+    `,
+    category: 'Buying Guides',
+    type: 'buying_guide',
+    author: 'Dika Ramadhan',
+    authorRole: 'Chief Tech Reviewer Gadget Hemat',
+    authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    date: '11 Maret 2026',
+    readTime: '9 menit baca',
+    featuredImage: ugreenPowerbankImg,
+    status: 'published',
+    rating: 4.9,
+    verdictScore: 9.6,
+    highlightSummary: 'Panduan lengkap komparasi power bank terbaik untuk pelajar dan mahasiswa, review mendalam UGREEN 10000mAh 20W Two-Way Fast Charging dengan layar digital numerik, 9 proteksi sirkuit, dan link Tokopedia terverifikasi.',
+    pros: [
+      'Layar display LED numerik digital memantau persentase baterai 0-100% presisi',
+      'Fast charging 20W PD two-way (mengisi smartphone dan isi ulang power bank sangat cepat)',
+      'Desain ramping 16.4mm dan bobot ringan nyaman dibawa di ransel kuliah seharian',
+      '9 lapisan sistem proteksi keamanan sirkuit terverifikasi dan flight-friendly'
+    ],
+    cons: [
+      'Total output daya dibagi saat mengecas dua perangkat secara bersamaan',
+      'Kabel bawaan dalam boks biasanya pendek khusus untuk penggunaan portabel'
+    ],
+    relatedProductId: 'prod-ugreen-powerbank-10000',
+    tags: [
+      'power bank untuk pelajar',
+      'power bank mahasiswa',
+      'UGREEN power bank',
+      'power bank fast charging',
+      'power bank murah berkualitas',
+      'power bank 10000mAh',
+      'rekomendasi power bank'
+    ],
+    views: 940,
+    affiliateClicks: 320,
+    seoTitle: 'Power Bank untuk Pelajar dan Mahasiswa: Rekomendasi dan Tips Memilih - Gadget Hemat',
+    seoDescription: 'Cari power bank terbaik untuk pelajar dan mahasiswa? Review lengkap UGREEN Power Bank 10000mAh 20W Digital Display, fitur proteksi, komparasi Xiaomi, Anker, Baseus, dan tips belanja hemat.'
+  },
+  {
+    id: 'art-usb-hub-6-in-1-mahasiswa',
+    slug: 'usb-hub-6-in-1-untuk-mahasiswa',
+    title: 'USB Hub 6-in-1 untuk Mahasiswa: Bikin Laptop Lebih Praktis',
+    subtitle: 'Laptop kekurangan port USB? Kenali PX UCH6, USB hub 6-in-1 dengan HDMI 4K, 3 port USB 3.0, serta card reader SD dan MicroSD untuk kuliah harian.',
+    excerpt: 'Laptop tipis kamu minim port? Simak ulasan mendalam PX UCH6 USB-C hub 6-in-1 dengan port HDMI 4K, 3 port USB 3.0 5Gbps, dual card reader SD/TF, perbandingan UGREEN, Baseus, dan Vention, serta tips memilih sebelum beli.',
+    content: `
+      <h2>1. Pendahuluan: Masalah Port Terbatas pada Laptop Mahasiswa</h2>
+      <p>Bagi mahasiswa di era perkuliahan modern, laptop tipis berbobot ringan (seperti ultrabook Windows, Chromebook, maupun MacBook Air) telah menjadi perangkat andalan untuk dibawa ke kampus setiap hari. Desainnya yang ramping memang sangat nyaman dimasukkan ke ransel, namun ada satu kompromi besar yang kerap memicu masalah: <strong>keterbatasan jumlah port fisik</strong>.</p>
+      
+      <p>Banyak laptop keluaran terbaru kini hanya menyisakan satu atau dua lubang port USB Type-C. Ketika jam perkuliahan dimulai, kendala mulai bermunculan. Anda mungkin perlu menyambungkan kabel HDMI ke proyektor ruang kuliah untuk presentasi kelompok, mencolokkan flashdisk milik teman untuk menyalin materi tugas, menggunakan mouse nirkabel agar navigasi spreadsheet lebih cepat, sekaligus memindahkan foto dokumentasi kegiatan kampus dari kartu memori kamera. Tanpa bantuan konektor tambahan, semua hal tersebut mustahil dilakukan secara bersamaan.</p>
+      
+      <p>Di sinilah sebuah <strong>USB hub 6 in 1</strong> hadir sebagai penyelamat. Khususnya bagi mahasiswa yang membutuhkan perangkat serbaguna dengan harga terjangkau, <strong>USB hub untuk mahasiswa</strong> seperti <strong>PX UCH6</strong> menawarkan solusi ekspansi lengkap yang ringkas, praktis, dan siap mendukung produktivitas kuliah tanpa ribet.</p>
+
+      <h2>2. Apa Itu USB Hub 6-in-1?</h2>
+      <p>Secara sederhana, USB hub adalah perangkat konverter atau adaptor multiport yang berfungsi menggandakan satu port koneksi pada laptop menjadi beberapa jenis port yang berbeda. Istilah <strong>USB hub 6-in-1</strong> merujuk pada adaptor yang menyediakan enam fungsi port konektivitas sekaligus hanya dari satu sambungan kabel USB Type-C.</p>
+      
+      <p>Dengan menghubungkan satu kabel <strong>converter USB Type-C ke HDMI</strong> dan port USB ini ke laptop, Anda seketika mendapatkan akses ke port monitor eksternal, beberapa slot flashdisk USB standar, serta pembaca kartu memori. Pengoperasiannya bersifat <em>Plug and Play</em>, artinya mahasiswa tidak perlu menginstal aplikasi atau driver rumit—cukup colokkan ke laptop, dan semua perangkat tambahan langsung siap digunakan.</p>
+
+      <h2>3. Mengenal PX UCH6 USB-C Hub 6-in-1</h2>
+      <p>Salah satu pilihan paling relevan untuk anggaran mahasiswa di Indonesia adalah <strong>PX UCH6 USB-C Hub Converter 6-in-1</strong> dari PX (Personal eXperience), produsen perlengkapan audio-video dan aksesori digital terkemuka yang didesain di Taiwan dengan jaringan distributor resmi di Indonesia.</p>
+      
+      <p><em>Catatan verifikasi model:</em> Harap tidak menyamakan PX UCH6 dengan seri PX UCH06 atau UCH16. Model UCH6 secara khusus difokuskan pada kombinasi 3 port USB 3.0, port display HDMI 4K, serta dual card reader (SD & MicroSD), tanpa port kabel LAN RJ45.</p>
+
+      <p>Berikut rincian spesifikasi teknis PX UCH6 yang telah diverifikasi berdasarkan data pabrikan resmi dan listing distributor:</p>
+      
+      <ul>
+        <li><strong>Konektor Input:</strong> USB Type-C 3.1 / Thunderbolt 3 dengan kabel fleksibel bawaan sepanjang sekitar 15 cm.</li>
+        <li><strong>Port Video Output:</strong> 1x HDMI mendukung resolusi hingga <strong>4K Ultra HD @ 30Hz</strong> (3840 x 2160 piksel pada 30Hz) serta kompatibel dengan resolusi Full HD 1080p @ 60Hz.</li>
+        <li><strong>Port Data USB:</strong> 3x Port <strong>USB 3.0</strong> Type-A dengan kecepatan transfer data teoretis hingga <strong>5 Gbps</strong> (sekitar 10 kali lebih kencang dibanding USB 2.0 konvensional). Kompatibel mundur dengan USB 2.0 dan USB 1.1.</li>
+        <li><strong>Slot Kartu Memori:</strong> 1x SD Card slot dan 1x MicroSD (TF) slot dengan dukungan kapasitas hingga 1TB. Mendukung pembacaan kedua kartu secara simultan (bersamaan).</li>
+        <li><strong>Material Bodi:</strong> Paduan <em>Aluminium Alloy</em> berkelir Space Grey yang kokoh, elegan, serta membantu pembuangan panas operasional secara optimal.</li>
+        <li><strong>Dimensi & Bobot:</strong> Dimensi sangat ringkas (120 x 10 x 32 mm) dengan bobot ringan hanya sekitar 55 gram.</li>
+        <li><strong>Kompatibilitas Sistem Operasi:</strong> Mendukung Windows 11/10/8, macOS, iPadOS, Chrome OS, dan Android tanpa perlu driver tambahan.</li>
+        <li><strong>Masa Garansi:</strong> Garansi resmi <strong>18 Bulan</strong> dari PT PX Indonesia, memberikan rasa tenang lebih lama dibanding garansi 12 bulan standar.</li>
+        <li><strong>Kisaran Harga Terverifikasi:</strong> Dipasarkan pada kisaran <strong>Rp 149.000 – Rp 199.000</strong> di Tokopedia Official Store (harga normal Rp 299.000).</li>
+      </ul>
+
+      <div style="background-color: #F7F8F6; border: 1px solid #E4E8E5; padding: 22px; border-radius: 20px; margin: 28px 0;">
+        <p style="margin: 0 0 10px 0; font-weight: 800; font-size: 15px; color: #080808;">Butuh port lengkap untuk presentasi dan tugas kuliah?</p>
+        <p style="margin: 0 0 16px 0; font-size: 13px; color: #68736D; line-height: 1.6;">Periksa ketersediaan stok, harga promo diskon terbaru, dan garansi resmi 18 bulan PX Indonesia langsung di Tokopedia:</p>
+        <a 
+          href="https://vt.tokopedia.com/t/ZS9DwuuU465cK-HDHK8/" 
+          target="_blank" 
+          rel="noopener noreferrer nofollow" 
+          style="display: inline-flex; align-items: center; gap: 10px; background-color: #03AC0E; color: #FFFFFF; font-weight: 800; font-size: 13px; padding: 14px 24px; border-radius: 14px; text-decoration: none; box-shadow: 0 4px 14px rgba(3, 172, 14, 0.25);"
+        >
+          <span>🛒 Cek PX UCH6 di Tokopedia</span>
+        </a>
+      </div>
+
+      <h2>4. Kenapa USB Hub Ini Berguna untuk Mahasiswa?</h2>
+      <p>Dalam aktivitas akademik dan organisasi kampus, <strong>USB hub untuk laptop tipis</strong> seperti PX UCH6 memberikan manfaat nyata dalam berbagai skenario sehari-hari:</p>
+      
+      <ol>
+        <li><strong>Presentasi Lancar Tanpa Panik:</strong> Saat giliran kelompok Anda mempresentasikan materi di ruang seminar, Anda tidak perlu lagi meminjam laptop teman hanya karena laptop Anda tidak memiliki colokan HDMI. Hubungkan port <strong>USB-C hub HDMI 4K</strong> ke kabel proyektor, dan tampilan slide PowerPoint atau Canva langsung muncul jernih di layar proyektor.</li>
+        <li><strong>Menghubungkan Banyak Aksesori Bersamaan:</strong> Dengan 3 buah port USB 3.0 Type-A, Anda bisa mencolokkan <em>dongle</em> mouse nirkabel, keyboard mekanikal eksternal, dan flashdisk tugas sekaligus saat sedang belajar di meja kos.</li>
+        <li><strong>Transfer File Tugas Super Cepat:</strong> Protokol USB 3.0 dengan transfer rate hingga 5 Gbps memungkinkan Anda menyalin file video tugas akhir atau folder modul berukuran gigabyte dalam hitungan detik.</li>
+        <li><strong>Card Reader untuk Tugas Kreatif:</strong> Bagi mahasiswa jurusan ilmu komunikasi, desain, arsitektur, atau anggota divisi dokumentasi kepanitiaan, kehadiran <strong>USB hub dengan card reader</strong> SD dan MicroSD sangat mempermudah pemindahan foto dari kamera DSLR/mirrorless ke laptop tanpa card reader eksternal yang mudah hilang.</li>
+        <li><strong>Praktis Masuk Kotak Pensil atau Pouch:</strong> Bobotnya yang hanya 55 gram dan ketebalan 1 cm membuatnya tidak memakan tempat di tas ransel kuliah.</li>
+      </ol>
+
+      <h2>5. 3 Alternatif USB Hub yang Bisa Dipertimbangkan</h2>
+      <p>Untuk memberikan gambaran yang adil dan berimbang, berikut tiga model pembanding dari brand aksesori ternama yang beredar di pasar Indonesia:</p>
+
+      <h3>1. UGREEN USB-C Hub 6-in-1 (Model CM511 / 60383)</h3>
+      <p><strong>Spesifikasi:</strong> 1x HDMI (mendukung 4K @ 60Hz pada perangkat DisplayPort 1.4), 3x USB 3.0 (5 Gbps), 1x SD Card reader, 1x MicroSD (TF) slot.<br/>
+      <strong>Kisaran Harga Terverifikasi:</strong> Rp 350.000 – Rp 420.000.<br/>
+      <strong>Kelebihan:</strong> Mendukung output HDMI 4K pada 60Hz yang menghasilkan animasi kursor dan video lebih mulus di monitor modern, serta kualitas perakitan bodi yang sangat presisi.<br/>
+      <strong>Keterbatasan:</strong> Harga jualnya lebih dari dua kali lipat dibanding PX UCH6, dan sama-sama tidak menyertakan port pengisian daya passthrough (non-PD).</p>
+
+      <h3>2. Baseus Metal Gleam Series 6-in-1 (Model CAHUB-CW0G / WKWG000003)</h3>
+      <p><strong>Spesifikasi:</strong> 1x HDMI (4K @ 30Hz), 3x USB 3.0 (5 Gbps), 1x RJ45 Gigabit Ethernet (1000 Mbps), 1x USB-C Power Delivery 100W Charging.<br/>
+      <strong>Kisaran Harga Terverifikasi:</strong> Rp 465.000 – Rp 650.000.<br/>
+      <strong>Kelebihan:</strong> Dilengkapi port kabel internet LAN Gigabit RJ45 untuk koneksi super stabil di laboratorium komputer, serta port USB-C PD 100W yang memungkinkan pengisian daya baterai laptop melewati hub.<br/>
+      <strong>Keterbatasan:</strong> Tidak memiliki slot pembaca kartu SD maupun MicroSD, sehingga kurang cocok bagi pengguna yang sering memindahkan data dari kamera. Harganya juga berada di segmen premium bagi mahasiswa.</p>
+
+      <h3>3. Vention 6-in-1 USB-C Hub (Model TOFHB / TGP Series)</h3>
+      <p><strong>Spesifikasi:</strong> 1x HDMI (4K @ 30Hz), 3x USB 3.0 (5 Gbps), 1x USB-C Data Port, 1x USB-C Power Delivery 100W.<br/>
+      <strong>Kisaran Harga Terverifikasi:</strong> Rp 230.000 – Rp 320.000.<br/>
+      <strong>Kelebihan:</strong> Menghadirkan port USB-C data tambahan dan dukungan pengisian daya PD 100W dengan harga yang relatif terjangkau.<br/>
+      <strong>Keterbatasan:</strong> Model ini meniadakan slot SD/TF card reader demi port USB-C, serta masa garansi resminya standar 12 bulan (dibanding 18 bulan pada PX).</p>
+
+      <h2>6. Perbandingan PX UCH6 vs UGREEN vs Baseus vs Vention</h2>
+      <p>Berikut tabel komparasi objektif berdasarkan hasil riset spesifikasi dan harga terkini untuk membantu Anda melihat perbedaan konfigurasi port setiap model:</p>
+
+      <div style="overflow-x: auto; margin: 24px 0;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; background: #FFFFFF; border-radius: 14px; overflow: hidden; border: 1px solid #E4E8E5;">
+          <thead>
+            <tr style="background-color: #25282A; color: #FFFFFF;">
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Produk & Model</th>
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Jumlah & Tipe Port</th>
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Dukungan HDMI</th>
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Card Reader (SD/TF)</th>
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Kecepatan Transfer Data</th>
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Kisaran Harga</th>
+              <th style="padding: 14px 16px; border-bottom: 1px solid #E4E8E5;">Hal yang Perlu Diperhatikan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #F0F2F0; background-color: #FAFCFA;">
+              <td style="padding: 12px 16px; font-weight: 800; color: #080808;">PX UCH6 6-in-1 (Pilihan Utama)</td>
+              <td style="padding: 12px 16px; font-weight: 700; color: #03AC0E;">1x HDMI, 3x USB 3.0, 1x SD, 1x MicroSD</td>
+              <td style="padding: 12px 16px; font-weight: 700;">4K @ 30Hz / 1080p @ 60Hz</td>
+              <td style="padding: 12px 16px; font-weight: 700; color: #03AC0E;">Ada (Dual Read Simultan hingga 1TB)</td>
+              <td style="padding: 12px 16px;">USB 3.0 hingga 5 Gbps</td>
+              <td style="padding: 12px 16px; font-weight: 700; color: #03AC0E;">Rp 149K – Rp 199K</td>
+              <td style="padding: 12px 16px; color: #166534; font-weight: 600;">Sangat hemat, garansi 18 bulan, tanpa port PD (cas laptop via port terpisah).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F0F2F0;">
+              <td style="padding: 12px 16px; font-weight: 700; color: #080808;">UGREEN CM511 (60383)</td>
+              <td style="padding: 12px 16px;">1x HDMI, 3x USB 3.0, 1x SD, 1x MicroSD</td>
+              <td style="padding: 12px 16px; font-weight: 700;">4K @ 60Hz (DP 1.4) / 4K @ 30Hz</td>
+              <td style="padding: 12px 16px;">Ada (Hingga 104 MB/s)</td>
+              <td style="padding: 12px 16px;">USB 3.0 hingga 5 Gbps</td>
+              <td style="padding: 12px 16px; font-weight: 700;">Rp 350K – Rp 420K</td>
+              <td style="padding: 12px 16px; color: #68736D;">Output HDMI 60Hz lebih mulus, namun harga relatif mahal bagi kantong mahasiswa.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F0F2F0; background-color: #FAFCFA;">
+              <td style="padding: 12px 16px; font-weight: 700; color: #080808;">Baseus Metal Gleam 6-in-1</td>
+              <td style="padding: 12px 16px;">1x HDMI, 3x USB 3.0, 1x LAN RJ45, 1x USB-C PD</td>
+              <td style="padding: 12px 16px;">4K @ 30Hz</td>
+              <td style="padding: 12px 16px; color: #DC2626; font-weight: 700;">Tidak Ada Slot Card Reader</td>
+              <td style="padding: 12px 16px;">USB 3.0 hingga 5 Gbps + LAN 1Gbps</td>
+              <td style="padding: 12px 16px; font-weight: 700;">Rp 465K – Rp 650K</td>
+              <td style="padding: 12px 16px; color: #68736D;">Ada port LAN gigabit dan PD 100W, tapi tidak bisa membaca kartu memori kamera.</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px 16px; font-weight: 700; color: #080808;">Vention TOFHB 6-in-1</td>
+              <td style="padding: 12px 16px;">1x HDMI, 3x USB 3.0, 1x USB-C Data, 1x USB-C PD</td>
+              <td style="padding: 12px 16px;">4K @ 30Hz</td>
+              <td style="padding: 12px 16px; color: #DC2626; font-weight: 700;">Tidak Ada Slot Card Reader</td>
+              <td style="padding: 12px 16px;">USB 3.0 hingga 5 Gbps</td>
+              <td style="padding: 12px 16px; font-weight: 700;">Rp 230K – Rp 320K</td>
+              <td style="padding: 12px 16px; color: #68736D;">Mendukung PD 100W charging, tapi tanpa slot SD card dan garansi standar 12 bulan.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="background-color: #F7F8F6; border: 1px solid #E4E8E5; padding: 22px; border-radius: 20px; margin: 28px 0;">
+        <p style="margin: 0 0 10px 0; font-weight: 800; font-size: 15px; color: #080808;">Dapatkan Solusi Ekspansi Port Paling Ekonomis</p>
+        <p style="margin: 0 0 16px 0; font-size: 13px; color: #68736D; line-height: 1.6;">Lihat detail produk, ulasan pembeli, dan promo gratis ongkir PX UCH6 resmi langsung di Tokopedia:</p>
+        <a 
+          href="https://vt.tokopedia.com/t/ZS9DwuuU465cK-HDHK8/" 
+          target="_blank" 
+          rel="noopener noreferrer nofollow" 
+          style="display: inline-flex; align-items: center; gap: 10px; background-color: #03AC0E; color: #FFFFFF; font-weight: 800; font-size: 13px; padding: 14px 24px; border-radius: 14px; text-decoration: none; box-shadow: 0 4px 14px rgba(3, 172, 14, 0.25);"
+        >
+          <span>Lihat detail dan harga produk di Tokopedia</span>
+        </a>
+      </div>
+
+      <h2>7. Kelebihan dan Hal yang Perlu Diperhatikan Sebelum Membeli</h2>
+      <p>Agar pembaca mendapatkan panduan yang objektif, berikut sejumlah keunggulan nyata serta batasan teknis dari PX UCH6:</p>
+      
+      <p><strong>Kelebihan PX UCH6:</strong></p>
+      <ul>
+        <li><strong>Harga Sangat Terjangkau:</strong> Di bawah Rp200 ribu, menjadikannya salah satu converter USB-C 6-in-1 paling ramah dompet mahasiswa.</li>
+        <li><strong>Konfigurasi Port Seimbang:</strong> Memberikan 3 port USB 3.0 (bukan sekadar 1 atau 2 port), HDMI, dan dual card reader yang langsung menjawab 90% kebutuhan tugas kuliah.</li>
+        <li><strong>Bodi Aluminium Pembuang Panas:</strong> Menjaga kestabilan transmisi data dan mencegah panas berlebih saat digunakan terus-menerus.</li>
+        <li><strong>Masa Garansi Panjang:</strong> Dilindungi garansi resmi 18 bulan dari distributor resmi PX Indonesia.</li>
+      </ul>
+
+      <p><strong>Hal yang Perlu Diperhatikan:</strong></p>
+      <ul>
+        <li><strong>Tidak Ada Port USB-C Power Delivery (PD):</strong> PX UCH6 tidak memiliki lubang input pengisian daya laptop. Pastikan laptop Anda memiliki port charger terpisah (misalnya port MagSafe pada MacBook atau port USB-C kedua pada laptop Windows).</li>
+        <li><strong>Kompatibilitas DisplayPort Alt Mode:</strong> Fitur HDMI hanya akan berfungsi jika port USB-C pada laptop Anda mendukung <em>DP Alt Mode</em> (DisplayPort Alternate Mode) atau Thunderbolt. Jika port USB-C laptop Anda hanya mendukung transfer data biasa (data only), maka port HDMI tidak akan mengeluarkan sinyal gambar.</li>
+        <li><strong>Refresh Rate HDMI 4K @ 30Hz:</strong> Resolusi 4K pada 30Hz sangat memadai untuk presentasi slide dokumen, spreadsheet, dan menonton video. Namun jika Anda berencana menggunakannya untuk monitor gaming resolusi 4K dengan refresh rate 60Hz atau 120Hz, Anda membutuhkan converter dengan standar HDMI 2.0/2.1 yang lebih tinggi.</li>
+        <li><strong>Kecepatan Transfer Aktual:</strong> Kecepatan 5 Gbps adalah batas teoretis antarmuka USB 3.0. Kecepatan transfer file nyata tetap ditentukan oleh kecepatan baca/tulis flashdisk atau harddisk eksternal yang Anda tancapkan.</li>
+      </ul>
+
+      <h2>8. USB Hub Mana yang Cocok untuk Kamu?</h2>
+      <p>Pilihlah USB hub berdasarkan kebutuhan riil dan jenis laptop Anda:</p>
+      <ul>
+        <li><strong>Mahasiswa & Pelajar dengan Budget Terbatas:</strong> <strong>PX UCH6</strong> adalah rekomendasi paling tepat. Dengan harga Rp150 ribuan, Anda sudah mendapatkan solusi lengkap untuk presentasi proyektor HDMI, colokan mouse/keyboard, dan card reader tugas tanpa harus membayar mahal untuk fitur yang tidak dipakai.</li>
+        <li><strong>Kreator Konten & Pengguna Monitor 4K 60Hz:</strong> Pilih <strong>UGREEN CM511</strong> jika Anda bekerja dengan monitor resolusi 4K dan membutuhkan refresh rate 60Hz yang lebih mulus untuk pengeditan grafis.</li>
+        <li><strong>Pengguna Laptop dengan Hanya 1 Port USB-C:</strong> Pertimbangkan <strong>Baseus Metal Gleam</strong> atau model dengan fitur USB-C Power Delivery (PD 100W pass-through), sehingga Anda bisa mengecas laptop sambil tetap memakai perangkat eksternal melalui satu colokan yang sama.</li>
+      </ul>
+
+      <h2>9. FAQ: Pertanyaan Seputar USB Hub untuk Mahasiswa</h2>
+      
+      <p><strong>Q1: Apa fungsi USB hub 6-in-1?</strong><br/>
+      <strong>Jawab:</strong> Fungsinya adalah memperluas satu port USB Type-C pada laptop menjadi enam port multifungsi sekaligus, seperti port HDMI untuk proyektor/monitor, beberapa port USB 3.0 untuk flashdisk/mouse, serta slot pembaca kartu memori SD dan MicroSD.</p>
+
+      <p><strong>Q2: Apakah USB-C hub bisa digunakan di semua laptop?</strong><br/>
+      <strong>Jawab:</strong> Sebagian besar fitur data (USB 3.0 dan card reader) bekerja di semua laptop dengan port USB-C. Namun, port HDMI membutuhkan port USB-C laptop yang mendukung DisplayPort Alternate Mode (DP Alt Mode) atau Thunderbolt 3/4 agar dapat menyalurkan sinyal video ke layar eksternal.</p>
+
+      <p><strong>Q3: Apakah HDMI 4K berarti mendukung 4K pada 60Hz?</strong><br/>
+      <strong>Jawab:</strong> Tidak selalu. Pada PX UCH6, resolusi 4K didukung pada refresh rate 30Hz (dan 1080p pada 60Hz). Ini sangat lancar untuk presentasi, kuliah, dan menonton film, namun bukan untuk bermain game kompetitif pada monitor 4K 60Hz.</p>
+
+      <p><strong>Q4: Apa perbedaan USB hub dan docking station?</strong><br/>
+      <strong>Jawab:</strong> USB hub berukuran portabel, ringan tanpa adaptor daya listrik eksternal, dan dirancang untuk dibawa bepergian. Sedangkan docking station berukuran lebih besar, membutuhkan colokan adaptor listrik ke dinding, dan ditujukan untuk meja kerja permanen dengan banyak monitor ganda.</p>
+
+      <p><strong>Q5: Apa yang harus diperiksa sebelum membeli USB hub?</strong><br/>
+      <strong>Jawab:</strong> Periksa apakah laptop Anda memiliki port charger terpisah atau butuh USB hub dengan fitur Power Delivery (PD), pastikan port USB-C laptop mendukung output video jika butuh HDMI, dan sesuaikan jumlah port dengan perangkat yang Anda miliki.</p>
+
+      <h2>10. Kesimpulan: Laptop Lebih Praktis dengan PX UCH6</h2>
+      <p>Menghadapi semester perkuliahan yang padat dengan laptop tipis kini tidak lagi menjadi kendala. <strong>PX UCH6 USB-C Hub Converter 6-in-1</strong> membuktikan bahwa perangkat ekspansi berkualitas tidak harus mahal. Dengan bodi aluminium yang kokoh, 3 port USB 3.0, port display HDMI 4K, card reader ganda, serta garansi resmi 18 bulan, perangkat ini adalah investasi cerdas yang membuat laptop Anda jauh lebih fungsional untuk segala aktivitas kampus.</p>
+
+      <div style="background-color: #25282A; color: #FFFFFF; padding: 24px; border-radius: 20px; margin: 32px 0; text-align: center;">
+        <h3 style="color: #B9F43A; margin: 0 0 10px 0; font-size: 18px; font-weight: 800;">Kesimpulan Akhir Redaksi Gadget Hemat</h3>
+        <p style="font-size: 13px; color: #E4E8E5; margin: 0 0 18px 0; line-height: 1.6; max-width: 650px; display: inline-block;">
+          Jangan biarkan keterbatasan port menghambat presentasi tugas atau kegiatan kuliah Anda. Dapatkan PX UCH6 original bergaransi resmi 18 bulan langsung di Tokopedia Official Store sekarang juga.
+        </p>
+        <div>
+          <a 
+            href="https://vt.tokopedia.com/t/ZS9DwuuU465cK-HDHK8/" 
+            target="_blank" 
+            rel="noopener noreferrer nofollow" 
+            style="display: inline-flex; align-items: center; gap: 8px; background-color: #03AC0E; color: #FFFFFF; font-weight: 800; font-size: 13px; padding: 14px 24px; border-radius: 12px; text-decoration: none;"
+          >
+            <span>Cek Ketersediaan sebelum Membeli di Tokopedia →</span>
+          </a>
+        </div>
+      </div>
+
+      <p style="font-size: 11px; color: #68736D; font-style: italic; margin-top: 24px; text-align: center;">
+        Disclosure: Artikel ini mengandung link afiliasi. Kami dapat memperoleh komisi jika kamu melakukan pembelian melalui link tersebut, tanpa biaya tambahan untukmu.
+      </p>
+    `,
+    category: 'Buying Guides',
+    type: 'buying_guide',
+    author: 'Dika Ramadhan',
+    authorRole: 'Chief Tech Reviewer Gadget Hemat',
+    authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    date: '11 Maret 2026',
+    readTime: '8 menit baca',
+    featuredImage: pxHubImg,
+    status: 'published',
+    rating: 4.8,
+    verdictScore: 9.4,
+    highlightSummary: 'Panduan lengkap USB hub 6-in-1 untuk mahasiswa, review mendalam PX UCH6 dengan HDMI 4K, 3 port USB 3.0 5Gbps, dual card reader SD/TF, perbandingan UGREEN, Baseus, Vention, serta link Tokopedia resmi.',
+    pros: [
+      'Menyediakan 3 port USB 3.0 (5Gbps) untuk mouse, keyboard, dan flashdisk sekaligus',
+      'Dilengkapi port HDMI 4K untuk presentasi proyektor dan monitor eksternal',
+      'Dual slot card reader SD dan MicroSD mendukung pembacaan simultan hingga 1TB',
+      'Bodi aluminium alloy kokoh dengan garansi resmi panjang 18 bulan PX Indonesia'
+    ],
+    cons: [
+      'Model UCH6 tidak dilengkapi port USB-C Power Delivery (PD) pass-through charging',
+      'Output HDMI 4K berjalan pada refresh rate 30Hz (1080p pada 60Hz)'
+    ],
+    relatedProductId: 'prod-px-uch6-hub',
+    tags: [
+      'USB hub 6 in 1',
+      'USB hub untuk mahasiswa',
+      'USB-C hub HDMI 4K',
+      'USB hub laptop',
+      'PX UCH6',
+      'USB hub 3.0',
+      'converter USB Type-C ke HDMI',
+      'USB hub dengan card reader',
+      'USB hub untuk laptop tipis'
+    ],
+    views: 780,
+    affiliateClicks: 260,
+    seoTitle: 'USB Hub 6-in-1 untuk Mahasiswa | Gadget Hemat',
+    seoDescription: 'Laptop kekurangan port USB? Kenali PX UCH6, USB hub 6-in-1 dengan HDMI 4K, 3 port USB 3.0, serta card reader SD dan MicroSD.'
   }
 ];
 
@@ -1012,6 +1600,26 @@ export const INITIAL_AFFILIATE_LINKS: AffiliateLinkItem[] = [
     clicks: 860,
     status: 'active',
     createdAt: '2026-03-10'
+  },
+  {
+    id: 'aff-5',
+    productId: 'prod-ugreen-powerbank-10000',
+    productName: 'UGREEN Power Bank 10000mAh 20W Digital Display',
+    marketplace: 'tokopedia',
+    affiliateUrl: OFFICIAL_AFFILIATE_LINKS.LINK_4,
+    clicks: 520,
+    status: 'active',
+    createdAt: '2026-03-11'
+  },
+  {
+    id: 'aff-6',
+    productId: 'prod-px-uch6-hub',
+    productName: 'PX UCH6 USB-C Hub 6-in-1 HDMI 4K & SD/TF Reader',
+    marketplace: 'tokopedia',
+    affiliateUrl: OFFICIAL_AFFILIATE_LINKS.LINK_5,
+    clicks: 410,
+    status: 'active',
+    createdAt: '2026-03-11'
   }
 ];
 
@@ -1020,7 +1628,9 @@ export const INITIAL_MEDIA: MediaItem[] = [
   { id: 'm-2', fileName: 'redmi_buds_6_play.jpg', url: redmiBudsImg, size: '380 KB', uploadDate: '2026-02-28', type: 'image' },
   { id: 'm-3', fileName: 'realme_buds_t310.jpg', url: realmeBudsImg, size: '510 KB', uploadDate: '2026-02-28', type: 'image' },
   { id: 'm-4', fileName: 'cmf_buds_2a.jpg', url: cmfBudsImg, size: '310 KB', uploadDate: '2026-02-28', type: 'image' },
-  { id: 'm-5', fileName: 'vivan_gan_charger.jpg', url: vivanChargerImg, size: '280 KB', uploadDate: '2026-03-10', type: 'image' }
+  { id: 'm-5', fileName: 'vivan_gan_charger.jpg', url: vivanChargerImg, size: '280 KB', uploadDate: '2026-03-10', type: 'image' },
+  { id: 'm-6', fileName: 'ugreen_powerbank.jpg', url: ugreenPowerbankImg, size: '134 KB', uploadDate: '2026-03-11', type: 'image' },
+  { id: 'm-7', fileName: 'px_uch6_hub.jpg', url: pxHubImg, size: '130 KB', uploadDate: '2026-03-11', type: 'image' }
 ];
 
 export const INITIAL_COMMENTS: ArticleComment[] = [

@@ -289,7 +289,22 @@ export const dbService = {
         localStorage.setItem(STORAGE_KEYS.AFFILIATES, JSON.stringify(INITIAL_AFFILIATE_LINKS));
         return INITIAL_AFFILIATE_LINKS;
       }
-      return JSON.parse(data);
+      const list: AffiliateLinkItem[] = JSON.parse(data);
+      let changed = false;
+      INITIAL_AFFILIATE_LINKS.forEach(initL => {
+        const existingIdx = list.findIndex(l => l.id === initL.id || l.productId === initL.productId);
+        if (existingIdx === -1) {
+          list.push(initL);
+          changed = true;
+        } else if (list[existingIdx].affiliateUrl !== initL.affiliateUrl) {
+          list[existingIdx].affiliateUrl = initL.affiliateUrl;
+          changed = true;
+        }
+      });
+      if (changed) {
+        localStorage.setItem(STORAGE_KEYS.AFFILIATES, JSON.stringify(list));
+      }
+      return list;
     } catch {
       return INITIAL_AFFILIATE_LINKS;
     }

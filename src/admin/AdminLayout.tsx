@@ -24,7 +24,7 @@ export const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const navItems: { route: AdminRoute; label: string; icon: React.ReactNode }[] = [
     { route: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
-    { route: 'articles', label: 'Articles & Reviews', icon: <FileText className="w-4 h-4" /> },
+    { route: 'articles', label: 'Artikel', icon: <FileText className="w-4 h-4" /> },
     { route: 'products', label: 'Products Catalog', icon: <ShoppingBag className="w-4 h-4" /> },
     { route: 'categories', label: 'Categories', icon: <Layers className="w-4 h-4" /> },
     { route: 'affiliate-links', label: 'Affiliate Links', icon: <Link className="w-4 h-4" /> },

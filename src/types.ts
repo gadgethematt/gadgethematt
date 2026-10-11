@@ -2,6 +2,7 @@ export type NavTab =
   | 'home'
   | 'katalog'
   | 'reviews'
+  | 'artikel'
   | 'comparisons'
   | 'best-tws'
   | 'buying-guides'

@@ -68,7 +68,7 @@ export const AppContent: React.FC = () => {
     if (currentPath === '/blog' || currentPath === '/artikel') return <BlogPage />;
     if (currentPath.startsWith('/blog/') || currentPath.startsWith('/artikel/')) return <ReviewDetailPage />;
     if (currentPath === '/katalog') return <KatalogPage />;
-    if (currentPath === '/reviews') return <ReviewsPage />;
+    if (currentPath === '/reviews') return <BlogPage />;
     if (currentPath.startsWith('/reviews/')) return <ReviewDetailPage />;
     if (currentPath === '/comparisons') return <ComparisonsPage />;
     if (currentPath === '/best-tws') return <BestTwsPage />;
