@@ -149,17 +149,17 @@ export const StudentTwsGuideSection: React.FC = () => {
   };
 
   return (
-    <section id="rekomendasi-tws-pelajar" className="w-full bg-[#0B0D10] text-[#F2F3F1] py-20 border-b border-[#1E2329] selection:bg-[#92B6E5] selection:text-[#0B0D10]">
+    <section id="rekomendasi-tws-pelajar" className="w-full bg-[#050608] text-[#F8F9FA] py-20 border-b border-[#1A1F26] selection:bg-[#92B6E5] selection:text-[#050608]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* ARTICLE SEO HEADER */}
         <div className="max-w-4xl mx-auto text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1E2329] border border-[#A9B5C1]/20 text-[#92B6E5] font-black text-xs uppercase tracking-wider backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#12151A] border border-[#CAD6E2]/20 text-[#CAD6E2] font-black text-xs uppercase tracking-wider backdrop-blur-xl shadow-md">
+            <Sparkles className="w-3.5 h-3.5 text-[#92B6E5]" />
             <span>PANDUAN BELANJA & REVIEW RESMI 2026</span>
           </div>
 
-          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#F2F3F1] tracking-tight leading-tight">
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#F8F9FA] tracking-tight leading-tight">
             Rekomendasi TWS Terbaik 2026 untuk Pelajar: <span className="metallic-text">Murah dan Berkualitas</span>
           </h2>
 
@@ -172,7 +172,7 @@ export const StudentTwsGuideSection: React.FC = () => {
             <span>•</span>
             <span>Terverifikasi Februari 2026</span>
             <span>•</span>
-            <span className="flex items-center gap-1 text-[#92B6E5]">
+            <span className="flex items-center gap-1 text-[#CAD6E2]">
               <ShieldCheck className="w-4 h-4 text-[#92B6E5]" />
               Tokopedia Official Partner
             </span>
@@ -182,16 +182,16 @@ export const StudentTwsGuideSection: React.FC = () => {
         {/* 1. INTERACTIVE COMPARISON TABLE */}
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-            <h3 className="font-display font-black text-xl text-[#F2F3F1] uppercase">
+            <h3 className="font-display font-black text-xl text-[#F8F9FA] uppercase">
               Tabel Perbandingan 5 TWS Pelajar Terbaik
             </h3>
             <span className="text-xs text-[#9AA5B1] font-medium">Geser tabel ke samping pada layar ponsel →</span>
           </div>
 
-          <div className="overflow-x-auto rounded-3xl border border-[#A9B5C1]/15 bg-[#14181D]/80 backdrop-blur-md shadow-lg">
+          <div className="overflow-x-auto rounded-3xl border border-[#CAD6E2]/12 bg-[#0B0D10]/85 backdrop-blur-xl shadow-xl">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="bg-[#1E2329]/90 border-b border-[#A9B5C1]/15 text-[#A9B5C1] font-black uppercase tracking-wider text-[11px]">
+                <tr className="bg-[#12151A]/95 border-b border-[#CAD6E2]/12 text-[#CAD6E2] font-black uppercase tracking-wider text-[11px]">
                   <th className="p-4">Produk</th>
                   <th className="p-4">Harga Tokopedia</th>
                   <th className="p-4">Driver Audio</th>
@@ -201,30 +201,30 @@ export const StudentTwsGuideSection: React.FC = () => {
                   <th className="p-4 text-center">Beli di Tokopedia</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#1E2329] font-medium">
+              <tbody className="divide-y divide-[#1A1F26] font-medium">
                 {studentProducts.map((p) => (
-                  <tr key={p.id} className="hover:bg-[#1E2329]/50 transition-colors">
+                  <tr key={p.id} className="hover:bg-[#12151A]/60 transition-colors">
                     <td className="p-4 flex items-center gap-3">
-                      <img src={p.img} alt={p.name} className="w-12 h-12 object-contain p-1 rounded-2xl bg-[#0B0D10] border border-[#A9B5C1]/15 shrink-0" />
+                      <img src={p.img} alt={p.name} className="w-12 h-12 object-contain p-1 rounded-2xl bg-[#050608] border border-[#CAD6E2]/15 shrink-0" />
                       <div>
-                        <div className="font-black text-sm text-[#F2F3F1]">{p.name}</div>
+                        <div className="font-black text-sm text-[#F8F9FA]">{p.name}</div>
                         <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-[#92B6E5]/15 text-[#92B6E5] border border-[#92B6E5]/25">
                           {p.badge}
                         </span>
                       </div>
                     </td>
                     <td className="p-4">
-                      <div className="font-black text-sm text-[#F2F3F1]">{p.price}</div>
+                      <div className="font-black text-sm text-[#F8F9FA]">{p.price}</div>
                       <div className="text-[10px] text-[#9AA5B1] line-through">{p.oldPrice}</div>
                     </td>
-                    <td className="p-4 font-bold text-[#F2F3F1]">{p.driver}</td>
+                    <td className="p-4 font-bold text-[#F8F9FA]">{p.driver}</td>
                     <td className="p-4 text-[#9AA5B1]">{p.noiseCancel}</td>
-                    <td className="p-4 font-bold text-[#92B6E5]">{p.battery}</td>
+                    <td className="p-4 font-bold text-[#CAD6E2]">{p.battery}</td>
                     <td className="p-4 text-[#9AA5B1]">{p.latency}</td>
                     <td className="p-4 text-center">
                       <button
                         onClick={() => handleBuy(p)}
-                        className="px-4 py-2 rounded-xl bg-[#92B6E5] hover:bg-[#A9B5C1] text-[#0B0D10] font-black text-xs uppercase tracking-wide flex items-center justify-center gap-1.5 shadow-sm transition-transform hover:scale-105 mx-auto"
+                        className="px-4 py-2 rounded-xl bg-[#CAD6E2] hover:bg-[#FFFFFF] text-[#050608] font-black text-xs uppercase tracking-wide flex items-center justify-center gap-1.5 shadow-md transition-all hover:scale-105 mx-auto cursor-pointer"
                       >
                         <ShoppingBag className="w-3.5 h-3.5" />
                         <span>Beli</span>

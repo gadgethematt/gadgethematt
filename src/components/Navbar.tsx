@@ -34,16 +34,16 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      {/* Top Header - Smoked Glass Minimalist Liquid Audio Lab */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-[#0B0D10]/80 backdrop-blur-xl border-b border-[#A9B5C1]/15 transition-all">
+      {/* Top Header - Dark Luxury Smoked Glass Audio Tech Bar */}
+      <header className="fixed top-0 inset-x-0 z-50 bg-[#050608]/85 backdrop-blur-2xl border-b border-[#CAD6E2]/10 transition-all">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 h-16 flex items-center justify-between gap-4">
           
-          {/* LEFT: BRAND "gadgethematt" (clean lowercase sans-serif matching screenshot) */}
+          {/* LEFT: BRAND "gadgethematt" (luxury typography, clean crisp letterforms) */}
           <div 
             onClick={() => handleNav('/')}
-            className="cursor-pointer flex items-center select-none shrink-0"
+            className="cursor-pointer flex items-center select-none shrink-0 group"
           >
-            <span className="font-display font-medium text-xl sm:text-2xl text-[#F2F3F1] tracking-tight hover:text-[#92B6E5] transition-colors">
+            <span className="font-display font-medium text-xl sm:text-2xl text-[#F8F9FA] tracking-tight group-hover:text-[#92B6E5] transition-colors">
               gadgethematt
             </span>
           </div>
@@ -56,10 +56,10 @@ export const Navbar: React.FC = () => {
                 <button
                   key={item.label}
                   onClick={() => handleNav(item.path)}
-                  className={`text-sm font-medium transition-all ${
+                  className={`text-sm tracking-wide transition-all cursor-pointer ${
                     active
-                      ? 'text-[#92B6E5] font-bold drop-shadow-[0_0_8px_rgba(146,182,229,0.3)]'
-                      : 'text-[#9AA5B1] hover:text-[#F2F3F1]'
+                      ? 'text-[#F8F9FA] font-bold drop-shadow-[0_0_12px_rgba(146,182,229,0.45)]'
+                      : 'text-[#9AA5B1] hover:text-[#F8F9FA] font-medium'
                   }`}
                 >
                   {item.label}
@@ -69,11 +69,11 @@ export const Navbar: React.FC = () => {
           </nav>
 
           {/* RIGHT: CART & USER ACTION ICONS */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             {/* Search Trigger */}
             <button
               onClick={() => handleNav('/search')}
-              className="p-2 text-[#9AA5B1] hover:text-[#F2F3F1] hover:bg-white/5 rounded-full transition-colors hidden sm:flex"
+              className="p-2 text-[#9AA5B1] hover:text-[#F8F9FA] hover:bg-white/5 rounded-full transition-colors hidden sm:flex cursor-pointer"
               title="Cari TWS & Review"
             >
               <Search className="w-4 h-4" />
@@ -82,20 +82,20 @@ export const Navbar: React.FC = () => {
             {/* Shopping Cart Icon (Triggers Tokopedia Voucher / Deals Popup) */}
             <button
               onClick={() => openAffiliateModal()}
-              className="relative p-2 text-[#F2F3F1] hover:text-[#92B6E5] hover:bg-white/5 rounded-full transition-colors"
+              className="relative p-2 text-[#F8F9FA] hover:text-[#92B6E5] hover:bg-white/5 rounded-full transition-colors cursor-pointer"
               title="Kode Voucher & Promo Tokopedia"
             >
               <ShoppingCart className="w-5 h-5" />
-              <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#92B6E5] animate-pulse" />
+              <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#92B6E5] shadow-[0_0_8px_#92B6E5] animate-pulse" />
             </button>
 
             {/* User Icon (Triggers Admin CMS Login / Dashboard) */}
             <button
               onClick={() => handleNav(isAdminLoggedIn ? '/admin' : '/admin/login')}
-              className={`p-2 rounded-full transition-colors ${
+              className={`p-2 rounded-full transition-all cursor-pointer ${
                 isAdminLoggedIn 
-                  ? 'bg-[#92B6E5] text-[#0B0D10] shadow-xs' 
-                  : 'text-[#F2F3F1] hover:text-[#92B6E5] hover:bg-white/5 border border-[#A9B5C1]/15'
+                  ? 'bg-[#92B6E5] text-[#050608] shadow-[0_0_12px_rgba(146,182,229,0.5)] font-bold' 
+                  : 'text-[#F8F9FA] hover:text-[#92B6E5] hover:bg-white/5 border border-[#CAD6E2]/15'
               }`}
               title={isAdminLoggedIn ? 'Dashboard Admin CMS' : 'Login Admin CMS'}
             >

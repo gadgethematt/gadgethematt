@@ -7,21 +7,21 @@ export const FindYourPerfectTws: React.FC = () => {
   const { navigate } = useApp();
 
   return (
-    <section className="w-full py-16 bg-[#0B0D10] border-b border-[#1E2329]">
+    <section className="w-full py-16 bg-[#050608] border-b border-[#1A1F26]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative w-full bg-gradient-to-br from-[#14181D] via-[#1E2329] to-[#14181D] rounded-3xl p-8 sm:p-12 lg:p-16 border border-[#A9B5C1]/20 overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
+        <div className="relative w-full bg-gradient-to-br from-[#0B0E12] via-[#12151A] to-[#08090C] rounded-3xl p-8 sm:p-12 lg:p-16 border border-[#CAD6E2]/15 overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
           
           {/* ICE BLUE AMBIENT SOUNDSTAGE GLOW */}
-          <div className="absolute top-1/2 right-10 -translate-y-1/2 w-96 h-96 bg-[#92B6E5]/15 rounded-full blur-3xl pointer-events-none -z-0" />
+          <div className="absolute top-1/2 right-10 -translate-y-1/2 w-96 h-96 bg-[#92B6E5]/12 rounded-full blur-3xl pointer-events-none -z-0" />
 
           {/* LEFT CONTENT */}
           <div className="relative z-10 max-w-xl text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1E2329] border border-[#A9B5C1]/20 text-[10px] font-black tracking-widest text-[#92B6E5] uppercase mb-4 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#12151A] border border-[#CAD6E2]/20 text-[10px] font-black tracking-widest text-[#CAD6E2] uppercase mb-4 shadow-sm">
               <Sparkles className="w-3 h-3 text-[#92B6E5]" />
               SMART RECOMMENDATION ENGINE
             </div>
 
-            <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-[#F2F3F1] uppercase tracking-tighter leading-[0.95]">
+            <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-[#F8F9FA] uppercase tracking-tighter leading-[0.95]">
               Find Your<br />
               <span className="metallic-text">Perfect TWS</span>
             </h2>
@@ -33,15 +33,15 @@ export const FindYourPerfectTws: React.FC = () => {
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <button
                 onClick={() => navigate('/katalog')}
-                className="px-8 py-4 rounded-full bg-[#92B6E5] hover:bg-[#A9B5C1] text-[#0B0D10] font-black text-xs sm:text-sm tracking-wider uppercase transition-all shadow-lg hover:scale-105 flex items-center gap-2"
+                className="px-8 py-4 rounded-full bg-gradient-to-r from-[#CAD6E2] via-[#E2E8F0] to-[#92B6E5] hover:from-[#FFFFFF] hover:to-[#A9C7EF] text-[#050608] font-black text-xs sm:text-sm tracking-wider uppercase transition-all shadow-xl hover:scale-105 flex items-center gap-2 cursor-pointer"
               >
                 <span>EXPLORE ALL TWS</span>
-                <ArrowRight className="w-4 h-4 text-[#0B0D10]" />
+                <ArrowRight className="w-4 h-4 text-[#050608]" />
               </button>
 
               <button
                 onClick={() => navigate('/comparisons')}
-                className="px-6 py-4 rounded-full bg-[#1E2329] hover:bg-[#252C34] text-[#F2F3F1] border border-[#A9B5C1]/20 hover:border-[#92B6E5]/40 font-black text-xs tracking-wider uppercase transition-colors"
+                className="px-6 py-4 rounded-full bg-[#12151A] hover:bg-[#1A1F26] text-[#F8F9FA] border border-[#CAD6E2]/20 hover:border-[#92B6E5]/40 font-black text-xs tracking-wider uppercase transition-colors cursor-pointer"
               >
                 Fitur Komparasi →
               </button>

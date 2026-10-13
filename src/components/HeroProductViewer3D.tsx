@@ -71,61 +71,66 @@ export const HeroProductViewer3D: React.FC<HeroProductViewer3DProps> = ({
     );
     camera.position.set(0, 0.25, 4.8);
 
-    // Studio Lighting tailored for Metallic Silver-White finish
-    const ambientLight = new THREE.AmbientLight(0x0f141c, 2.0);
+    // Studio Lighting tailored for dramatic dark luxury campaign
+    const ambientLight = new THREE.AmbientLight(0x06080c, 1.4);
     scene.add(ambientLight);
 
-    // Pure White Key Light for glistening curved speculars
-    const keyLight = new THREE.DirectionalLight(0xffffff, 3.8);
-    keyLight.position.set(4, 5, 4);
+    // Dramatic Pure White Top/Overhead Rim Key Light (producing intense crest speculars like Apple AirPods Pro ad)
+    const topKeyLight = new THREE.DirectionalLight(0xffffff, 5.2);
+    topKeyLight.position.set(0, 6, 2.5);
+    scene.add(topKeyLight);
+
+    // Frontal Crisp Key Light from right
+    const keyLight = new THREE.DirectionalLight(0xf0f4f8, 3.4);
+    keyLight.position.set(3.5, 3.5, 4);
     scene.add(keyLight);
 
-    // Soft Fill Light from opposite side
-    const fillLight = new THREE.DirectionalLight(0xdde5ee, 2.2);
-    fillLight.position.set(-4, 3, 2);
+    // Soft Dark Silver Fill Light from opposite bottom
+    const fillLight = new THREE.DirectionalLight(0x9aa5b1, 1.6);
+    fillLight.position.set(-3.5, 1.5, 2);
     scene.add(fillLight);
 
-    // Signature Ice-Blue Rim Light (Cybernetic Liquid Tech accent)
-    const rimLight = new THREE.PointLight(new THREE.Color(tintHex), 4.8, 12);
-    rimLight.position.set(-3.5, -2, -2.5);
-    scene.add(rimLight);
+    // Under-Glow Rim Light with subtle icy blue reflection
+    const underRimLight = new THREE.PointLight(new THREE.Color(tintHex), 4.2, 10);
+    underRimLight.position.set(0, -3.2, -1.8);
+    scene.add(underRimLight);
 
-    // Metallic Specular Accent Light
-    const specLight = new THREE.PointLight(0xa9b5c1, 2.5, 10);
-    specLight.position.set(2.5, -3, 3);
+    // Deep Specular Rim Accent
+    const specLight = new THREE.PointLight(0xdde5ee, 3.2, 8);
+    specLight.position.set(-2.5, 4, -2.5);
     scene.add(specLight);
 
-    // Materials definition (High-end Pearl White / Silver)
+    // Materials definition (Ultra-Refined Pearl Glossy Plastic & Polished Metal)
     const bodyMaterial = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color(colorHex),
-      roughness: 0.16,
-      metalness: 0.22,
-      clearcoat: 0.95,
-      clearcoatRoughness: 0.1,
-      reflectivity: 0.88,
+      roughness: 0.12,
+      metalness: 0.18,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.06,
+      reflectivity: 0.95,
       ior: 1.54,
     });
 
     const metalMaterial = new THREE.MeshStandardMaterial({
       color: new THREE.Color(metalHex),
-      metalness: 0.94,
-      roughness: 0.18,
+      metalness: 0.96,
+      roughness: 0.14,
     });
 
     const siliconeMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xe6ecf2,
-      roughness: 0.42,
-      metalness: 0.05,
-      transmission: 0.28,
-      thickness: 0.4,
+      color: 0xedf2f7,
+      roughness: 0.38,
+      metalness: 0.04,
+      transmission: 0.35,
+      thickness: 0.45,
       transparent: true,
-      opacity: 0.95,
+      opacity: 0.96,
     });
 
     const grilleMaterial = new THREE.MeshStandardMaterial({
-      color: 0x181c22,
-      metalness: 0.85,
-      roughness: 0.4,
+      color: 0x111317,
+      metalness: 0.9,
+      roughness: 0.35,
     });
 
     const ledMaterial = new THREE.MeshBasicMaterial({
@@ -136,94 +141,101 @@ export const HeroProductViewer3D: React.FC<HeroProductViewer3DProps> = ({
       body: bodyMaterial,
       metal: metalMaterial,
       silicone: siliconeMaterial,
-      lightTint: rimLight,
+      lightTint: underRimLight,
     };
 
-    // Build Realistic 3D Earbud Function
+    // Build Luxury Precision 3D Earbud (inspired by modern high-end ANC earbuds)
     const createEarbud = (isRight: boolean) => {
       const earbud = new THREE.Group();
 
-      // 1. Head Acoustic Chamber (Ergonomic Ellipsoid)
-      const headGeom = new THREE.SphereGeometry(0.52, 32, 28);
-      headGeom.scale(1.0, 1.15, 0.88);
+      // 1. Head Acoustic Chamber (Ergonomic Ellipsoid with refined crown)
+      const headGeom = new THREE.SphereGeometry(0.54, 36, 32);
+      headGeom.scale(1.02, 1.18, 0.92);
       const headMesh = new THREE.Mesh(headGeom, bodyMaterial);
       earbud.add(headMesh);
 
-      // 2. Ear-tip Sound Nozzle (Angled towards ear canal)
-      const nozzleGroup = new THREE.Group();
-      nozzleGroup.position.set(isRight ? -0.32 : 0.32, 0.1, 0.28);
-      nozzleGroup.rotation.set(0.2, isRight ? -0.55 : 0.55, 0);
+      // Inner Acoustic Vent on crown (Black micro mesh)
+      const crownVentGeom = new THREE.BoxGeometry(0.04, 0.18, 0.02);
+      const crownVent = new THREE.Mesh(crownVentGeom, grilleMaterial);
+      crownVent.position.set(0, 0.52, -0.05);
+      crownVent.rotation.z = Math.PI / 4;
+      earbud.add(crownVent);
 
-      // Metal base ring of nozzle
-      const nozzleRingGeom = new THREE.CylinderGeometry(0.24, 0.26, 0.12, 32);
+      // 2. Ear-tip Sound Nozzle (Angled inward)
+      const nozzleGroup = new THREE.Group();
+      nozzleGroup.position.set(isRight ? -0.34 : 0.34, 0.12, 0.32);
+      nozzleGroup.rotation.set(0.24, isRight ? -0.58 : 0.58, 0);
+
+      // Metal base ring of nozzle (Polished chrome)
+      const nozzleRingGeom = new THREE.CylinderGeometry(0.25, 0.27, 0.14, 36);
       const nozzleRing = new THREE.Mesh(nozzleRingGeom, metalMaterial);
       nozzleRing.rotation.x = Math.PI / 2;
       nozzleGroup.add(nozzleRing);
 
-      // Silicone ear-tip
-      const tipGeom = new THREE.ConeGeometry(0.36, 0.42, 32);
-      tipGeom.scale(1, 0.85, 1);
+      // Silicone ear-tip with delicate curvature
+      const tipGeom = new THREE.ConeGeometry(0.38, 0.44, 36);
+      tipGeom.scale(1, 0.88, 1);
       const tipMesh = new THREE.Mesh(tipGeom, siliconeMaterial);
       tipMesh.rotation.x = -Math.PI / 2;
-      tipMesh.position.z = 0.2;
+      tipMesh.position.z = 0.22;
       nozzleGroup.add(tipMesh);
 
       // Inner Acoustic Grille
-      const grilleGeom = new THREE.CircleGeometry(0.18, 24);
+      const grilleGeom = new THREE.CircleGeometry(0.19, 28);
       const grilleMesh = new THREE.Mesh(grilleGeom, grilleMaterial);
-      grilleMesh.position.z = 0.22;
+      grilleMesh.position.z = 0.24;
       nozzleGroup.add(grilleMesh);
 
       earbud.add(nozzleGroup);
 
       // 3. Ergonomic Stem (Aerodynamic teardrop cylindrical form)
       const stemGroup = new THREE.Group();
-      stemGroup.position.set(isRight ? 0.2 : -0.2, -0.62, -0.05);
-      stemGroup.rotation.set(0.08, 0, isRight ? -0.12 : 0.12);
+      stemGroup.position.set(isRight ? 0.22 : -0.22, -0.65, -0.06);
+      stemGroup.rotation.set(0.09, 0, isRight ? -0.14 : 0.14);
 
-      const stemGeom = new THREE.CylinderGeometry(0.12, 0.09, 1.15, 32);
+      const stemGeom = new THREE.CylinderGeometry(0.125, 0.095, 1.22, 36);
       const stemMesh = new THREE.Mesh(stemGeom, bodyMaterial);
       stemGroup.add(stemMesh);
 
-      // Capacitive Touch Sensor Panel along outer stem
-      const touchGeom = new THREE.BoxGeometry(0.08, 0.72, 0.03);
+      // Indented Capacitive Force Sensor / Touch Strip along outer stem
+      const touchGeom = new THREE.BoxGeometry(0.08, 0.76, 0.025);
       const touchMesh = new THREE.Mesh(touchGeom, metalMaterial);
-      touchMesh.position.set(0, 0.05, isRight ? 0.11 : -0.11);
+      touchMesh.position.set(0, 0.06, isRight ? 0.115 : -0.115);
       stemGroup.add(touchMesh);
 
       // Chrome bottom cap
-      const capGeom = new THREE.CylinderGeometry(0.092, 0.092, 0.08, 32);
+      const capGeom = new THREE.CylinderGeometry(0.096, 0.096, 0.09, 36);
       const capMesh = new THREE.Mesh(capGeom, metalMaterial);
-      capMesh.position.y = -0.56;
+      capMesh.position.y = -0.6;
       stemGroup.add(capMesh);
 
       // Dual Micro Golden/Silver Charging Pins
       const pinGeom = new THREE.CylinderGeometry(0.02, 0.02, 0.04, 16);
       const pin1 = new THREE.Mesh(pinGeom, metalMaterial);
-      pin1.position.set(-0.035, -0.6, 0);
+      pin1.position.set(-0.035, -0.64, 0);
       const pin2 = new THREE.Mesh(pinGeom, metalMaterial);
-      pin2.position.set(0.035, -0.6, 0);
+      pin2.position.set(0.035, -0.64, 0);
       stemGroup.add(pin1);
       stemGroup.add(pin2);
 
       // Status LED indicator
       const ledGeom = new THREE.SphereGeometry(0.026, 16, 16);
       const ledMesh = new THREE.Mesh(ledGeom, ledMaterial);
-      ledMesh.position.set(0, 0.38, isRight ? 0.12 : -0.12);
+      ledMesh.position.set(0, 0.4, isRight ? 0.125 : -0.125);
       stemGroup.add(ledMesh);
 
       // Acoustic Mic vent on stem
-      const micVentGeom = new THREE.BoxGeometry(0.04, 0.08, 0.02);
+      const micVentGeom = new THREE.BoxGeometry(0.04, 0.09, 0.02);
       const micVent = new THREE.Mesh(micVentGeom, grilleMaterial);
-      micVent.position.set(0, -0.25, isRight ? 0.11 : -0.11);
+      micVent.position.set(0, -0.26, isRight ? 0.115 : -0.115);
       stemGroup.add(micVent);
 
       earbud.add(stemGroup);
 
-      // Outer Acoustic Vent on Chamber
-      const outerVentGeom = new THREE.CylinderGeometry(0.08, 0.08, 0.02, 24);
+      // Outer Acoustic ANC Noise Vent on Chamber (Curved oval black mesh)
+      const outerVentGeom = new THREE.CylinderGeometry(0.09, 0.09, 0.02, 28);
       const outerVent = new THREE.Mesh(outerVentGeom, grilleMaterial);
-      outerVent.position.set(isRight ? 0.44 : -0.44, 0.1, -0.15);
+      outerVent.position.set(isRight ? 0.46 : -0.46, 0.12, -0.16);
       outerVent.rotation.y = isRight ? Math.PI / 2 : -Math.PI / 2;
       earbud.add(outerVent);
 
@@ -234,24 +246,24 @@ export const HeroProductViewer3D: React.FC<HeroProductViewer3DProps> = ({
     const productRoot = new THREE.Group();
     scene.add(productRoot);
 
-    // Right Earbud (Angled dynamically forward)
+    // Right Earbud (Facing camera dynamically like luxury advertisement)
     const rightEarbud = createEarbud(true);
-    rightEarbud.position.set(0.62, 0.18, 0.15);
-    rightEarbud.rotation.set(0.25, -0.42, 0.18);
+    rightEarbud.position.set(0.58, 0.14, 0.18);
+    rightEarbud.rotation.set(0.22, -0.38, 0.16);
     productRoot.add(rightEarbud);
 
-    // Left Earbud (Angled gracefully in profile)
+    // Left Earbud (Complementary angle, hovering naturally)
     const leftEarbud = createEarbud(false);
-    leftEarbud.position.set(-0.62, -0.18, -0.12);
-    leftEarbud.rotation.set(-0.22, 0.52, -0.2);
+    leftEarbud.position.set(-0.58, -0.14, -0.12);
+    leftEarbud.rotation.set(-0.18, 0.44, -0.18);
     productRoot.add(leftEarbud);
 
-    // Floating Acoustic Depth Rings
-    const orbitRingGeom = new THREE.TorusGeometry(1.65, 0.008, 16, 100);
+    // Floating Atmospheric Depth Rings (representing spatial sound wave field)
+    const orbitRingGeom = new THREE.TorusGeometry(1.7, 0.007, 16, 120);
     const orbitRingMat = new THREE.MeshBasicMaterial({
-      color: 0x92b6e5,
+      color: 0xCAD6E2,
       transparent: true,
-      opacity: 0.18,
+      opacity: 0.14,
     });
     const orbitRing = new THREE.Mesh(orbitRingGeom, orbitRingMat);
     orbitRing.rotation.x = Math.PI / 2.3;
