@@ -32,51 +32,51 @@ export const AffiliateModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#E4E8E5] overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-lg bg-[#1E2329] rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#A9B5C1]/20 overflow-hidden text-[#F2F3F1]">
         
         {/* CLOSE BUTTON */}
         <button
           onClick={closeAffiliateModal}
-          className="absolute top-4 right-4 p-2 rounded-full bg-[#F7F8F6] text-neutral-600 hover:text-black hover:bg-neutral-200 transition-colors"
+          className="absolute top-4 right-4 p-2 rounded-full bg-[#14181D] text-[#9AA5B1] hover:text-[#F2F3F1] hover:bg-[#252C34] transition-colors border border-[#A9B5C1]/15"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* HEADER */}
         <div className="flex items-center gap-2 mb-2">
-          <span className="p-1.5 rounded-lg bg-[#B9F43A] text-black">
+          <span className="p-1.5 rounded-lg bg-[#92B6E5]/15 text-[#92B6E5] border border-[#92B6E5]/25">
             <Sparkles className="w-4 h-4" />
           </span>
-          <span className="text-xs font-black tracking-widest text-[#68736D] uppercase font-display">
+          <span className="text-xs font-black tracking-widest text-[#92B6E5] uppercase font-display">
             TOKOPEDIA AFFILIATE DEALS
           </span>
         </div>
 
-        <h3 className="text-2xl font-black text-[#080808] font-display tracking-tight leading-snug mb-1">
+        <h3 className="text-2xl font-black text-[#F2F3F1] font-display tracking-tight leading-snug mb-1">
           {product ? product.name : 'Voucher Tokopedia Official'}
         </h3>
         
-        <p className="text-xs text-[#68736D] mb-6">
+        <p className="text-xs text-[#9AA5B1] mb-6">
           Dapatkan jaminan produk 100% Original Tokopedia Official Store dengan garansi resmi dan bebas ongkir.
         </p>
 
         {/* VOUCHER CODES */}
         <div className="space-y-3 mb-6">
-          <div className="text-[11px] font-extrabold tracking-wider uppercase text-[#080808]">
+          <div className="text-[11px] font-extrabold tracking-wider uppercase text-[#A9B5C1]">
             KODE VOUCHER TOKOPEDIA
           </div>
           {vouchers.map(v => (
-            <div key={v.code} className={`p-3.5 rounded-2xl border flex items-center justify-between gap-3 ${v.bg}`}>
+            <div key={v.code} className="p-3.5 rounded-2xl border border-[#92B6E5]/30 bg-[#14181D] flex items-center justify-between gap-3 text-[#F2F3F1]">
               <div>
-                <div className="text-xs font-black uppercase tracking-wider">{v.platform}</div>
-                <div className="text-xs font-semibold mt-0.5">{v.discount}</div>
+                <div className="text-xs font-black uppercase tracking-wider text-[#92B6E5]">{v.platform}</div>
+                <div className="text-xs font-medium mt-0.5 text-[#9AA5B1]">{v.discount}</div>
               </div>
               <button
                 onClick={() => handleCopy(v.code)}
-                className="px-3.5 py-2 rounded-xl bg-black text-white text-xs font-bold flex items-center gap-1.5 hover:bg-neutral-800 transition-colors shrink-0"
+                className="px-3.5 py-2 rounded-xl bg-[#92B6E5] hover:bg-[#A9B5C1] text-[#0B0D10] text-xs font-black flex items-center gap-1.5 transition-colors shrink-0"
               >
-                {copiedCode === v.code ? <Check className="w-3.5 h-3.5 text-[#B9F43A]" /> : <Copy className="w-3.5 h-3.5" />}
+                {copiedCode === v.code ? <Check className="w-3.5 h-3.5 text-[#0B0D10]" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>{copiedCode === v.code ? 'Tersalin' : v.code}</span>
               </button>
             </div>
@@ -86,14 +86,14 @@ export const AffiliateModal: React.FC = () => {
         {/* MARKETPLACE CTA BUTTON */}
         {product && (
           <div className="space-y-2.5">
-            <div className="text-[11px] font-extrabold tracking-wider uppercase text-[#080808]">
+            <div className="text-[11px] font-extrabold tracking-wider uppercase text-[#A9B5C1]">
               BELI DI TOKOPEDIA OFFICIAL
             </div>
             
             {product.tokopediaUrl ? (
               <button
                 onClick={handleGoTokopedia}
-                className="w-full py-4 px-5 rounded-2xl bg-[#03AC0E] hover:bg-[#02930c] text-white font-black text-sm tracking-wide flex items-center justify-between shadow-md transition-transform hover:scale-[1.01]"
+                className="w-full py-4 px-5 rounded-2xl bg-[#92B6E5] hover:bg-[#A9B5C1] text-[#0B0D10] font-black text-sm tracking-wide flex items-center justify-between shadow-md transition-transform hover:scale-[1.01]"
               >
                 <div className="flex items-center gap-2">
                   <ShoppingBag className="w-4 h-4" />
@@ -102,17 +102,17 @@ export const AffiliateModal: React.FC = () => {
                 <ExternalLink className="w-4 h-4" />
               </button>
             ) : (
-              <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 font-bold text-xs flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 text-amber-700 shrink-0" />
+              <div className="p-4 rounded-2xl bg-[#14181D] border border-amber-500/30 text-amber-300 font-bold text-xs flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 text-amber-400 shrink-0" />
                 <span>Affiliate link belum tersedia untuk produk ini.</span>
               </div>
             )}
           </div>
         )}
 
-        <div className="mt-6 pt-4 border-t border-[#E4E8E5] flex items-center justify-between text-[10px] text-[#68736D]">
+        <div className="mt-6 pt-4 border-t border-[#A9B5C1]/15 flex items-center justify-between text-[10px] text-[#9AA5B1]">
           <span className="flex items-center gap-1">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+            <ShieldCheck className="w-3.5 h-3.5 text-[#92B6E5]" />
             Garansi Resmi Tokopedia Official Store
           </span>
           <span>Official Affiliate Partner</span>

@@ -86,7 +86,7 @@ export const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f8fafc] via-[#f4f7f5] to-[#f8fafc] text-[#080808] selection:bg-[#B9F43A] selection:text-black font-sans antialiased overflow-x-hidden flex flex-col justify-between">
+    <div className="min-h-screen bg-[#0B0D10] text-[#F2F3F1] selection:bg-[#92B6E5] selection:text-[#0B0D10] font-sans antialiased overflow-x-hidden flex flex-col justify-between">
       <Navbar />
 
       <main className="w-full flex-1">

@@ -7,49 +7,49 @@ export const FindYourPerfectTws: React.FC = () => {
   const { navigate } = useApp();
 
   return (
-    <section className="w-full py-16 bg-white border-b border-[#E4E8E5]">
+    <section className="w-full py-16 bg-[#0B0D10] border-b border-[#1E2329]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative w-full bg-[#F7F8F6] rounded-3xl p-8 sm:p-12 lg:p-16 border border-[#E4E8E5] overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm">
+        <div className="relative w-full bg-gradient-to-br from-[#14181D] via-[#1E2329] to-[#14181D] rounded-3xl p-8 sm:p-12 lg:p-16 border border-[#A9B5C1]/20 overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
           
-          {/* GREEN AMBIENT GLOW */}
-          <div className="absolute top-1/2 right-10 -translate-y-1/2 w-96 h-96 bg-[#B9F43A]/30 rounded-full blur-3xl pointer-events-none -z-0" />
+          {/* ICE BLUE AMBIENT SOUNDSTAGE GLOW */}
+          <div className="absolute top-1/2 right-10 -translate-y-1/2 w-96 h-96 bg-[#92B6E5]/15 rounded-full blur-3xl pointer-events-none -z-0" />
 
           {/* LEFT CONTENT */}
           <div className="relative z-10 max-w-xl text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E4E8E5] text-[10px] font-black tracking-widest text-[#68736D] uppercase mb-4 shadow-sm">
-              <Sparkles className="w-3 h-3 text-black" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1E2329] border border-[#A9B5C1]/20 text-[10px] font-black tracking-widest text-[#92B6E5] uppercase mb-4 shadow-sm">
+              <Sparkles className="w-3 h-3 text-[#92B6E5]" />
               SMART RECOMMENDATION ENGINE
             </div>
 
-            <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-[#080808] uppercase tracking-tighter leading-[0.92]">
+            <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-[#F2F3F1] uppercase tracking-tighter leading-[0.95]">
               Find Your<br />
-              <span className="text-[#080808]">Perfect TWS</span>
+              <span className="metallic-text">Perfect TWS</span>
             </h2>
 
-            <p className="mt-4 text-sm sm:text-base text-[#68736D] font-medium leading-relaxed">
+            <p className="mt-4 text-sm sm:text-base text-[#9AA5B1] font-medium leading-relaxed">
               Compare features, read honest reviews, and discover the best TWS for your needs.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <button
                 onClick={() => navigate('/katalog')}
-                className="px-8 py-4 rounded-full bg-[#25282A] hover:bg-black text-[#B9F43A] font-black text-xs sm:text-sm tracking-wider uppercase transition-all shadow-lg hover:scale-105 flex items-center gap-2 border border-[#25282A]"
+                className="px-8 py-4 rounded-full bg-[#92B6E5] hover:bg-[#A9B5C1] text-[#0B0D10] font-black text-xs sm:text-sm tracking-wider uppercase transition-all shadow-lg hover:scale-105 flex items-center gap-2"
               >
                 <span>EXPLORE ALL TWS</span>
-                <ArrowRight className="w-4 h-4 text-[#B9F43A]" />
+                <ArrowRight className="w-4 h-4 text-[#0B0D10]" />
               </button>
 
               <button
                 onClick={() => navigate('/comparisons')}
-                className="px-6 py-4 rounded-full bg-white hover:bg-[#E4E8E5] text-[#080808] border border-[#E4E8E5] font-black text-xs tracking-wider uppercase transition-colors"
+                className="px-6 py-4 rounded-full bg-[#1E2329] hover:bg-[#252C34] text-[#F2F3F1] border border-[#A9B5C1]/20 hover:border-[#92B6E5]/40 font-black text-xs tracking-wider uppercase transition-colors"
               >
                 Fitur Komparasi →
               </button>
             </div>
 
-            <div className="mt-6 flex items-center justify-center lg:justify-start gap-4 text-xs font-bold text-[#68736D]">
+            <div className="mt-6 flex items-center justify-center lg:justify-start gap-4 text-xs font-bold text-[#9AA5B1]">
               <span className="flex items-center gap-1">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <ShieldCheck className="w-4 h-4 text-[#92B6E5]" />
                 No Sponsored Bias
               </span>
               <span>•</span>
@@ -63,7 +63,7 @@ export const FindYourPerfectTws: React.FC = () => {
               <img
                 src={twsCaseImg}
                 alt="Find Your Perfect TWS"
-                className="max-w-full max-h-full object-contain filter drop-shadow-[0_20px_35px_rgba(8,8,8,0.15)]"
+                className="max-w-full max-h-full object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)]"
               />
             </div>
           </div>
