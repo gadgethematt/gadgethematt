@@ -154,11 +154,15 @@ export const dbService = {
       INITIAL_ARTICLES.forEach(initA => {
         const existingIdx = list.findIndex(a => a.id === initA.id || a.slug === initA.slug);
         if (existingIdx === -1) {
-          list.push(initA);
+          list.unshift(initA);
           changed = true;
-        } else if (list[existingIdx].featuredImage !== initA.featuredImage || list[existingIdx].content !== initA.content) {
-          list[existingIdx].featuredImage = initA.featuredImage;
-          list[existingIdx].content = initA.content;
+        } else if (
+          list[existingIdx].featuredImage !== initA.featuredImage || 
+          list[existingIdx].content !== initA.content ||
+          list[existingIdx].title !== initA.title ||
+          list[existingIdx].author !== initA.author
+        ) {
+          list[existingIdx] = { ...list[existingIdx], ...initA };
           changed = true;
         }
       });
