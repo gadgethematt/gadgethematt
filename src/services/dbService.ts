@@ -15,6 +15,7 @@ import {
   INITIAL_MEDIA, 
   INITIAL_COMMENTS 
 } from '../data/mockData';
+import { prepareArticleContent } from '../utils/contentFormatter';
 
 const STORAGE_KEYS = {
   PRODUCTS: 'gadgethematt_db_products_v5',
@@ -169,9 +170,15 @@ export const dbService = {
       if (changed) {
         localStorage.setItem(STORAGE_KEYS.ARTICLES, JSON.stringify(list));
       }
-      return list;
+      return list.map(art => ({
+        ...art,
+        content: prepareArticleContent(art.content)
+      }));
     } catch {
-      return INITIAL_ARTICLES;
+      return INITIAL_ARTICLES.map(art => ({
+        ...art,
+        content: prepareArticleContent(art.content)
+      }));
     }
   },
 
@@ -182,11 +189,17 @@ export const dbService = {
   saveArticle(article: Partial<ReviewArticle> & { title: string }): ReviewArticle {
     const articles = this.getArticles();
     const slug = article.slug || article.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const cleanContent = prepareArticleContent(article.content || '');
 
     if (article.id) {
       const index = articles.findIndex(a => a.id === article.id);
       if (index !== -1) {
-        articles[index] = { ...articles[index], ...article, slug } as ReviewArticle;
+        articles[index] = { 
+          ...articles[index], 
+          ...article, 
+          content: cleanContent || articles[index].content,
+          slug 
+        } as ReviewArticle;
       }
     } else {
       const newArt: ReviewArticle = {
@@ -195,7 +208,7 @@ export const dbService = {
         title: article.title,
         subtitle: article.subtitle || '',
         excerpt: article.excerpt || article.subtitle || '',
-        content: article.content || '<p>Konten artikel sedang disusun...</p>',
+        content: cleanContent || '<p>Konten artikel sedang disusun...</p>',
         category: article.category || 'Reviews',
         type: article.type || 'review',
         author: article.author || 'Dika Ramadhan',

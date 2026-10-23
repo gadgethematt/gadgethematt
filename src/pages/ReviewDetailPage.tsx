@@ -10,6 +10,8 @@ import {
   Share2
 } from 'lucide-react';
 
+import { prepareArticleContent } from '../utils/contentFormatter';
+
 export const ReviewDetailPage: React.FC = () => {
   const { selectedSlug, articles, products, navigate, openAffiliateModal } = useApp();
   const [copiedLink, setCopiedLink] = useState(false);
@@ -151,8 +153,8 @@ export const ReviewDetailPage: React.FC = () => {
 
         {/* ARTICLE BODY */}
         <div 
-          className="prose prose-invert max-w-none text-[#D9E1E8] text-sm sm:text-base leading-relaxed space-y-4 font-normal [&_h2]:text-[#F2F3F1] [&_h2]:font-display [&_h2]:font-black [&_h2]:text-2xl [&_h2]:mt-8 [&_h2]:mb-4 [&_h3]:text-[#F2F3F1] [&_h3]:font-display [&_h3]:font-black [&_h3]:text-xl [&_h3]:mt-6 [&_h3]:mb-3 [&_strong]:text-[#F2F3F1] [&_a]:text-[#92B6E5] [&_a]:underline [&_table]:w-full [&_table]:border-collapse [&_table]:my-6 [&_th]:bg-[#1E2329] [&_th]:text-[#F2F3F1] [&_th]:p-3 [&_th]:border [&_th]:border-[#1E2329] [&_td]:p-3 [&_td]:border [&_td]:border-[#1E2329] [&_td]:bg-[#14181D]/60 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:my-1.5 [&_blockquote]:border-l-4 [&_blockquote]:border-[#92B6E5] [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-[#A9B5C1]"
-          dangerouslySetInnerHTML={{ __html: article.content }}
+          className="article-content prose prose-invert max-w-none text-[#D9E1E8] text-sm sm:text-base leading-relaxed space-y-4 font-normal [&_h2]:text-[#F2F3F1] [&_h2]:font-display [&_h2]:font-black [&_h2]:text-2xl [&_h2]:mt-8 [&_h2]:mb-4 [&_h3]:text-[#F2F3F1] [&_h3]:font-display [&_h3]:font-black [&_h3]:text-xl [&_h3]:mt-6 [&_h3]:mb-3 [&_strong]:text-[#F2F3F1] [&_a]:text-[#92B6E5] [&_table]:w-full [&_table]:border-collapse [&_table]:my-6 [&_th]:bg-[#1E2329] [&_th]:text-[#F2F3F1] [&_th]:p-3 [&_th]:border [&_th]:border-[#1E2329] [&_td]:p-3 [&_td]:border [&_td]:border-[#1E2329] [&_td]:bg-[#14181D]/60 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:my-1.5 [&_blockquote]:border-l-4 [&_blockquote]:border-[#92B6E5] [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-[#A9B5C1]"
+          dangerouslySetInnerHTML={{ __html: prepareArticleContent(article.content) }}
         />
 
         {/* PROS & CONS GRID */}

@@ -116,3 +116,148 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Rich Article Content Styles */
+.article-content {
+  line-height: 1.85;
+  color: #D9E1E8;
+  font-size: 1rem;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4 {
+  color: #F8F9FA;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.article-content h1 {
+  font-size: 1.875rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.875rem;
+  line-height: 1.35;
+  border-bottom: 1px solid rgba(202, 214, 226, 0.12);
+  padding-bottom: 0.5rem;
+}
+
+.article-content h3 {
+  font-size: 1.25rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  color: #E2E8F0;
+}
+
+.article-content h4 {
+  font-size: 1.1rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.article-content p {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  line-height: 1.85;
+}
+
+.article-content strong,
+.article-content b {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.article-content em,
+.article-content i {
+  color: #CAD6E2;
+  font-style: italic;
+}
+
+.article-content a {
+  color: #92B6E5;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline;
+}
+
+.article-content a:hover {
+  color: #B9F43A;
+  text-decoration-color: #B9F43A;
+}
+
+.article-content ul,
+.article-content ol {
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.article-content ul {
+  list-style-type: disc;
+}
+
+.article-content ol {
+  list-style-type: decimal;
+}
+
+.article-content li {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+  line-height: 1.75;
+}
+
+.article-content li > p {
+  margin-bottom: 0.5rem;
+}
+
+.article-content blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  background: rgba(18, 21, 26, 0.75);
+  border-left: 4px solid #92B6E5;
+  border-radius: 0 12px 12px 0;
+  color: #CAD6E2;
+  font-style: italic;
+}
+
+.article-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.article-content code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.875em;
+  font-family: monospace;
+}
+
+.article-content pre {
+  background: #0B0D10;
+  border: 1px solid rgba(202, 214, 226, 0.15);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+
+.article-content img {
+  border-radius: 16px;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border: 1px solid rgba(202, 214, 226, 0.15);
+}
+
